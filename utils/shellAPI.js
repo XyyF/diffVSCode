@@ -9,15 +9,15 @@ module.exports = class ShellAPI {
      * @param {string} relativePath 
      */
     _getRootPath(relativePath) {
-        return path.resolve(__dirname, `..${path.sep}${relativePath}`)
+        return path.resolve(__dirname, `..${path.sep}${relativePath}`);
     }
 
     /**
      * 获取相对 脚本命令执行时目录 的绝对路径
-     * @param {string}} relativePath 
+     * @param {string} relativePath 
      */
     _getCurrentPath(relativePath) {
-        return path.resolve(process.cwd(), relativePath)
+        return path.resolve(process.cwd(), relativePath);
     }
 
     /**

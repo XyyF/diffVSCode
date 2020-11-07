@@ -1,5 +1,5 @@
-const ejs = require('ejs')
-const ShellUtil = require('./shell')
+const ejs = require('ejs');
+const ShellUtil = require('./shell');
 
 module.exports = class EjsAPI {
     constructor() {}

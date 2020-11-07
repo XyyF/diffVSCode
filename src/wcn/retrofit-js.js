@@ -1,5 +1,6 @@
-const vscode = require('vscode')
-const Ejs = require('../../utils/ejs')
+const vscode = require('vscode');
+const path = require('path');
+const Ejs = require('../../utils/ejs');
 
 // 改造 未成年页面js文件
 module.exports = function retrofitJs(context) {
@@ -8,7 +9,10 @@ module.exports = function retrofitJs(context) {
 		if (vscode.window.activeTextEditor) {
 			vscode.window.activeTextEditor.edit(editBuilder => {
 				if (vscode.window.activeTextEditor) {
-					const ejs = new Ejs({fileName: 'action'});
+					// 文件名获取
+					const fileName = path.basename(vscode.window.activeTextEditor.document.fileName, '.js');
+					// 渲染模板数据
+					const ejs = new Ejs({fileName});
 					const text = ejs.renderWcnPage();
 					// 从开始到结束，全量替换
 					const end = new vscode.Position(vscode.window.activeTextEditor.document.lineCount + 1, 0);
@@ -19,5 +23,4 @@ module.exports = function retrofitJs(context) {
 	});
 
 	context.subscriptions.push(disposable);
-
 };

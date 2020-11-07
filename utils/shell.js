@@ -1,7 +1,7 @@
 /**
  * Created by rengar on 2020/6/17.
  */
-const ShellAPI = require('./shellAPI')
+const ShellAPI = require('./shellAPI');
 
 module.exports = class Shell extends ShellAPI {
     constructor() {

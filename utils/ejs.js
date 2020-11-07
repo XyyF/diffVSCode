@@ -1,4 +1,4 @@
-const EjsAPI = require('./ejsAPI')
+const EjsAPI = require('./ejsAPI');
 
 module.exports = class Ejs extends EjsAPI {
 	fileName = '';
@@ -11,7 +11,6 @@ module.exports = class Ejs extends EjsAPI {
 	renderWcnPage() {
 		return this._renderByTempalte('templates/wcn/page.ejs', {
 			PageName: firstUpperCase(this.fileName),
-			__outName: `${this.fileName}.js`,
 		});
 	}
 }
