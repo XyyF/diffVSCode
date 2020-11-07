@@ -4,6 +4,7 @@
 	"description": "",
 	"version": "0.0.1",
 	"publisher": "rengarxiao",
+	"repository": "https://github.com/XyyF/elfin-vscode",
 	"engines": {
 		"vscode": "^1.51.0"
 	},
