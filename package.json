@@ -1,6 +1,6 @@
 {
-	"name": "diffvscode",
-	"displayName": "diffVSCode",
+	"name": "elfinvscode",
+	"displayName": "elfin VSCode",
 	"description": "",
 	"version": "0.0.1",
 	"engines": {
@@ -10,21 +10,15 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:diffvscode.sayHello"
+		"onCommand:elfinvscode.retrofitJs"
 	],
-	"main": "./out/extension.js",
+	"main": "./dist/extension.js",
 	"contributes": {
-		"commands": [
-			{
-				"command": "diffvscode.sayHello",
-				"title": "Hello World"
-			}
-		],
         "menus": {
             "editor/context": [
                 {
                     "when": "editorFocus",
-                    "command": "diffvscode.sayHello",
+                    "command": "elfinvscode.retrofitJs",
                     "group": "navigation"
                 }
             ]
@@ -36,7 +30,7 @@
 		"lint": "eslint src --ext ts",
 		"watch": "tsc -watch -p ./",
 		"pretest": "npm run compile && npm run lint",
-		"test": "node ./out/test/runTest.js"
+		"test": "node ./dist/test/runTest.js"
 	},
 	"devDependencies": {
 		"@types/vscode": "^1.51.0",
