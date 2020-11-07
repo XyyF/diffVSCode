@@ -1,8 +1,9 @@
 {
 	"name": "elfinvscode",
-	"displayName": "elfin VSCode",
+	"displayName": "elfinVSCode",
 	"description": "",
 	"version": "0.0.1",
+    "publisher": "rengarxiao",
 	"engines": {
 		"vscode": "^1.51.0"
 	},
@@ -10,15 +11,21 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:elfinvscode.retrofitJs"
+		"onCommand:elfin.wcn.retrofitJs"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
+        "commands": [
+            {
+                "command": "elfin.wcn.retrofitJs",
+                "title": "[未成年]格式化Js文件"
+            }
+        ],
         "menus": {
             "editor/context": [
                 {
-                    "when": "editorFocus",
-                    "command": "elfinvscode.retrofitJs",
+                    "when": "editorFocus && resourceLangId == javascript",
+                    "command": "elfin.wcn.retrofitJs",
                     "group": "navigation"
                 }
             ]

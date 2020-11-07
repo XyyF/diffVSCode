@@ -7,17 +7,22 @@ import * as vscode from 'vscode';
  * @param context 插件上下文
  */
 export function activate(context: vscode.ExtensionContext) {
-
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "diffvscode" is now active!');
+	console.log('扩展elfin vscode已激活!');
 
 	// 注册命令
-	let disposable = vscode.commands.registerCommand('diffvscode.retrofitJs', () => {
-		// The code you place here will be executed every time your command is executed
-
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from diffVSCoddawde!');
+	const disposable = vscode.commands.registerCommand('elfin.wcn.retrofitJs', () => {
+		if (vscode.window.activeTextEditor) {
+			console.log(111)
+			vscode.window.activeTextEditor.edit(editBuilder => {
+				if (vscode.window.activeTextEditor) {
+					console.log(222)
+					// 从开始到结束，全量替换
+					const end = new vscode.Position(vscode.window.activeTextEditor.document.lineCount + 1, 0);
+					const text = '新替换的内容';
+					editBuilder.replace(new vscode.Range(new vscode.Position(0, 0), end), text);
+				}
+			});
+		}
 	});
 
 	context.subscriptions.push(disposable);
@@ -27,5 +32,5 @@ export function activate(context: vscode.ExtensionContext) {
  * 插件被释放时触发
  */
 export function deactivate() {
-	console.log('您的扩展已被释放！')
+	console.log('您的扩展elfin vscode已被释放!')
 }
