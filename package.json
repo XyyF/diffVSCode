@@ -10,16 +10,25 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:diffvscode.helloWorld"
+		"onCommand:diffvscode.sayHello"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "diffvscode.helloWorld",
+				"command": "diffvscode.sayHello",
 				"title": "Hello World"
 			}
-		]
+		],
+        "menus": {
+            "editor/context": [
+                {
+                    "when": "editorFocus",
+                    "command": "diffvscode.sayHello",
+                    "group": "navigation"
+                }
+            ]
+        }
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
