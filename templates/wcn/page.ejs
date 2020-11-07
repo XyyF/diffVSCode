@@ -2,7 +2,12 @@ import wekf from "@tencent/kakashi-wekf";
 
 class <%- PageName %> extends wekf.WePage {
     data = {}
+    onInit() {
+      // 节流控制
+      // this.function.wait = 1000
+    }
     onLoad() {}
+    onUnload() {}
 }
 
 wekf.createPage(<%- PageName %>)

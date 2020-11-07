@@ -9,8 +9,13 @@ module.exports = function retrofitJs(context) {
 		if (vscode.window.activeTextEditor) {
 			vscode.window.activeTextEditor.edit(editBuilder => {
 				if (vscode.window.activeTextEditor) {
+					const fileInfo = path.parse(vscode.window.activeTextEditor.document.fileName)
 					// 文件名获取
-					const fileName = path.basename(vscode.window.activeTextEditor.document.fileName, '.js');
+					let fileName = fileInfo.name;
+					// 如果是index命名的话，使用目录名
+					if (!fileName || fileName === 'index') {
+						fileName = fileInfo.dir.split('\\').pop();
+					}
 					// 渲染模板数据
 					const ejs = new Ejs({fileName});
 					const text = ejs.renderWcnPage();

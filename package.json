@@ -25,7 +25,7 @@
         "menus": {
             "editor/context": [
                 {
-                    "when": "editorFocus && resourceLangId == javascript",
+                    "when": "editorFocus && resourceExtname == .js && resourcePath =~ /xiaochengxu-teenager/",
                     "command": "elfin.wcn.retrofitJs",
                     "group": "navigation"
                 }
