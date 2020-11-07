@@ -1,5 +1,5 @@
-const path = require('path')
-const fs = require('fs')
+const path = require('path');
+const fs = require('fs');
 
 module.exports = class ShellAPI {
     constructor() {}
@@ -9,7 +9,7 @@ module.exports = class ShellAPI {
      * @param {string} relativePath 
      */
     _getRootPath(relativePath) {
-        return path.resolve(__dirname, `../${relativePath}`)
+        return path.resolve(__dirname, `..${path.sep}${relativePath}`)
     }
 
     /**
@@ -28,7 +28,6 @@ module.exports = class ShellAPI {
         try {
             return fs.readFileSync(filePath, 'utf-8').trim();
         } catch (e) {
-            console.log('e', e)
             throw e;
         }
     }
