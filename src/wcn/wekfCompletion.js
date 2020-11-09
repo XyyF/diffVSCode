@@ -16,11 +16,27 @@ const underscoreMethods = [
     'isFinite', 'isNaN', 'isBoolean', 'isNull', 'isUndefined', 'has', 'noConflict', 'identity', 'constant',
     'noop', 'property', 'propertyOf', 'matches', 'comparator', 'times', 'random', 'now', 'escape', 'unescape',
     'result', 'uniqueId', 'templateSettings', 'template', 'chain', 'mixin',
-
 ]
 const levelMethods = [
-    {label: 'http', detail: 'htpp.js'},
-    {label: 'promise', detail: 'promise.js'},
+    { label: 'http', detail: 'http.js' },
+    { label: 'promise', detail: 'promise.js' },
+    { label: 'hookPage', detail: 'hook.js' },
+    { label: 'wx', detail: 'wx' },
+    { label: 'createDecorator', detail: 'decorator.js' },
+    { label: 'createService', detail: 'service.js' },
+    { label: 'watch', detail: 'watcher.js' },
+    { label: 'on', detail: 'watcher.js' },
+    { label: 'unwatch', detail: 'watcher.js' },
+    { label: 'off', detail: 'watcher.js' },
+    { label: 'dispatch', detail: 'watcher.js' },
+    { label: 'emit', detail: 'watcher.js' },
+    { label: 'createWrapper', detail: 'apiwrapper.js' },
+    { label: 'WrapperList', detail: 'apiwrapper.js' },
+    { label: 'WeApp', detail: 'base.js' },
+    { label: 'WePage', detail: 'base.js' },
+    { label: 'createApp', detail: 'base.js' },
+    { label: 'createPage', detail: 'base.js' },
+    { label: 'mixinPage', detail: 'base.js' },
 ]
 
 const documents = Array.from([
@@ -29,9 +45,17 @@ const documents = Array.from([
 ])
 
 // http.js
-const documenthttps = [
+const documentHttps = [
     'ajax', 'get', 'post', 'init',
 ].map(e => getCompletionItem(e, vscode.CompletionItemKind.Method, 'http.js'))
+// promise.js
+const documentPromises = [
+    'promise', 'deferred', 'defer',
+].map(e => getCompletionItem(e, vscode.CompletionItemKind.Method, 'promise.js'))
+// hook.js
+const documentHooks = [
+    'hookPage', 'firePageHook',
+].map(e => getCompletionItem(e, vscode.CompletionItemKind.Method, 'hook.js'))
 
 
 function getCompletionItem(text, kind, detail) {
@@ -51,12 +75,20 @@ function provideCompletionItems(document, position, token, context) {
     const line = document.lineAt(position);
     // 只截取到光标位置为止，防止一些特殊情况
     const lineText = line.text.substring(0, position.character);
+    // 匹配 `wekf.hookPage`
+    if (/wekf\.hookPage\.$/g.test(lineText)) {
+        return documentHooks;
+    }
+    // 匹配 `wekf.promise`
+    if (/wekf\.promise\.$/g.test(lineText)) {
+        return documentPromises;
+    }
     // 匹配 `wekf.http`
-    if(/(^|=| )wekf\.http\.$/g.test(lineText)) {
-        return documenthttps;
+    if (/wekf\.http\.$/g.test(lineText)) {
+        return documentHttps;
     }
     // 匹配 `wekf.`
-    if(/(^|=| )wekf\.$/g.test(lineText)) {
+    if (/wekf\.$/g.test(lineText)) {
         return documents;
     }
 }
@@ -70,7 +102,7 @@ function resolveCompletionItem(item, token) {
     return null;
 }
 
-module.exports = function(context) {
+module.exports = function (context) {
     // 注册代码建议提示，只有当按下“.”时才触发
     console.log('register')
     context.subscriptions.push(vscode.languages.registerCompletionItemProvider('javascript', {
