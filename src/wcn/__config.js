@@ -1,8 +1,8 @@
-export const httpWords = ['ajax', 'get', 'post', 'init'];
-export const promiseWords = ['promise', 'deferred', 'defer'];
-export const hookWords = ['hookPage', 'firePageHook'];
+const httpWords = ['ajax', 'get', 'post', 'init'];
+const promiseWords = ['promise', 'deferred', 'defer'];
+const hookWords = ['hookPage', 'firePageHook'];
 
-export const underscores = [
+const underscores = [
     // underscore.m.js
     'each', 'forEach', 'map', 'collect', 'reduce', 'foldl', 'inject', 'reduceRight', 'foldr',
     'transform', 'find', 'detect', 'filter', 'select', 'reject', 'every', 'all', 'some', 'any',
@@ -20,11 +20,11 @@ export const underscores = [
     'result', 'uniqueId', 'templateSettings', 'template', 'chain', 'mixin',
 ];
 
-export const levels = [
+const levels = [
     { label: 'http', detail: 'http.js', words: ['http', ...httpWords] },
     { label: 'promise', detail: 'promise.js', words: promiseWords },
     { label: 'hookPage', detail: 'hook.js', words: hookWords },
-    { label: 'wx', detail: 'wx' },
+    { label: 'wx', detail: 'native.js' },
     { label: 'createDecorator', detail: 'decorator.js' },
     { label: 'createService', detail: 'service.js' },
     { label: 'watch', detail: 'watcher.js' },
@@ -41,3 +41,11 @@ export const levels = [
     { label: 'createPage', detail: 'base.js' },
     { label: 'mixinPage', detail: 'base.js' },
 ];
+
+module.exports = {
+    httpWords,
+    promiseWords,
+    hookWords,
+    underscores,
+    levels,
+}
