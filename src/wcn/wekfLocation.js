@@ -2,53 +2,14 @@
  * 跳转到定义
  */
 const vscode = require('vscode');
-const path = require('path');
 const fs = require('fs');
-
-const underscoreWords = [
-    // underscore.m.js
-    'each', 'forEach', 'map', 'collect', 'reduce', 'foldl', 'inject', 'reduceRight', 'foldr',
-    'transform', 'find', 'detect', 'filter', 'select', 'reject', 'every', 'all', 'some', 'any',
-    'contains', 'includes', 'include', 'invoke', 'pluck', 'where', 'findWhere', 'max', 'min',
-    'shuffle', 'sample', 'sortBy', 'groupBy', 'indexBy', 'countBy', 'toArray', 'size', 'partition',
-    'first', 'head', 'take', 'initial', 'last', 'rest', 'tail', 'drop', 'compact', 'flatten', 'without',
-    'uniq', 'unique', 'union', 'intersection', 'difference', 'zip', 'unzip', 'object', 'indexOf',
-    'lastIndexOf', 'findIndex', 'sortedIndex', 'range', 'bind', 'partial', 'bindAll', 'memoize',
-    'delay', 'defer', 'throttle', 'debounce', 'wrap', 'negate', 'compose', 'after', 'before', 'once',
-    'keys', 'keysIn', 'values', 'pairs', 'invert', 'functions', 'methods', 'extend', 'assign', 'findKey',
-    'pick', 'omit', 'defaults', 'create', 'clone', 'tap', 'isEqual', 'isEmpty', 'isElement', 'isArray',
-    'isObject', 'isArguments', 'isFunction', 'isString', 'isNumber', 'isDate', 'isRegExp', 'isError',
-    'isFinite', 'isNaN', 'isBoolean', 'isNull', 'isUndefined', 'has', 'noConflict', 'identity', 'constant',
-    'noop', 'property', 'propertyOf', 'matches', 'comparator', 'times', 'random', 'now', 'escape', 'unescape',
-    'result', 'uniqueId', 'templateSettings', 'template', 'chain', 'mixin',
-]
-const levelWords = [
-    { label: 'http', detail: 'http.js', words: ['http', 'ajax', 'get', 'post', 'init'] },
-    { label: 'promise', detail: 'promise.js', words: ['promise', 'deferred', 'defer'] },
-    { label: 'hookPage', detail: 'hook.js', words: ['hookPage', 'firePageHook'] },
-    { label: 'wx', detail: 'wx' },
-    { label: 'createDecorator', detail: 'decorator.js' },
-    { label: 'createService', detail: 'service.js' },
-    { label: 'watch', detail: 'watcher.js' },
-    { label: 'on', detail: 'watcher.js' },
-    { label: 'unwatch', detail: 'watcher.js' },
-    { label: 'off', detail: 'watcher.js' },
-    { label: 'dispatch', detail: 'watcher.js' },
-    { label: 'emit', detail: 'watcher.js' },
-    { label: 'createWrapper', detail: 'apiwrapper.js' },
-    { label: 'WrapperList', detail: 'apiwrapper.js' },
-    { label: 'WeApp', detail: 'base.js' },
-    { label: 'WePage', detail: 'base.js' },
-    { label: 'createApp', detail: 'base.js' },
-    { label: 'createPage', detail: 'base.js' },
-    { label: 'mixinPage', detail: 'base.js' },
-]
+const { underscores, levels } = require('./__config');
 
 function getDestPathByWord(word, lineText) {
-    if (underscoreWords.indexOf(word) > -1) {
+    if (underscores.indexOf(word) > -1) {
         return 'underscore.m.js'
     }
-    const levelWord = levelWords.find(e => {
+    const levelWord = levels.find(e => {
         if (new RegExp(`wekf\.${e.label}`, 'g').test(lineText)) {
             if (e.words) {
                 return e.words.indexOf(word) > -1;
