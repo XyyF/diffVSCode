@@ -2,12 +2,29 @@ import wekf from "@tencent/kakashi-wekf";
 
 class <%- PageName %> extends wekf.WePage {
     data = {}
+    // 页面初始化
     onInit() {
       // 节流控制
       // this.function.wait = 1000
     }
+    // 页面载入时
     onLoad() {}
+    // 页面卸载时
     onUnload() {}
+    // 页面准备好时
+    onReady() {},
+    // 页面显示时
+    onShow() {},
+    // 页面隐藏时
+    onHide() {},
+    // 下拉页面时
+    onPullDownRefresh() {},
+    // 到达页面底部时
+    onReachBottom() {},
+    // 页面滚动时
+    onPageScroll() {},
+    // 分享时
+    onShareAppMessage() {},
 }
 
 wekf.createPage(<%- PageName %>)
