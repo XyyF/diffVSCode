@@ -1,4 +1,5 @@
-const registerRetrofitJs = require('./wcn/retrofit-js');
+const registerRetrofitJs = require('./wcn/retrofitJs');
+const registerWekfCompletion = require('./wcn/wekfCompletion');
 
 /**
  * 插件被激活时触发，所有代码总入口
@@ -7,6 +8,7 @@ const registerRetrofitJs = require('./wcn/retrofit-js');
 function activate(context) {
 	console.log('扩展elfin vscode已激活!');
 	registerRetrofitJs(context);
+	registerWekfCompletion(context);
 }
 exports.activate = activate;
 
