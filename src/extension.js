@@ -1,5 +1,7 @@
+const vscode = require('vscode');
 const registerRetrofitJs = require('./wcn/retrofitJs');
 const registerWekfCompletion = require('./wcn/wekfCompletion');
+const registerWekfLocation = require('./wcn/wekfLocation');
 
 /**
  * 插件被激活时触发，所有代码总入口
@@ -7,8 +9,13 @@ const registerWekfCompletion = require('./wcn/wekfCompletion');
  */
 function activate(context) {
 	console.log('扩展elfin vscode已激活!');
-	registerRetrofitJs(context);
-	registerWekfCompletion(context);
+	
+    // 特定目录才触发
+    if (/xiaochengxu-teenager/g.test(vscode.workspace.rootPath)) {
+		registerRetrofitJs(context);
+		registerWekfCompletion(context);
+		registerWekfLocation(context);
+    }
 }
 exports.activate = activate;
 
