@@ -6,15 +6,9 @@ const fs = require('fs');
 
 const custRegExp = /['|"|`]([^'|"|`|?]+)['|"|`|?]/;
 
-//Set error view
-const showError = message => vscode.window.showErrorMessage(`elfin vscode: ${message}`);
-
 function provideDefinition(document, position, token) {
     // 确保工作空间打开状态
-    if (!vscode.workspace.rootPath) {
-        showError('You must have a workspace opened.');
-        return [];
-    }
+    if (!vscode.workspace.rootPath) return [];
 
     const editor = vscode.window.activeTextEditor;
     // 通过正则从 光标两侧开始匹配
