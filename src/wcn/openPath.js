@@ -33,6 +33,8 @@ function provideDefinition(document, position, token) {
     // 去除 ./ ../
     lastPart = lastPart.replace(/^.+\.\//, '');
     if (lastPart.indexOf('./') > -1) lastPart = lastPart.replace('./', '');
+    // 首行添加 / 字符
+    if (!lastPart.startsWith('/')) lastPart = `/${lastPart}`;
 
     // 最终的地址
     const destPath = `${vscode.workspace.rootPath}${lastPart}.js`;
@@ -45,6 +47,12 @@ function provideDefinition(document, position, token) {
 module.exports = function (context) {
     // 注册如何实现跳转到定义，第一个参数表示仅对javascript文件生效
     context.subscriptions.push(vscode.languages.registerDefinitionProvider(['javascript'], {
+        provideDefinition,
+    }));
+    context.subscriptions.push(vscode.languages.registerDefinitionProvider(['wxml'], {
+        provideDefinition,
+    }));
+    context.subscriptions.push(vscode.languages.registerDefinitionProvider(['json'], {
         provideDefinition,
     }));
 };

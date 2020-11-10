@@ -13,6 +13,8 @@
 	],
 	"activationEvents": [
 		"onLanguage:javascript",
+		"onLanguage:wxml",
+		"onLanguage:json",
 		"onCommand:elfin.wcn.retrofitJs"
 	],
 	"main": "./src/extension.js",
