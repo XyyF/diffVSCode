@@ -2,6 +2,7 @@ const vscode = require('vscode');
 const registerRetrofitJs = require('./wcn/retrofitJs');
 const registerWekfCompletion = require('./wcn/wekfCompletion');
 const registerWekfLocation = require('./wcn/wekfLocation');
+const registerOpenPath = require('./wcn/openPath');
 
 /**
  * 插件被激活时触发，所有代码总入口
@@ -15,6 +16,7 @@ function activate(context) {
 		registerRetrofitJs(context);
 		registerWekfCompletion(context);
 		registerWekfLocation(context);
+		registerOpenPath(context);
     }
 }
 exports.activate = activate;

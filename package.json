@@ -2,7 +2,7 @@
 	"name": "elfin-vscode",
 	"displayName": "elfin-vscode",
 	"description": "",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"publisher": "rengarxiao",
 	"repository": "https://github.com/XyyF/elfin-vscode",
 	"engines": {
@@ -19,17 +19,17 @@
 	"contributes": {
 		"commands": [
 			{
-                "command": "elfin.wcn.retrofitJs",
-                "title": "[未成年]格式化Js文件"
-            }
-        ],
-        "menus": {
-            "editor/context": [
-                {
-                    "when": "editorFocus && resourceExtname == .js && resourcePath =~ /xiaochengxu-teenager/",
-                    "command": "elfin.wcn.retrofitJs",
-                    "group": "navigation"
-                }
+				"command": "elfin.wcn.retrofitJs",
+				"title": "[未成年]格式化Js文件"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"when": "editorFocus && resourceExtname == .js && resourcePath =~ /xiaochengxu-teenager/",
+					"command": "elfin.wcn.retrofitJs",
+					"group": "navigation"
+				}
 			]
 		}
 	},
