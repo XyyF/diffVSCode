@@ -27,7 +27,7 @@ vsce package
  <img src="https://rengar-1253859411.cos.ap-chengdu.myqcloud.com/img/20201109_180159.gif" width = "600" height = "400" alt="图片名称" align=center />
 <br/>
 
-- [未成年] navigation路径跳转
+- [未成年] navigation路径跳转，支持 .js、.wxml、.json 文件
 <br/>
  <img src="https://rengar-1253859411.cos.ap-chengdu.myqcloud.com/img/20201110_094616.gif" width = "600" height = "400" alt="图片名称" align=center />
 <br/>
