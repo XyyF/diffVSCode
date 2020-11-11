@@ -24,3 +24,4 @@ yarn-error.log*
 ### Person
 .ui.detect.js
 /*.ics
+*.vsix
