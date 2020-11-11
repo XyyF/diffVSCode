@@ -3,9 +3,9 @@ const path = require('path');
 const Ejs = require('../../utils/ejs');
 
 // 改造 未成年页面js文件
-module.exports = function retrofitJs(context) {
+module.exports = function retrofitPage(context) {
 	// 注册命令
-	const disposable = vscode.commands.registerCommand('elfin.wcn.retrofitJs', () => {
+	const disposable = vscode.commands.registerCommand('elfin.wcn.retrofitPage', () => {
 		if (vscode.window.activeTextEditor) {
 			vscode.window.activeTextEditor.edit(editBuilder => {
 				if (vscode.window.activeTextEditor) {

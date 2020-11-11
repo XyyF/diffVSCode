@@ -15,21 +15,31 @@
 		"onLanguage:javascript",
 		"onLanguage:wxml",
 		"onLanguage:json",
-		"onCommand:elfin.wcn.retrofitJs"
+		"onCommand:elfin.wcn.retrofitPage",
+		"onCommand:elfin.wcn.retrofitApp"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "elfin.wcn.retrofitJs",
-				"title": "[未成年]格式化Js文件"
+				"command": "elfin.wcn.retrofitPage",
+				"title": "[未成年]格式化Page文件"
+			},
+			{
+				"command": "elfin.wcn.retrofitApp",
+				"title": "[未成年]格式化App文件"
 			}
 		],
 		"menus": {
 			"editor/context": [
 				{
-					"when": "editorFocus && resourceExtname == .js && resourcePath =~ /xiaochengxu-teenager/",
-					"command": "elfin.wcn.retrofitJs",
+					"when": "editorFocus && resourceExtname == .js && resourceFilename != app.js && resourcePath =~ /xiaochengxu-teenager/",
+					"command": "elfin.wcn.retrofitPage",
+					"group": "navigation"
+				},
+				{
+					"when": "editorFocus && resourceFilename == app.js && resourcePath =~ /xiaochengxu-teenager/",
+					"command": "elfin.wcn.retrofitApp",
 					"group": "navigation"
 				}
 			]

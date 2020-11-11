@@ -13,6 +13,10 @@ module.exports = class Ejs extends EjsAPI {
 			PageName: firstUpperCase(this.fileName),
 		});
 	}
+
+	renderWcnApp() {
+		return this._renderByTempalte('templates/wcn/app.ejs', {});
+	}
 }
 
 function firstUpperCase(str) {

@@ -1,5 +1,6 @@
 const vscode = require('vscode');
-const registerRetrofitJs = require('./wcn/retrofitJs');
+const registerRetrofitPage = require('./wcn/retrofitPage');
+const registerRetrofitApp = require('./wcn/retrofitApp');
 const registerWekfCompletion = require('./wcn/wekfCompletion');
 const registerWekfLocation = require('./wcn/wekfLocation');
 const registerOpenPath = require('./wcn/openPath');
@@ -13,7 +14,8 @@ function activate(context) {
 	
     // 特定目录才触发
     if (/xiaochengxu-teenager/g.test(vscode.workspace.rootPath)) {
-		registerRetrofitJs(context);
+		registerRetrofitPage(context);
+		registerRetrofitApp(context);
 		registerWekfCompletion(context);
 		registerWekfLocation(context);
 		registerOpenPath(context);
