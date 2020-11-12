@@ -31,6 +31,16 @@
 			}
 		],
 		"menus": {
+			"commandPalette": [
+				{
+					"command": "elfin.wcn.retrofitPage",
+					"when": "editorFocus && resourceExtname == .js && resourceFilename != app.js && resourcePath =~ /xiaochengxu-teenager/"
+				},
+				{
+					"command": "elfin.wcn.retrofitApp",
+					"when": "editorFocus && resourceFilename == app.js && resourcePath =~ /xiaochengxu-teenager/"
+				}
+			],
 			"editor/context": [
 				{
 					"when": "editorFocus && resourceExtname == .js && resourceFilename != app.js && resourcePath =~ /xiaochengxu-teenager/",
