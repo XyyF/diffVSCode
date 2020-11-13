@@ -4,6 +4,7 @@ const registerRetrofitApp = require('./wcn/retrofitApp');
 const registerWekfCompletion = require('./wcn/wekfCompletion');
 const registerWekfLocation = require('./wcn/wekfLocation');
 const registerOpenPath = require('./wcn/openPath');
+// const registerCompilePage = require('./wcn/compilePage');
 
 /**
  * 插件被激活时触发，所有代码总入口
@@ -19,6 +20,7 @@ function activate(context) {
 		registerWekfCompletion(context);
 		registerWekfLocation(context);
 		registerOpenPath(context);
+		// registerCompilePage(context);
     }
 }
 exports.activate = activate;
