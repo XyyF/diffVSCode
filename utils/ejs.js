@@ -8,26 +8,50 @@ module.exports = class Ejs extends EjsAPI {
 		this.fileName = options.fileName;
 	}
 
+	/**
+	 * 渲染小程序页面
+	 */
 	renderWcnPageJs() {
-		return this._renderByTempalte('templates/wcn/page/pageJs.ejs', {
+		return this._renderByTempalte('templates/wcn/page/js.ejs', {
 			PageName: firstUpperCase(this.fileName),
 		});
 	}
-
 	renderWcnPageWxml() {
-		return this._renderByTempalte('templates/wcn/page/pageWxml.ejs', {
+		return this._renderByTempalte('templates/wcn/page/wxml.ejs', {
+			PageName: firstUpperCase(this.fileName),
+		});
+	}
+	renderWcnPageWxss() {
+		return this._renderByTempalte('templates/wcn/page/wxss.ejs', {
+			PageName: firstUpperCase(this.fileName),
+		});
+	}
+	renderWcnPageJson() {
+		return this._renderByTempalte('templates/wcn/page/json.ejs', {
 			PageName: firstUpperCase(this.fileName),
 		});
 	}
 
-	renderWcnPageWxss() {
-		return this._renderByTempalte('templates/wcn/page/pageWxss.ejs', {
+	/**
+	 * 渲染小程序组件
+	 */
+	renderWcnComponentJs() {
+		return this._renderByTempalte('templates/wcn/compnent/js.ejs', {
 			PageName: firstUpperCase(this.fileName),
 		});
 	}
-	
-	renderWcnPageJson() {
-		return this._renderByTempalte('templates/wcn/page/pageJson.ejs', {
+	renderWcnComponentWxml() {
+		return this._renderByTempalte('templates/wcn/compnent/wxml.ejs', {
+			PageName: firstUpperCase(this.fileName),
+		});
+	}
+	renderWcnComponentWxss() {
+		return this._renderByTempalte('templates/wcn/compnent/wxss.ejs', {
+			PageName: firstUpperCase(this.fileName),
+		});
+	}
+	renderWcnComponentJson() {
+		return this._renderByTempalte('templates/wcn/compnent/json.ejs', {
 			PageName: firstUpperCase(this.fileName),
 		});
 	}

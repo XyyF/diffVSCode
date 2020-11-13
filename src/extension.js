@@ -6,6 +6,7 @@ const registerWekfLocation = require('./wcn/wekfLocation');
 const registerOpenPath = require('./wcn/openPath');
 // const registerCompilePage = require('./wcn/compilePage');
 const registerCreatePage = require('./wcn/createPage');
+const registerCreateComponent = require('./wcn/createComponent');
 
 /**
  * 插件被激活时触发，所有代码总入口
@@ -23,6 +24,7 @@ function activate(context) {
 		registerOpenPath(context);
 		// registerCompilePage(context);
 		registerCreatePage(context);
+		registerCreateComponent(context);
     }
 }
 exports.activate = activate;
