@@ -9,25 +9,54 @@ module.exports = function createPage(context) {
     const disposable = vscode.commands.registerCommand('elfin.wcn.createPage', (url) => {
         vscode.window
             .showInputBox({
-                placeHolder: '请输入页面名称',
-                prompt: '请输入页面名称',
+                placeHolder: '请输入页面名称，可以输入 page 或者 page/index',
+                prompt: '请输入页面名称，可以输入 page 或者 page/index',
             })
-            .then((fileName) => {
-                if (fileName) {
-                    // 渲染模板数据
+            .then((userStr) => {
+                if (userStr) {
+                    // 用户输入的 目录 & 文件名
+                    let dir, file;
+                    // 当前的目录名
+                    const currentDir = url.fsPath.split('\\').pop();
+
+                    // 兼容 page 和 page/index
+                    if (userStr.indexOf('/') > -1) {
+                        const paths = userStr.split('/');
+                        dir = paths[0];
+                        file = paths[1];
+                    } else {
+                        file = userStr;
+                    }
+
+                    // 渲染模板数据，文件名尽量不要用index
+                    // page => page
+                    // page/index => page
+                    // index => currentDir
+                    const fileName = file === 'index' ? (dir || currentDir) : file
                     const ejs = new Ejs({ fileName });
-                    // js
+
+                    // 渲染页面
                     const js = ejs.renderWcnPageJs();
-                    fs.writeFileSync(`${url.fsPath}${path.sep}${fileName}.js`, js);
-                    // wxml
                     const wxml = ejs.renderWcnPageWxml();
-                    fs.writeFileSync(`${url.fsPath}${path.sep}${fileName}.wxml`, wxml);
-                    // wxss
                     const wxss = ejs.renderWcnPageWxss();
-                    fs.writeFileSync(`${url.fsPath}${path.sep}${fileName}.wxss`, wxss);
-                    // json
                     const json = ejs.renderWcnPageJson();
-                    fs.writeFileSync(`${url.fsPath}${path.sep}${fileName}.json`, json);
+
+                    // 如果使用者输入了目录的话
+                    if (dir) {
+                        fs.mkdirSync(`${url.fsPath}${path.sep}${dir}`)
+                        file = `${dir}${path.sep}${file}`;
+                    }
+                    // 写页面
+                    fs.writeFileSync(`${url.fsPath}${path.sep}${file}.js`, js);
+                    fs.writeFileSync(`${url.fsPath}${path.sep}${file}.wxml`, wxml);
+                    fs.writeFileSync(`${url.fsPath}${path.sep}${file}.wxss`, wxss);
+                    fs.writeFileSync(`${url.fsPath}${path.sep}${file}.json`, json);
+
+                    // 修改 project.config.js 文件内容
+                    const projectFilePath = vscode.workspace.rootPath + 'project.config.js'
+                    if (fs.existsSync(projectFilePath)) {
+                        console.log('projectFilePath', projectFilePath)
+                    }
                 } else {
                     vscode.window.showErrorMessage('页面名称不能为空！')
                 }
