@@ -18,16 +18,16 @@ vsce package
 1. Page文件中的 .js 文件
 2. App文件中的 app.js 文件
 <br/>
- <img src="https://rengar-1253859411.cos.ap-chengdu.myqcloud.com/img/20201109_175520.gif" width = "600" height = "400" alt="图片名称" style="margin: 0 auto;display: block;" />
+ <img src="https://rengar-1253859411.cos.ap-chengdu.myqcloud.com/img/20201113_112531.gif" width = "500" height = "500" alt="图片名称" style="margin: 0 auto;display: block;" />
 <br/>
 - [wekf] 属性补全提示
 <br/>
- <img src="https://rengar-1253859411.cos.ap-chengdu.myqcloud.com/img/20201109_175946.gif" width = "600" height = "400" alt="图片名称" style="margin: 0 auto;display: block;" />
+ <img src="https://rengar-1253859411.cos.ap-chengdu.myqcloud.com/img/20201113_112858.gif" width = "600" height = "400" alt="图片名称" style="margin: 0 auto;display: block;" />
 <br/>
 
 - [wekf] 属性跳转定义文件
 <br/>
- <img src="https://rengar-1253859411.cos.ap-chengdu.myqcloud.com/img/20201109_180159.gif" width = "600" height = "400" alt="图片名称" style="margin: 0 auto;display: block;" />
+ <img src="https://rengar-1253859411.cos.ap-chengdu.myqcloud.com/img/20201113_113227.gif" width = "600" height = "300" alt="图片名称" style="margin: 0 auto;display: block;" />
 <br/>
 
 - [未成年] navigation路径跳转，支持 .js、.wxml、.json 文件
@@ -43,4 +43,9 @@ vsce package
 ```
 <br/>
  <img src="https://rengar-1253859411.cos.ap-chengdu.myqcloud.com/img/20201110_094616.gif" width = "600" height = "400" alt="图片名称" style="margin: 0 auto;display: block;" />
+<br/>
+
+- [未成年] 新建小程序Page、Component文件
+<br/>
+ <img src="https://rengar-1253859411.cos.ap-chengdu.myqcloud.com/img/20201113_113535.gif" width = "600" height = "400" alt="图片名称" style="margin: 0 auto;display: block;" />
 <br/>

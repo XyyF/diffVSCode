@@ -2,7 +2,7 @@
 	"name": "elfin-vscode",
 	"displayName": "elfin-vscode",
 	"description": "",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"publisher": "rengarxiao",
 	"repository": "https://github.com/XyyF/elfin-vscode",
 	"engines": {
