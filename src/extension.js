@@ -4,7 +4,6 @@ const registerRetrofitApp = require('./wcn/retrofitApp');
 const registerWekfCompletion = require('./wcn/wekfCompletion');
 const registerWekfLocation = require('./wcn/wekfLocation');
 const registerOpenPath = require('./wcn/openPath');
-// const registerCompilePage = require('./wcn/compilePage');
 const registerCreatePage = require('./wcn/createPage');
 const registerCreateComponent = require('./wcn/createComponent');
 
@@ -22,7 +21,6 @@ function activate(context) {
 		registerWekfCompletion(context);
 		registerWekfLocation(context);
 		registerOpenPath(context);
-		// registerCompilePage(context);
 		registerCreatePage(context);
 		registerCreateComponent(context);
     }
