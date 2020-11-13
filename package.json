@@ -74,12 +74,12 @@
 			"explorer/context": [
 			  {
 				"command": "elfin.wcn.createPage",
-				"group": "navigation",
+				"group": "navigation@1",
 				"when": "explorerResourceIsFolder == true && resourcePath =~ /xiaochengxu-teenager/"
 			  },
 			  {
 				"command": "elfin.wcn.createComponent",
-				"group": "navigation",
+				"group": "navigation@2",
 				"when": "explorerResourceIsFolder == true && resourcePath =~ /xiaochengxu-teenager/"
 			  }
 			]
