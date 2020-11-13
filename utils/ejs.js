@@ -8,8 +8,26 @@ module.exports = class Ejs extends EjsAPI {
 		this.fileName = options.fileName;
 	}
 
-	renderWcnPage() {
-		return this._renderByTempalte('templates/wcn/page.ejs', {
+	renderWcnPageJs() {
+		return this._renderByTempalte('templates/wcn/page/pageJs.ejs', {
+			PageName: firstUpperCase(this.fileName),
+		});
+	}
+
+	renderWcnPageWxml() {
+		return this._renderByTempalte('templates/wcn/page/pageWxml.ejs', {
+			PageName: firstUpperCase(this.fileName),
+		});
+	}
+
+	renderWcnPageWxss() {
+		return this._renderByTempalte('templates/wcn/page/pageWxss.ejs', {
+			PageName: firstUpperCase(this.fileName),
+		});
+	}
+	
+	renderWcnPageJson() {
+		return this._renderByTempalte('templates/wcn/page/pageJson.ejs', {
 			PageName: firstUpperCase(this.fileName),
 		});
 	}

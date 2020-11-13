@@ -15,9 +15,10 @@
 		"onLanguage:javascript",
 		"onLanguage:wxml",
 		"onLanguage:json",
-		"onCommand:elfin.wcn.compilePage",
 		"onCommand:elfin.wcn.retrofitPage",
-		"onCommand:elfin.wcn.retrofitApp"
+		"onCommand:elfin.wcn.retrofitApp",
+		"onCommand:elfin.wcn.createPage",
+		"onCommand:elfin.wcn.createComponent"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
@@ -31,8 +32,12 @@
 				"title": "[未成年]格式化App文件"
 			},
 			{
-				"command": "elfin.wcn.compilePage",
-				"title": "[未成年]编译Page文件"
+				"command": "elfin.wcn.createPage",
+				"title": "[未成年]创建Page文件"
+			},
+			{
+				"command": "elfin.wcn.createComponent",
+				"title": "[未成年]创建Component文件"
 			}
 		],
 		"menus": {
@@ -44,6 +49,14 @@
 				{
 					"command": "elfin.wcn.retrofitApp",
 					"when": "editorFocus && resourceFilename == app.js && resourcePath =~ /xiaochengxu-teenager/"
+				},
+				{
+					"command": "elfin.wcn.createPage",
+					"when": "explorerResourceIsFolder == true && resourcePath =~ /xiaochengxu-teenager/"
+				},
+				{
+					"command": "elfin.wcn.createComponent",
+					"when": "explorerResourceIsFolder == true && resourcePath =~ /xiaochengxu-teenager/"
 				}
 			],
 			"editor/context": [
@@ -56,12 +69,19 @@
 					"when": "editorFocus && resourceFilename == app.js && resourcePath =~ /xiaochengxu-teenager/",
 					"command": "elfin.wcn.retrofitApp",
 					"group": "navigation"
-				},
-				{
-					"when": "editorFocus && resourceExtname == .js && resourcePath =~ /xiaochengxu-teenager/",
-					"command": "elfin.wcn.compilePage",
-					"group": "navigation"
 				}
+			],
+			"explorer/context": [
+			  {
+				"command": "elfin.wcn.createPage",
+				"group": "navigation",
+				"when": "explorerResourceIsFolder == true && resourcePath =~ /xiaochengxu-teenager/"
+			  },
+			  {
+				"command": "elfin.wcn.createComponent",
+				"group": "navigation",
+				"when": "explorerResourceIsFolder == true && resourcePath =~ /xiaochengxu-teenager/"
+			  }
 			]
 		}
 	},

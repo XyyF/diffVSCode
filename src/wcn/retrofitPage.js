@@ -18,7 +18,7 @@ module.exports = function retrofitPage(context) {
 					}
 					// 渲染模板数据
 					const ejs = new Ejs({fileName});
-					const text = ejs.renderWcnPage();
+					const text = ejs.renderWcnPageJs();
 					// 从开始到结束，全量替换
 					const end = new vscode.Position(vscode.window.activeTextEditor.document.lineCount + 1, 0);
 					editBuilder.replace(new vscode.Range(new vscode.Position(0, 0), end), text);
