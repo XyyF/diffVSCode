@@ -17,7 +17,7 @@ module.exports = function createPage(context) {
                     // 用户输入的 目录 & 文件名
                     let dir, file;
                     // 当前的目录名
-                    const currentDir = url.fsPath.split('\\').pop();
+                    const currentDir = url.fsPath.split(path.sep).pop();
 
                     // 兼容 page 和 page/index
                     if (userStr.indexOf('/') > -1) {
@@ -43,7 +43,10 @@ module.exports = function createPage(context) {
 
                     // 如果使用者输入了目录的话
                     if (dir) {
-                        fs.mkdirSync(`${url.fsPath}${path.sep}${dir}`)
+                        // 如果已经存在目录则跳过错误
+                        try {
+                            fs.mkdirSync(`${url.fsPath}${path.sep}${dir}`)
+                        } catch { }
                         file = `${dir}${path.sep}${file}`;
                     }
                     // 写页面
@@ -53,12 +56,19 @@ module.exports = function createPage(context) {
                     fs.writeFileSync(`${url.fsPath}${path.sep}${file}.json`, json);
 
                     // 修改 project.config.js 文件内容
-                    const projectFilePath = vscode.workspace.rootPath + 'project.config.js'
-                    if (fs.existsSync(projectFilePath)) {
-                        console.log('projectFilePath', projectFilePath)
+                    const appFilePath = vscode.workspace.rootPath + path.sep + 'app.json'
+                    if (fs.existsSync(appFilePath)) {
+                        // 读取文件内容
+                        const contents = fs.readFileSync(appFilePath, 'utf-8');
+                        const parseContents = JSON.parse(contents.toString());
+                        // 转化文件内容
+                        const tempPath = url.fsPath.split(path.sep).join('/') + '/' + file.split(path.sep).join('/');
+                        parseContents.pages.push(tempPath.split(`${vscode.workspace.name}/`).pop());
+                        // 写文件内容
+                        fs.writeFileSync(appFilePath, JSON.stringify(parseContents, null, '\t'));
                     }
                 } else {
-                    vscode.window.showErrorMessage('页面名称不能为空！')
+                    vscode.window.showErrorMessage('页面名称不能为空！');
                 }
             })
     });
