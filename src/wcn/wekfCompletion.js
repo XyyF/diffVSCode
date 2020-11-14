@@ -1,5 +1,5 @@
 const vscode = require('vscode');
-const { underscores, levels, httpWords, promiseWords, hookWords } = require('./__config');
+const { underscores, levels, httpWords, promiseWords, hookWords } = require('./__wekf.config');
 
 const documents = Array.from([
     ...underscores.map(e => getCompletionItem(e, vscode.CompletionItemKind.Method, 'underscore.m.js')),

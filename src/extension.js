@@ -6,6 +6,7 @@ const registerWekfLocation = require('./wcn/wekfLocation');
 const registerOpenPath = require('./wcn/openPath');
 const registerCreatePage = require('./wcn/createPage');
 const registerCreateComponent = require('./wcn/createComponent');
+const registerCompilePage = require('./wcn/compilePage');
 
 /**
  * 插件被激活时触发，所有代码总入口
@@ -13,9 +14,9 @@ const registerCreateComponent = require('./wcn/createComponent');
  */
 function activate(context) {
 	console.log('扩展elfin vscode已激活!');
-	
-    // 特定目录才触发
-    if (/xiaochengxu-teenager/g.test(vscode.workspace.rootPath)) {
+
+	// 特定目录才触发
+	if (/xiaochengxu-teenager/g.test(vscode.workspace.rootPath)) {
 		registerRetrofitPage(context);
 		registerRetrofitApp(context);
 		registerWekfCompletion(context);
@@ -23,7 +24,8 @@ function activate(context) {
 		registerOpenPath(context);
 		registerCreatePage(context);
 		registerCreateComponent(context);
-    }
+		registerCompilePage(context);
+	}
 }
 exports.activate = activate;
 

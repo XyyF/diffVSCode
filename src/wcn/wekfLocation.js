@@ -3,7 +3,7 @@
  */
 const vscode = require('vscode');
 const fs = require('fs');
-const { underscores, levels } = require('./__config');
+const { underscores, levels } = require('./__wekf.config');
 
 function getDestPathByWord(word, lineText) {
     if (underscores.indexOf(word) > -1) {
