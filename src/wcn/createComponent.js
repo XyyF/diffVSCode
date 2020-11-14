@@ -16,10 +16,8 @@ module.exports = function createComponent(context) {
                 if (userStr) {
                     // 用户输入的 目录 & 文件名
                     let file;
-                    // 当前的目录名
-                    const currentDir = url.fsPath.split(path.sep).pop();
 
-                    // 兼容 page 和 page/index
+                    // 兼容 component 和 component/index
                     if (userStr.indexOf('/') > -1) {
                         const paths = userStr.split('/');
                         // 如果已经存在目录则跳过错误
@@ -32,10 +30,7 @@ module.exports = function createComponent(context) {
                         file = userStr;
                     }
 
-                    // 渲染模板数据，文件名尽量不要用index
-                    // page => page
-                    // page/index => page
-                    // index => currentDir
+                    // 渲染模板数据
                     const ejs = new Ejs();
                     const js = ejs.renderWcnComponentJs();
                     const wxml = ejs.renderWcnComponentWxml();
