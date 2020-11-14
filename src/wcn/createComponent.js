@@ -9,27 +9,45 @@ module.exports = function createComponent(context) {
     const disposable = vscode.commands.registerCommand('elfin.wcn.createComponent', (url) => {
         vscode.window
             .showInputBox({
-                placeHolder: '请输入组件名称',
-                prompt: '请输入组件名称',
+                placeHolder: '请输入组件名称，可以输入 component 或者 component/index',
+                prompt: '请输入组件名称，可以输入 component 或者 component/index',
             })
-            .then((fileName) => {
-                if (fileName) {
-                    // 渲染模板数据
-                    const ejs = new Ejs({ fileName });
-                    // js
+            .then((userStr) => {
+                if (userStr) {
+                    // 用户输入的 目录 & 文件名
+                    let file;
+                    // 当前的目录名
+                    const currentDir = url.fsPath.split(path.sep).pop();
+
+                    // 兼容 page 和 page/index
+                    if (userStr.indexOf('/') > -1) {
+                        const paths = userStr.split('/');
+                        // 如果已经存在目录则跳过错误
+                        const dir = paths[0]
+                        try {
+                            fs.mkdirSync(`${url.fsPath}${path.sep}${dir}`)
+                        } catch { }
+                        file = `${dir}${path.sep}${paths[1]}`;
+                    } else {
+                        file = userStr;
+                    }
+
+                    // 渲染模板数据，文件名尽量不要用index
+                    // page => page
+                    // page/index => page
+                    // index => currentDir
+                    const ejs = new Ejs();
                     const js = ejs.renderWcnComponentJs();
-                    fs.writeFileSync(`${url.fsPath}${path.sep}${fileName}.js`, js);
-                    // wxml
                     const wxml = ejs.renderWcnComponentWxml();
-                    fs.writeFileSync(`${url.fsPath}${path.sep}${fileName}.wxml`, wxml);
-                    // wxss
                     const wxss = ejs.renderWcnComponentWxss();
-                    fs.writeFileSync(`${url.fsPath}${path.sep}${fileName}.wxss`, wxss);
-                    // json
                     const json = ejs.renderWcnComponentJson();
-                    fs.writeFileSync(`${url.fsPath}${path.sep}${fileName}.json`, json);
+
+                    fs.writeFileSync(`${url.fsPath}${path.sep}${file}.js`, js);
+                    fs.writeFileSync(`${url.fsPath}${path.sep}${file}.wxml`, wxml);
+                    fs.writeFileSync(`${url.fsPath}${path.sep}${file}.wxss`, wxss);
+                    fs.writeFileSync(`${url.fsPath}${path.sep}${file}.json`, json);
                 } else {
-                    vscode.window.showErrorMessage('组件名称不能为空！')
+                    vscode.window.showErrorMessage('组件名称不能为空！');
                 }
             })
     });

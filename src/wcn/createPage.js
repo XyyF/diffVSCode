@@ -55,8 +55,8 @@ module.exports = function createPage(context) {
                     fs.writeFileSync(`${url.fsPath}${path.sep}${file}.wxss`, wxss);
                     fs.writeFileSync(`${url.fsPath}${path.sep}${file}.json`, json);
 
-                    // 修改 project.config.js 文件内容
-                    const appFilePath = vscode.workspace.rootPath + path.sep + 'app.json'
+                    // 修改 app.json 文件内容
+                    const appFilePath = vscode.workspace.rootPath + path.sep + 'app.json';
                     if (fs.existsSync(appFilePath)) {
                         // 读取文件内容
                         const contents = fs.readFileSync(appFilePath, 'utf-8');

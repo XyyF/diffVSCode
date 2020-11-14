@@ -14,7 +14,7 @@ module.exports = function retrofitPage(context) {
 					let fileName = fileInfo.name;
 					// 如果是index命名的话，使用目录名
 					if (!fileName || fileName === 'index') {
-						fileName = fileInfo.dir.split('\\').pop();
+						fileName = fileInfo.dir.split(path.sep).pop();
 					}
 					// 渲染模板数据
 					const ejs = new Ejs({fileName});
