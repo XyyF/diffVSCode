@@ -60,7 +60,6 @@ function resolveCompletionItem(item, token) {
 
 module.exports = function (context) {
     // 注册代码建议提示，只有当按下“.”时才触发
-    console.log('register')
     context.subscriptions.push(vscode.languages.registerCompletionItemProvider('javascript', {
         provideCompletionItems,
         resolveCompletionItem
