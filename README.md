@@ -30,7 +30,7 @@ vsce package
  <img src="https://rengar-1253859411.cos.ap-chengdu.myqcloud.com/img/20201113_113227.gif" width = "600" height = "300" alt="图片名称" style="margin: 0 auto;display: block;" />
 <br/>
 
-- [未成年] navigation路径跳转，支持 .js、.wxml、.json 文件
+- [小程序] navigation路径跳转，支持 .js、.wxml、.json 文件
 
 ```js
 // 支持以下格式跳转
@@ -45,7 +45,9 @@ vsce package
  <img src="https://rengar-1253859411.cos.ap-chengdu.myqcloud.com/img/20201110_094616.gif" width = "600" height = "400" alt="图片名称" style="margin: 0 auto;display: block;" />
 <br/>
 
-- [未成年] 新建小程序Page、Component文件
+- [小程序] 新建小程序Page、Component文件
 <br/>
  <img src="https://rengar-1253859411.cos.ap-chengdu.myqcloud.com/img/20201113_113535.gif" width = "600" height = "400" alt="图片名称" style="margin: 0 auto;display: block;" />
 <br/>
+
+- [小程序] 添加当前页面编译条件至project.config.json

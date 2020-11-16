@@ -1,9 +1,9 @@
 const vscode = require('vscode');
 const fs = require('fs');
 const path = require('path');
-const {queryConfigs} = require('./__query.config');
 
-const Key = 'elfin.vscode.filling'
+const Key = 'elfin.vscode.filling';
+const custRegExp = /^\/\/ query\?(.*)/g;
 
 // 新建小程序Page
 module.exports = function compilePage(context) {
@@ -43,15 +43,40 @@ module.exports = function compilePage(context) {
 
 async function createCompileItem(pathName) {
   let query = ''
-  const querys = queryConfigs[pathName];
-  if (querys) {
+  const querys = getQuery();
+  if (querys && querys.length > 1) {
     query = await vscode.window.showQuickPick(querys);
+  } else if (querys && querys.length === 1) {
+    query = querys[0];
   }
 
   return Promise.resolve({
     "id": -1,
     "name": Key,
     "pathName": pathName,
-    "query": query
-  })
-}
+    "query": query,
+  });
+};
+
+function getQuery() {
+  let isCarryOn = true, line = 0;
+  const activeTextEditor = vscode.window.activeTextEditor;
+  const matchArry = [];
+  while (isCarryOn) {
+    // 从首行开始匹配
+    const range = activeTextEditor.document.getWordRangeAtPosition(
+      new vscode.Position(line, 0),
+      custRegExp,
+    );
+    if (typeof range === 'undefined') {
+      isCarryOn = false;
+    } else {
+      const match = custRegExp.exec(activeTextEditor.document.getText(range));
+      if (match) {
+        line++;
+        matchArry.push(match.pop());
+      }
+    }
+  }
+  return matchArry;
+};
