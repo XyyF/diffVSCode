@@ -2,7 +2,7 @@ const vscode = require('vscode');
 const fs = require('fs');
 const path = require('path');
 
-const Key = 'elfin.vscode.filling';
+const Key = 'elfin.vscode';
 const custRegExp = /^\/\/ query\?(.*)/g;
 
 // 新建小程序Page
@@ -23,6 +23,22 @@ module.exports = function compilePage(context) {
         const tempPath = fullPath.replace(new RegExp(`${ext}$`), '');
         const pathName = tempPath.split(`${vscode.workspace.name}/`).pop();
 
+        // 补全字段内容
+        const condition = parseContents.condition
+        if (condition) {
+          const miniprogram = condition.miniprogram
+          if (miniprogram && !miniprogram.list) {
+            parseContents.condition.miniprogram.list = [];
+          } else if (!miniprogram) {
+            parseContents.condition.miniprogram = {};
+            parseContents.condition.miniprogram.list = [];
+          }
+        } else {
+          parseContents.condition = {};
+          parseContents.condition.miniprogram = {};
+          parseContents.condition.miniprogram.list = [];
+        }
+
         // 替换文件内容
         const list = parseContents.condition.miniprogram.list;
         const itemIndex = list.findIndex(e => e.name === Key);
@@ -41,6 +57,9 @@ module.exports = function compilePage(context) {
   context.subscriptions.push(disposable);
 };
 
+/**
+ * 创建编译选项
+ */ 
 async function createCompileItem(pathName) {
   let query = ''
   const querys = getQuery();
@@ -58,6 +77,9 @@ async function createCompileItem(pathName) {
   });
 };
 
+/**
+ * 根据文件内定义的query内容选择编译需要的query
+ */
 function getQuery() {
   let isCarryOn = true, line = 0;
   const activeTextEditor = vscode.window.activeTextEditor;
