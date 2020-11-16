@@ -34,15 +34,15 @@
 			},
 			{
 				"command": "elfin.wcn.createPage",
-				"title": "[未成年]创建Page文件"
+				"title": "[小程序]创建Page文件"
 			},
 			{
 				"command": "elfin.wcn.createComponent",
-				"title": "[未成年]创建Component文件"
+				"title": "[小程序]创建Component文件"
 			},
 			{
 				"command": "elfin.wcn.compilePage",
-				"title": "[未成年]编译Page文件"
+				"title": "[小程序]编译Page文件"
 			}
 		],
 		"menus": {
@@ -72,17 +72,17 @@
 				{
 					"when": "editorFocus && resourceExtname == .js && resourcePath =~ /xiaochengxu-teenager/",
 					"command": "elfin.wcn.compilePage",
-					"group": "navigation"
+					"group": "navigation@0"
 				},
 				{
 					"when": "editorFocus && resourceExtname == .js && resourceFilename != app.js && resourcePath =~ /xiaochengxu-teenager/",
 					"command": "elfin.wcn.retrofitPage",
-					"group": "navigation"
+					"group": "navigation@1"
 				},
 				{
 					"when": "editorFocus && resourceFilename == app.js && resourcePath =~ /xiaochengxu-teenager/",
 					"command": "elfin.wcn.retrofitApp",
-					"group": "navigation"
+					"group": "navigation@1"
 				}
 			],
 			"explorer/context": [
