@@ -4,10 +4,13 @@
 	"description": "",
 	"version": "0.0.8",
 	"publisher": "rengarxiao",
+	"homepage": "https://github.com/XyyF/elfin-vscode/blob/main/README.md",
+	"repository": {
 	"repository": "https://github.com/XyyF/elfin-vscode",
 	"engines": {
 		"vscode": "^1.51.0"
 	},
+	"icon": "images/elfinVscode.png",
 	"categories": [
 		"Other"
 	],
