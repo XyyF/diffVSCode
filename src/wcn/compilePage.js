@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path');
 
 const Key = 'elfin.vscode';
-const custRegExp = /^\/\/ query\?(.*)/g;
 
 // 新建小程序Page
 module.exports = function compilePage(context) {
@@ -81,6 +80,7 @@ async function createCompileItem(pathName) {
  * 根据文件内定义的query内容选择编译需要的query
  */
 function getQuery() {
+  const custRegExp = /^\/\/ query\?(.*)/g;
   let isCarryOn = true, line = 0;
   const activeTextEditor = vscode.window.activeTextEditor;
   const matchArry = [];

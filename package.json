@@ -5,7 +5,6 @@
 	"version": "0.0.8",
 	"publisher": "rengarxiao",
 	"homepage": "https://github.com/XyyF/elfin-vscode/blob/main/README.md",
-	"repository": {
 	"repository": "https://github.com/XyyF/elfin-vscode",
 	"engines": {
 		"vscode": "^1.51.0"
@@ -22,7 +21,8 @@
 		"onCommand:elfin.wcn.retrofitApp",
 		"onCommand:elfin.wcn.createPage",
 		"onCommand:elfin.wcn.createComponent",
-		"onCommand:elfin.wcn.compilePage"
+		"onCommand:elfin.wcn.compilePage",
+		"onCommand:elfin.wcn.comparePage"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
@@ -46,6 +46,10 @@
 			{
 				"command": "elfin.wcn.compilePage",
 				"title": "[小程序]编译Page文件"
+			},
+			{
+				"command": "elfin.wcn.comparePage",
+				"title": "[小程序]对比UI文件"
 			}
 		],
 		"menus": {
@@ -69,12 +73,21 @@
 				{
 					"command": "elfin.wcn.compilePage",
 					"when": "editorFocus && resourceExtname == .js && resourcePath =~ /xiaochengxu-teenager/"
+				},
+				{
+					"command": "elfin.wcn.comparePage",
+					"when": "editorFocus && resourceExtname == .wxml && resourcePath =~ /xiaochengxu-teenager/"
 				}
 			],
 			"editor/context": [
 				{
 					"when": "editorFocus && resourceExtname == .js && resourcePath =~ /xiaochengxu-teenager/",
 					"command": "elfin.wcn.compilePage",
+					"group": "navigation@0"
+				},
+				{
+					"when": "editorFocus && resourceExtname == .wxml && resourcePath =~ /xiaochengxu-teenager/",
+					"command": "elfin.wcn.comparePage",
 					"group": "navigation@0"
 				},
 				{
@@ -119,6 +132,7 @@
 		"vscode-test": "^1.4.0"
 	},
 	"dependencies": {
-		"ejs": "^3.1.5"
+		"ejs": "^3.1.5",
+		"tmp": "^0.2.1"
 	}
 }

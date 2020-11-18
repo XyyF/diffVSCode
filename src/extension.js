@@ -7,6 +7,7 @@ const registerOpenPath = require('./wcn/openPath');
 const registerCreatePage = require('./wcn/createPage');
 const registerCreateComponent = require('./wcn/createComponent');
 const registerCompilePage = require('./wcn/compilePage');
+const registerComparePage = require('./wcn/comparePage');
 
 /**
  * 插件被激活时触发，所有代码总入口
@@ -33,6 +34,8 @@ function activate(context) {
 		registerCreateComponent(context);
 		// 添加Page编译条件
 		registerCompilePage(context);
+		// 对比UI远端文件
+		registerComparePage(context);
 	}
 }
 exports.activate = activate;
