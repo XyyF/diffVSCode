@@ -20,7 +20,7 @@ module.exports = function comparePage(context) {
       return vscode.window.showErrorMessage('错误的UIPath，请在wxml文件中确认！');
     }
     // 获取分支名
-    const branch = getBranch(UIRootPath);
+    const branch = await getBranch(UIRootPath);
     if (!branch) {
       return vscode.window.showErrorMessage('未正确获取UI工程当前分支！');
     }
@@ -31,7 +31,7 @@ module.exports = function comparePage(context) {
     }
 
     // 获取最新的文件内容
-    const content = getPageContent(commitId, UIPath, UIRootPath);
+    const content = await getPageContent(commitId, UIPath, UIRootPath);
     const tempFile = await getCommitFile(content, commitId);
 
     // 对比文件
@@ -75,12 +75,19 @@ function getPath() {
  * UI工程中的当前分支
  */
 function getBranch(UIRootPath) {
-  const branchRegExp = /^\* (.*)/g;
-  const content = childProcess.execSync('git branch', {
-    cwd: UIRootPath,
-  });
-  const match = branchRegExp.exec(content.toString());
-  return match && match.pop();
+  return new Promise((resolve, reject) => {
+    try {
+      const branchRegExp = /^\* (.*)/g;
+      const content = childProcess.execSync('git branch', {
+        cwd: UIRootPath,
+      });
+      const match = branchRegExp.exec(content.toString());
+      return resolve(match && match.pop());
+    } catch (error) {
+      vscode.window.showErrorMessage('获取UI工程本地分支失败，请确认git配置 或者 路径正确后操作');
+      reject(error);
+    }
+  })
 };
 
 /**
@@ -103,10 +110,17 @@ function getCommitId(UIPath, branch, UIRootPath) {
  * @param {*} UIPath 
  */
 function getPageContent(commitId, UIPath, UIRootPath) {
-  const content = childProcess.execSync(`git show --textconv ${commitId}:${UIPath}`, {
-    cwd: UIRootPath,
-  });
-  return content.toString();
+  return new Promise((resolve, reject) => {
+    try {
+      const content = childProcess.execSync(`git show --textconv ${commitId}:${UIPath}`, {
+        cwd: UIRootPath,
+      });
+      return resolve(content.toString());
+    } catch (error) {
+      vscode.window.showErrorMessage('获取远端文件错误，可能是文件被删除 或者 路径错误，请确认后操作');
+      reject(error);
+    }
+  })
 };
 
 /**
