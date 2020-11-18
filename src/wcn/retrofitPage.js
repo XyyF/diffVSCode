@@ -2,7 +2,7 @@ const vscode = require('vscode');
 const path = require('path');
 const Ejs = require('../../utils/ejs');
 
-// 改造 未成年页面js文件
+// 改造 teenager页面js文件
 module.exports = function retrofitPage(context) {
 	// 注册命令
 	const disposable = vscode.commands.registerTextEditorCommand('elfin.wcn.retrofitPage', () => {

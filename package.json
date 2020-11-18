@@ -32,11 +32,11 @@
 		"commands": [
 			{
 				"command": "elfin.wcn.retrofitPage",
-				"title": "[未成年]格式化Page文件"
+				"title": "[teenager]格式化Page文件"
 			},
 			{
 				"command": "elfin.wcn.retrofitApp",
-				"title": "[未成年]格式化App文件"
+				"title": "[teenager]格式化App文件"
 			},
 			{
 				"command": "elfin.wcn.createPage",
@@ -52,7 +52,7 @@
 			},
 			{
 				"command": "elfin.wcn.comparePage",
-				"title": "[小程序]对比UI文件"
+				"title": "[teenager]对比UI文件"
 			}
 		],
 		"menus": {

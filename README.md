@@ -13,7 +13,7 @@ vsce package
 
 ### 功能列表
 
-- [未成年] 文件适配wekf改造
+- [teenager] 文件适配wekf改造
 
 1. Page文件中的 .js 文件
 2. App文件中的 app.js 文件
@@ -52,4 +52,4 @@ vsce package
 <br/>
 
 - [小程序] 添加当前页面编译条件至project.config.json
-- [未成年] 对比远端最新的UI文件内容
+- [teenager] 对比远端最新的UI文件内容
