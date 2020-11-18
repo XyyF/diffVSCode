@@ -16,8 +16,11 @@ module.exports = function comparePage(context) {
     }
     // 获取UI文件路径
     const UIPath = getPath();
-    if (!fs.existsSync(path.join(UIRootPath, UIPath))) {
-      return vscode.window.showErrorMessage('错误的UIPath，请在wxml文件中确认！');
+    if (!UIPath) {
+      return vscode.window.showErrorMessage('未匹配 <!-- path/，请确认文件径路是否设置 或者 正确');
+    }
+    if (path.extname(path.join(UIPath)) !== '.wxml') {
+      return vscode.window.showErrorMessage('<!-- path/ 未以.wxml结束，请确认文件径路是否正确');
     }
     // 获取分支名
     const branch = await getBranch(UIRootPath);
@@ -25,7 +28,7 @@ module.exports = function comparePage(context) {
       return vscode.window.showErrorMessage('未正确获取UI工程当前分支！');
     }
     // 获取最新的commitId
-    const commitId = getCommitId(UIPath, branch, UIRootPath);
+    const commitId = await getCommitId(UIPath, branch, UIRootPath);
     if (!commitId) {
       return vscode.window.showErrorMessage('未正确获取UI工程文件当前记录commitId！');
     }
@@ -54,7 +57,7 @@ module.exports = function comparePage(context) {
  * 根据文件内定义的path内容，获取对应的UI路径
  */
 function getPath() {
-  const custRegExp = /^\<\!\-\- path\/(.*) \-\-\>$/g;
+  const custRegExp = /^\<\!\-\- path\/([a-zA-Z0-9\/\-_.]*) \-\-\>$/g;
   const activeTextEditor = vscode.window.activeTextEditor;
   let matchPath = '';
   // 从首行开始匹配
@@ -77,7 +80,7 @@ function getPath() {
 function getBranch(UIRootPath) {
   return new Promise((resolve, reject) => {
     try {
-      const branchRegExp = /^\* (.*)/g;
+      const branchRegExp = /^\* (.*)/g;``
       const content = childProcess.execSync('git branch', {
         cwd: UIRootPath,
       });
@@ -96,12 +99,19 @@ function getBranch(UIRootPath) {
  * @param {*} branch 
  */
 function getCommitId(UIPath, branch, UIRootPath) {
-  const commitRegExp = /^\* (.*)/g;
-  const content = childProcess.execSync(`git log remotes/origin/${branch} -1 --pretty=format:"%H" --graph ${UIPath}`, {
-    cwd: UIRootPath,
-  });
-  const match = commitRegExp.exec(content.toString());
-  return match && match.pop();
+  return new Promise((resolve, reject) => {
+    try {
+      const commitRegExp = /^\* (.*)/g;
+      const content = childProcess.execSync(`git log remotes/origin/${branch} -1 --pretty=format:"%H" --graph ${UIPath}`, {
+        cwd: UIRootPath,
+      });
+      const match = commitRegExp.exec(content.toString());
+      return resolve(match && match.pop());
+    } catch (error) {
+      vscode.window.showErrorMessage('获取远端文件记录错误，可能是文件被删除 或者 路径错误，请确认后操作');
+      reject(error);
+    }
+  })
 };
 
 /**
@@ -117,7 +127,7 @@ function getPageContent(commitId, UIPath, UIRootPath) {
       });
       return resolve(content.toString());
     } catch (error) {
-      vscode.window.showErrorMessage('获取远端文件错误，可能是文件被删除 或者 路径错误，请确认后操作');
+      vscode.window.showErrorMessage('获取远端文件内容错误，可能是文件被删除 或者 路径错误，请确认后操作');
       reject(error);
     }
   })
