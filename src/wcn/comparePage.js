@@ -4,21 +4,25 @@ const path = require('path');
 const childProcess = require('child_process');
 const tmp = require('tmp');
 
-const UIRootPath = 'E:\TEG\\weapp-sndt';
-
 // 新建小程序Page
 module.exports = function comparePage(context) {
   // 注册命令
   const disposable = vscode.commands.registerTextEditorCommand('elfin.wcn.comparePage', async () => {
+    // 获取UI工程路径
+    const settings = vscode.workspace.getConfiguration('elfin');
+    const UIRootPath = settings.UIRootPath;
+    if (!fs.existsSync(UIRootPath)) {
+      return vscode.window.showErrorMessage('错误的UIRootPath，请在设置中确认！');
+    }
     // 获取UI文件路径
     const UIPath = getPath();
     // 获取分支名
-    const branch = getBranch();
+    const branch = getBranch(UIRootPath);
     // 获取最新的commitId
-    const commitId = getCommitId(UIPath, branch);
+    const commitId = getCommitId(UIPath, branch, UIRootPath);
 
     // 获取最新的文件内容
-    const content = getPageContent(commitId, UIPath);
+    const content = getPageContent(commitId, UIPath, UIRootPath);
     const tempFile = await getCommitFile(content, commitId);
 
     // 对比文件
@@ -61,7 +65,7 @@ function getPath() {
 /**
  * UI工程中的当前分支
  */
-function getBranch() {
+function getBranch(UIRootPath) {
   const branchRegExp = /^\* (.*)/g;
   const content = childProcess.execSync('git branch', {
     cwd: UIRootPath,
@@ -75,7 +79,7 @@ function getBranch() {
  * @param {*} UIPath 
  * @param {*} branch 
  */
-function getCommitId(UIPath, branch) {
+function getCommitId(UIPath, branch, UIRootPath) {
   const commitRegExp = /^\* (.*)/g;
   const content = childProcess.execSync(`git log remotes/origin/${branch} -1 --pretty=format:"%H" --graph ${UIPath}`, {
     cwd: UIRootPath,
@@ -89,7 +93,7 @@ function getCommitId(UIPath, branch) {
  * @param {*} commitId 
  * @param {*} UIPath 
  */
-function getPageContent(commitId, UIPath) {
+function getPageContent(commitId, UIPath, UIRootPath) {
   const content = childProcess.execSync(`git show --textconv ${commitId}:${UIPath}`, {
     cwd: UIRootPath,
   });

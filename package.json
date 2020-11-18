@@ -5,7 +5,10 @@
 	"version": "0.0.8",
 	"publisher": "rengarxiao",
 	"homepage": "https://github.com/XyyF/elfin-vscode/blob/main/README.md",
-	"repository": "https://github.com/XyyF/elfin-vscode",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/XyyF/elfin-vscode"
+	},
 	"engines": {
 		"vscode": "^1.51.0"
 	},
@@ -113,6 +116,18 @@
 					"when": "explorerResourceIsFolder == true && resourcePath =~ /xiaochengxu-teenager/"
 				}
 			]
+		},
+		"configuration": {
+			"type": "object",
+			"title": "Elfin Vscode",
+			"properties": {
+				"elfin.UIRootPath": {
+						"type": "string",
+						"default": "E:/TEG/weapp-sndt",
+						"scope": "window",
+						"description": "UI工程路径"
+				}
+			}
 		}
 	},
 	"scripts": {
