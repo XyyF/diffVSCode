@@ -3,6 +3,7 @@
 //Required modules
 const vscode = require('vscode');
 const fs = require('fs');
+const path = require('path');
 
 const custRegExp = /['|"|`]([^'|"|`|?]+)['|"|`|?]/;
 
@@ -37,7 +38,10 @@ function provideDefinition(document, position, token) {
     if (!lastPart.startsWith('/')) lastPart = `/${lastPart}`;
 
     // 最终的地址
-    const destPath = `${vscode.workspace.rootPath}${lastPart}.js`;
+    let destPath = `${vscode.workspace.rootPath}${lastPart}`;
+    if (!path.extname(lastPart)) {
+        destPath += '.js'; // 没有文件后缀的话
+    }
     if (fs.existsSync(destPath)) {
         // new vscode.Position(0, 0) 表示跳转到某个文件的第一行第一列
         return new vscode.Location(vscode.Uri.file(destPath), new vscode.Position(0, 0));
