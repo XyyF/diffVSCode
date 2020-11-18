@@ -16,10 +16,19 @@ module.exports = function comparePage(context) {
     }
     // 获取UI文件路径
     const UIPath = getPath();
+    if (!fs.existsSync(path.join(UIRootPath, UIPath))) {
+      return vscode.window.showErrorMessage('错误的UIPath，请在wxml文件中确认！');
+    }
     // 获取分支名
     const branch = getBranch(UIRootPath);
+    if (!branch) {
+      return vscode.window.showErrorMessage('未正确获取UI工程当前分支！');
+    }
     // 获取最新的commitId
     const commitId = getCommitId(UIPath, branch, UIRootPath);
+    if (!commitId) {
+      return vscode.window.showErrorMessage('未正确获取UI工程文件当前记录commitId！');
+    }
 
     // 获取最新的文件内容
     const content = getPageContent(commitId, UIPath, UIRootPath);
@@ -114,16 +123,17 @@ function getCommitFile(content, commitId) {
       try {
         // 文件目录
         const tmpDirPath = path
-          .join(path.dirname(tmpPath), `${commitId}${new Date().getTime()}${path.basename(tmpPath)}`)
+          .join(path.dirname(tmpPath), 'elfin.vscode')
           .replace(/\\/g, '/');
-        const tmpFile = path.join(tmpDirPath, path.basename(filePath));
+        // 临时文件路径
+        const tmpFile = path.join(tmpDirPath, `${commitId}${new Date().getTime()}${path.basename(tmpPath)}-${path.basename(filePath)}`);
         if (!fs.existsSync(tmpDirPath)) {
           await fs.mkdirSync(tmpDirPath)
         }
         await fs.writeFileSync(tmpFile, content);
         resolve(vscode.Uri.file(tmpFile));
       } catch (ex) {
-        console.error(ex);
+        vscode.window.showErrorMessage(`未知错误: ${ex}`);
         reject(ex);
       }
     });
