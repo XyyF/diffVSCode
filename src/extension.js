@@ -17,7 +17,7 @@ function activate(context) {
 	console.log('扩展elfin vscode已激活!');
 
 	// 特定目录才触发
-	if (/xiaochengxu-teenager/g.test(vscode.workspace.rootPath)) {
+	if (/xiaochengxu-teenager|AppletNew/g.test(vscode.workspace.rootPath)) {
 		// 改造Page.js文件
 		registerRetrofitPage(context);
 		// 改造app.js文件

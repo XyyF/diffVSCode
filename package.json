@@ -2,7 +2,7 @@
 	"name": "elfin-vscode",
 	"displayName": "elfin-vscode",
 	"description": "",
-	"version": "0.0.9",
+	"version": "0.1.0",
 	"publisher": "rengarxiao",
 	"homepage": "https://github.com/XyyF/elfin-vscode/blob/main/README.md",
 	"repository": {
@@ -59,47 +59,47 @@
 			"commandPalette": [
 				{
 					"command": "elfin.wcn.retrofitPage",
-					"when": "editorFocus && resourceExtname == .js && resourceFilename != app.js && resourcePath =~ /xiaochengxu-teenager/"
+					"when": "editorFocus && resourceExtname == .js && resourceFilename != app.js && resourcePath =~ /xiaochengxu-teenager|AppletNew/"
 				},
 				{
 					"command": "elfin.wcn.retrofitApp",
-					"when": "editorFocus && resourceFilename == app.js && resourcePath =~ /xiaochengxu-teenager/"
+					"when": "editorFocus && resourceFilename == app.js && resourcePath =~ /xiaochengxu-teenager|AppletNew/"
 				},
 				{
 					"command": "elfin.wcn.createPage",
-					"when": "explorerResourceIsFolder == true && resourcePath =~ /xiaochengxu-teenager/"
+					"when": "explorerResourceIsFolder == true && resourcePath =~ /xiaochengxu-teenager|AppletNew/"
 				},
 				{
 					"command": "elfin.wcn.createComponent",
-					"when": "explorerResourceIsFolder == true && resourcePath =~ /xiaochengxu-teenager/"
+					"when": "explorerResourceIsFolder == true && resourcePath =~ /xiaochengxu-teenager|AppletNew/"
 				},
 				{
 					"command": "elfin.wcn.compilePage",
-					"when": "editorFocus && resourceExtname == .js && resourcePath =~ /xiaochengxu-teenager/"
+					"when": "editorFocus && resourceExtname == .js && resourcePath =~ /xiaochengxu-teenager|AppletNew/"
 				},
 				{
 					"command": "elfin.wcn.comparePage",
-					"when": "editorFocus && resourceExtname == .wxml && resourcePath =~ /xiaochengxu-teenager/"
+					"when": "editorFocus && resourceExtname == .wxml && resourcePath =~ /xiaochengxu-teenager|AppletNew/"
 				}
 			],
 			"editor/context": [
 				{
-					"when": "editorFocus && resourceExtname == .js && resourcePath =~ /xiaochengxu-teenager/",
+					"when": "editorFocus && resourceExtname == .js && resourcePath =~ /xiaochengxu-teenager|AppletNew/",
 					"command": "elfin.wcn.compilePage",
 					"group": "navigation@0"
 				},
 				{
-					"when": "editorFocus && resourceExtname == .wxml && resourcePath =~ /xiaochengxu-teenager/",
+					"when": "editorFocus && resourceExtname == .wxml && resourcePath =~ /xiaochengxu-teenager|AppletNew/",
 					"command": "elfin.wcn.comparePage",
 					"group": "navigation@0"
 				},
 				{
-					"when": "editorFocus && resourceExtname == .js && resourceFilename != app.js && resourcePath =~ /xiaochengxu-teenager/",
+					"when": "editorFocus && resourceExtname == .js && resourceFilename != app.js && resourcePath =~ /xiaochengxu-teenager|AppletNew/",
 					"command": "elfin.wcn.retrofitPage",
 					"group": "navigation@1"
 				},
 				{
-					"when": "editorFocus && resourceFilename == app.js && resourcePath =~ /xiaochengxu-teenager/",
+					"when": "editorFocus && resourceFilename == app.js && resourcePath =~ /xiaochengxu-teenager|AppletNew/",
 					"command": "elfin.wcn.retrofitApp",
 					"group": "navigation@1"
 				}
@@ -108,12 +108,12 @@
 				{
 					"command": "elfin.wcn.createPage",
 					"group": "navigation",
-					"when": "explorerResourceIsFolder == true && resourcePath =~ /xiaochengxu-teenager/"
+					"when": "explorerResourceIsFolder == true && resourcePath =~ /xiaochengxu-teenager|AppletNew/"
 				},
 				{
 					"command": "elfin.wcn.createComponent",
 					"group": "navigation",
-					"when": "explorerResourceIsFolder == true && resourcePath =~ /xiaochengxu-teenager/"
+					"when": "explorerResourceIsFolder == true && resourcePath =~ /xiaochengxu-teenager|AppletNew/"
 				}
 			]
 		},
