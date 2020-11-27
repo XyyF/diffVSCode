@@ -132,6 +132,7 @@
 	},
 	"husky": {
 		"hooks": {
+			"pre-commit": "npm run lint",
 			"commit-msg": "elfincmd hooks commit-msg"
 		}
 	},
