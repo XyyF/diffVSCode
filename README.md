@@ -1,6 +1,13 @@
 # diffVSCode
 vscode for elfin
 
+## 初始化项目
+```js
+npm install elfincmd -g
+
+npm run elfin.init
+```
+
 #### 本地打包
 个人应用扩展，暂未发布应用市场
 
