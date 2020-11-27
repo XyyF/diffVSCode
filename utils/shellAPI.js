@@ -2,11 +2,11 @@ const path = require('path');
 const fs = require('fs');
 
 module.exports = class ShellAPI {
-    constructor() {}
+    constructor() { }
 
     /**
      * 获取相对elfin root目录的绝对路径
-     * @param {string} relativePath 
+     * @param {string} relativePath
      */
     _getRootPath(relativePath) {
         return path.resolve(__dirname, `..${path.sep}${relativePath}`);
@@ -14,7 +14,7 @@ module.exports = class ShellAPI {
 
     /**
      * 获取相对 脚本命令执行时目录 的绝对路径
-     * @param {string} relativePath 
+     * @param {string} relativePath
      */
     _getCurrentPath(relativePath) {
         return path.resolve(process.cwd(), relativePath);
@@ -22,7 +22,7 @@ module.exports = class ShellAPI {
 
     /**
      * 加载文件完整的内容
-     * @param {string} filePath 
+     * @param {string} filePath
      */
     _loadFile(filePath) {
         try {
@@ -34,7 +34,7 @@ module.exports = class ShellAPI {
 
     /**
      * 引入文件输出的内容
-     * @param {string} filePath 
+     * @param {string} filePath
      */
     _requireFile(filePath) {
         try {
@@ -46,8 +46,8 @@ module.exports = class ShellAPI {
 
     /**
      * 写文件
-     * @param {string} filePath 
-     * @param {*} template 
+     * @param {string} filePath
+     * @param {*} template
      */
     _writeFile(filePath, template) {
         try {
@@ -56,4 +56,4 @@ module.exports = class ShellAPI {
             throw e;
         }
     }
-}
+};

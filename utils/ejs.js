@@ -1,11 +1,11 @@
 const EjsAPI = require('./ejsAPI');
 
 module.exports = class Ejs extends EjsAPI {
-	fileName = '';
+	fileName
 
 	constructor(options = {}) {
 		super();
-		this.fileName = options.fileName;
+		this.fileName = options.fileName || '';
 	}
 
 	/**
@@ -45,7 +45,7 @@ module.exports = class Ejs extends EjsAPI {
 	renderWcnApp() {
 		return this._renderByTempalte('templates/wcn/app.ejs');
 	}
-}
+};
 
 function firstUpperCase(str) {
 	return str.replace(/( |^)[a-z]/g, (L) => L.toUpperCase());

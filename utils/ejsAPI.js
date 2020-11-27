@@ -2,7 +2,7 @@ const ejs = require('ejs');
 const ShellUtil = require('./shell');
 
 module.exports = class EjsAPI {
-    constructor() {}
+    constructor() { }
 
     /**
      * 根据模版渲染
@@ -15,4 +15,4 @@ module.exports = class EjsAPI {
         // 转化模板内容
         return ejs.render(template, renderData);
     }
-}
+};

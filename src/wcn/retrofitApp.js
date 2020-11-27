@@ -9,9 +9,9 @@ module.exports = function retrofitApp(context) {
 		if (vscode.window.activeTextEditor) {
 			vscode.window.activeTextEditor.edit(editBuilder => {
 				if (vscode.window.activeTextEditor) {
-					const fileInfo = path.parse(vscode.window.activeTextEditor.document.fileName)
+					const fileInfo = path.parse(vscode.window.activeTextEditor.document.fileName);
 					// 文件名获取
-					let fileName = fileInfo.name;
+					const fileName = fileInfo.name;
 					// app.js
 					if (fileName === 'app') {
 						// 渲染模板数据

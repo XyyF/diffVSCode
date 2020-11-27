@@ -46,7 +46,7 @@ module.exports = function comparePage(context) {
       tempFile,
       'elfin.vscode.UI.diff',
       { preview: true },
-    )
+    );
   });
 
   context.subscriptions.push(disposable);
@@ -57,7 +57,7 @@ module.exports = function comparePage(context) {
  * 根据文件内定义的path内容，获取对应的UI路径
  */
 function getPath() {
-  const custRegExp = /^\<\!\-\- path\/([a-zA-Z0-9\/\-_.]*) \-\-\>$/g;
+  const custRegExp = /^<!-- path\/([a-zA-Z0-9/-_.]*) -->$/g;
   const activeTextEditor = vscode.window.activeTextEditor;
   let matchPath = '';
   // 从首行开始匹配
@@ -80,7 +80,7 @@ function getPath() {
 function getBranch(UIRootPath) {
   return new Promise((resolve, reject) => {
     try {
-      const branchRegExp = /^\* (.*)/g;``
+      const branchRegExp = /^\* (.*)/g;
       const content = childProcess.execSync('git branch', {
         cwd: UIRootPath,
       });
@@ -90,19 +90,20 @@ function getBranch(UIRootPath) {
       vscode.window.showErrorMessage('获取UI工程本地分支失败，请确认git配置 或者 路径正确后操作');
       reject(error);
     }
-  })
+  });
 };
 
 /**
  * 某个文件的远端最新commmitId
- * @param {*} UIPath 
- * @param {*} branch 
+ * @param {*} UIPath
+ * @param {*} branch
  */
 function getCommitId(UIPath, branch, UIRootPath) {
   return new Promise((resolve, reject) => {
     try {
       const commitRegExp = /^\* (.*)/g;
-      const content = childProcess.execSync(`git log remotes/origin/${branch} -1 --pretty=format:"%H" --graph ${UIPath}`, {
+      const command = `git log remotes/origin/${branch} -1 --pretty=format:"%H" --graph ${UIPath}`;
+      const content = childProcess.execSync(command, {
         cwd: UIRootPath,
       });
       const match = commitRegExp.exec(content.toString());
@@ -111,13 +112,13 @@ function getCommitId(UIPath, branch, UIRootPath) {
       vscode.window.showErrorMessage('获取远端文件记录错误，可能是文件被删除 或者 路径错误，请确认后操作');
       reject(error);
     }
-  })
+  });
 };
 
 /**
  * 获取远端文件的最新内容
- * @param {*} commitId 
- * @param {*} UIPath 
+ * @param {*} commitId
+ * @param {*} UIPath
  */
 function getPageContent(commitId, UIPath, UIRootPath) {
   return new Promise((resolve, reject) => {
@@ -130,13 +131,13 @@ function getPageContent(commitId, UIPath, UIRootPath) {
       vscode.window.showErrorMessage('获取远端文件内容错误，可能是文件被删除 或者 路径错误，请确认后操作');
       reject(error);
     }
-  })
+  });
 };
 
 /**
  * 获取远端最新的内容的临时文件
- * @param {*} content 
- * @param {*} commitId 
+ * @param {*} content
+ * @param {*} commitId
  */
 function getCommitFile(content, commitId) {
   const filePath = 'elfin.vscode.wxml';
@@ -150,9 +151,10 @@ function getCommitFile(content, commitId) {
           .join(path.dirname(tmpPath), 'elfin.vscode')
           .replace(/\\/g, '/');
         // 临时文件路径
-        const tmpFile = path.join(tmpDirPath, `${commitId}${new Date().getTime()}${path.basename(tmpPath)}-${path.basename(filePath)}`);
+        const fileName = `${commitId}${new Date().getTime()}${path.basename(tmpPath)}-${path.basename(filePath)}`;
+        const tmpFile = path.join(tmpDirPath, fileName);
         if (!fs.existsSync(tmpDirPath)) {
-          await fs.mkdirSync(tmpDirPath)
+          await fs.mkdirSync(tmpDirPath);
         }
         await fs.writeFileSync(tmpFile, content);
         resolve(vscode.Uri.file(tmpFile));

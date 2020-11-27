@@ -4,14 +4,14 @@ const { underscores, levels, httpWords, promiseWords, hookWords } = require('./_
 const documents = Array.from([
     ...underscores.map(e => getCompletionItem(e, vscode.CompletionItemKind.Method, 'underscore.m.js')),
     ...levels.map(e => getCompletionItem(e.label, vscode.CompletionItemKind.Method, e.detail)),
-])
+]);
 
 // http.js
-const documentHttps = httpWords.map(e => getCompletionItem(e, vscode.CompletionItemKind.Method, 'http.js'))
+const documentHttps = httpWords.map(e => getCompletionItem(e, vscode.CompletionItemKind.Method, 'http.js'));
 // promise.js
-const documentPromises = promiseWords.map(e => getCompletionItem(e, vscode.CompletionItemKind.Method, 'promise.js'))
+const documentPromises = promiseWords.map(e => getCompletionItem(e, vscode.CompletionItemKind.Method, 'promise.js'));
 // hook.js
-const documentHooks = hookWords.map(e => getCompletionItem(e, vscode.CompletionItemKind.Method, 'hook.js'))
+const documentHooks = hookWords.map(e => getCompletionItem(e, vscode.CompletionItemKind.Method, 'hook.js'));
 
 
 function getCompletionItem(text, kind, detail) {
@@ -22,12 +22,10 @@ function getCompletionItem(text, kind, detail) {
 
 /**
  * 自动提示实现
- * @param {*} document 
- * @param {*} position 
- * @param {*} token 
- * @param {*} context 
+ * @param {*} document
+ * @param {*} position
  */
-function provideCompletionItems(document, position, token, context) {
+function provideCompletionItems(document, position) {
     const line = document.lineAt(position);
     // 只截取到光标位置为止，防止一些特殊情况
     const lineText = line.text.substring(0, position.character);
@@ -51,10 +49,8 @@ function provideCompletionItems(document, position, token, context) {
 
 /**
  * 光标选中当前自动补全item时触发动作，一般情况下无需处理
- * @param {*} item 
- * @param {*} token 
  */
-function resolveCompletionItem(item, token) {
+function resolveCompletionItem() {
     return null;
 }
 

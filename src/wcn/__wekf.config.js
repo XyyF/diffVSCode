@@ -48,4 +48,4 @@ module.exports = {
     hookWords,
     underscores,
     levels,
-}
+};

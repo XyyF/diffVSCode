@@ -27,4 +27,4 @@ module.exports = class Shell extends ShellAPI {
     writeFlieFromScript(relativePath, template) {
         return this._writeFile(this._getCurrentPath(relativePath), template);
     }
-}
+};

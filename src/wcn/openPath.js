@@ -1,13 +1,13 @@
 /* jshint esversion: 6 */
 
-//Required modules
+// Required modules
 const vscode = require('vscode');
 const fs = require('fs');
 const path = require('path');
 
 const custRegExp = /['|"|`]([^'|"|`|?]+)['|"|`|?]/;
 
-function provideDefinition(document, position, token) {
+function provideDefinition() {
     // 确保工作空间打开状态
     if (!vscode.workspace.rootPath) return [];
 
@@ -22,7 +22,7 @@ function provideDefinition(document, position, token) {
 
     // 找到最后一个可用元素
     let found = 0;
-    for (var i = 1; i < matchArray.length; i++) {
+    for (let i = 1; i < matchArray.length; i++) {
         if (typeof matchArray[i] !== 'undefined') {
             found = i;
             break;

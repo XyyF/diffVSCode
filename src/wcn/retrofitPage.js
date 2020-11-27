@@ -9,7 +9,7 @@ module.exports = function retrofitPage(context) {
 		if (vscode.window.activeTextEditor) {
 			vscode.window.activeTextEditor.edit(editBuilder => {
 				if (vscode.window.activeTextEditor) {
-					const fileInfo = path.parse(vscode.window.activeTextEditor.document.fileName)
+					const fileInfo = path.parse(vscode.window.activeTextEditor.document.fileName);
 					// 文件名获取
 					let fileName = fileInfo.name;
 					// 如果是index命名的话，使用目录名
@@ -17,7 +17,7 @@ module.exports = function retrofitPage(context) {
 						fileName = fileInfo.dir.split(path.sep).pop();
 					}
 					// 渲染模板数据
-					const ejs = new Ejs({fileName});
+					const ejs = new Ejs({ fileName });
 					const text = ejs.renderWcnPageJs();
 					// 从开始到结束，全量替换
 					const end = new vscode.Position(vscode.window.activeTextEditor.document.lineCount + 1, 0);

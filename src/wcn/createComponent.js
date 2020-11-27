@@ -21,10 +21,12 @@ module.exports = function createComponent(context) {
                     if (userStr.indexOf('/') > -1) {
                         const paths = userStr.split('/');
                         // 如果已经存在目录则跳过错误
-                        const dir = paths[0]
+                        const dir = paths[0];
                         try {
-                            fs.mkdirSync(`${url.fsPath}${path.sep}${dir}`)
-                        } catch { }
+                            fs.mkdirSync(`${url.fsPath}${path.sep}${dir}`);
+                        } catch (err) {
+                            console.log(err);
+                        }
                         file = `${dir}${path.sep}${paths[1]}`;
                     } else {
                         file = userStr;
@@ -44,7 +46,7 @@ module.exports = function createComponent(context) {
                 } else {
                     vscode.window.showErrorMessage('组件名称不能为空！');
                 }
-            })
+            });
     });
 
     context.subscriptions.push(disposable);

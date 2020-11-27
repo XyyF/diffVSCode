@@ -32,7 +32,7 @@ module.exports = function createPage(context) {
                     // page => page
                     // page/index => page
                     // index => currentDir
-                    const fileName = file === 'index' ? (dir || currentDir) : file
+                    const fileName = file === 'index' ? (dir || currentDir) : file;
                     const ejs = new Ejs({ fileName });
 
                     // 渲染页面
@@ -45,8 +45,10 @@ module.exports = function createPage(context) {
                     if (dir) {
                         // 如果已经存在目录则跳过错误
                         try {
-                            fs.mkdirSync(`${url.fsPath}${path.sep}${dir}`)
-                        } catch { }
+                            fs.mkdirSync(`${url.fsPath}${path.sep}${dir}`);
+                        } catch (err) {
+                            console.log(err);
+                        }
                         file = `${dir}${path.sep}${file}`;
                     }
                     // 写页面
@@ -56,13 +58,13 @@ module.exports = function createPage(context) {
                     fs.writeFileSync(`${url.fsPath}${path.sep}${file}.json`, json);
 
                     // 修改 app.json 文件内容
-                    const appFilePath = vscode.workspace.rootPath + path.sep + 'app.json';
+                    const appFilePath = `${vscode.workspace.rootPath + path.sep}app.json`;
                     if (fs.existsSync(appFilePath)) {
                         // 读取文件内容
                         const contents = fs.readFileSync(appFilePath, 'utf-8');
                         const parseContents = JSON.parse(contents.toString());
                         // 转化文件内容
-                        const tempPath = url.fsPath.split(path.sep).join('/') + '/' + file.split(path.sep).join('/');
+                        const tempPath = `${url.fsPath.split(path.sep).join('/')}/${file.split(path.sep).join('/')}`;
                         parseContents.pages.push(tempPath.split(`${vscode.workspace.name}/`).pop());
                         // 写文件内容
                         fs.writeFileSync(appFilePath, JSON.stringify(parseContents, null, '\t'));
@@ -70,7 +72,7 @@ module.exports = function createPage(context) {
                 } else {
                     vscode.window.showErrorMessage('页面名称不能为空！');
                 }
-            })
+            });
     });
 
     context.subscriptions.push(disposable);

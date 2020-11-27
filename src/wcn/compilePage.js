@@ -10,7 +10,7 @@ module.exports = function compilePage(context) {
   const disposable = vscode.commands.registerTextEditorCommand('elfin.wcn.compilePage', async () => {
     if (vscode.window.activeTextEditor) {
       // 修改 project.config.json 文件内容
-      const appFilePath = vscode.workspace.rootPath + path.sep + 'project.config.json';
+      const appFilePath = `${vscode.workspace.rootPath + path.sep}project.config.json`;
       if (fs.existsSync(appFilePath)) {
         // 读取文件内容
         const contents = fs.readFileSync(appFilePath, 'utf-8');
@@ -23,9 +23,9 @@ module.exports = function compilePage(context) {
         const pathName = tempPath.split(`${vscode.workspace.name}/`).pop();
 
         // 补全字段内容
-        const condition = parseContents.condition
+        const condition = parseContents.condition;
         if (condition) {
-          const miniprogram = condition.miniprogram
+          const miniprogram = condition.miniprogram;
           if (miniprogram && !miniprogram.list) {
             parseContents.condition.miniprogram.list = [];
           } else if (!miniprogram) {
@@ -58,9 +58,9 @@ module.exports = function compilePage(context) {
 
 /**
  * 创建编译选项
- */ 
+ */
 async function createCompileItem(pathName) {
-  let query = ''
+  let query = '';
   const querys = getQuery();
   if (querys && querys.length > 1) {
     query = await vscode.window.showQuickPick(querys);
@@ -69,10 +69,10 @@ async function createCompileItem(pathName) {
   }
 
   return Promise.resolve({
-    "id": -1,
-    "name": Key,
-    "pathName": pathName,
-    "query": query,
+    id: -1,
+    name: Key,
+    pathName: pathName,
+    query: query,
   });
 };
 
