@@ -5,6 +5,7 @@ node_modules
 # local env files
 GitCommitMessage.template
 package-lock.json
+/.elfin.external.js
 
 # Log files
 npm-debug.log*
