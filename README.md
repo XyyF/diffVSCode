@@ -1,5 +1,5 @@
-# diffVSCode
-vscode for elfin
+# elfin VSCode
+vscode plugin for elfin
 
 ## 初始化项目
 ```js
