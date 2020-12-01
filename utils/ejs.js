@@ -1,8 +1,6 @@
 const EjsAPI = require('./ejsAPI');
 
 module.exports = class Ejs extends EjsAPI {
-	fileName
-
 	constructor(options = {}) {
 		super();
 		this.fileName = options.fileName || '';

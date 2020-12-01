@@ -47,8 +47,8 @@ module.exports = function compilePage(context) {
         const item = await createCompileItem(pathName);
         list.unshift(item);
 
-        // 写文件内容
-        fs.writeFileSync(appFilePath, JSON.stringify(parseContents, null, '\t'));
+        // 写文件内容 采用【两空格】制度
+        fs.writeFileSync(appFilePath, JSON.stringify(parseContents, null, '  '));
       }
     }
   });
