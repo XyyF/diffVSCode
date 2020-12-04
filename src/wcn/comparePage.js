@@ -57,7 +57,7 @@ module.exports = function comparePage(context) {
  * 根据文件内定义的path内容，获取对应的UI路径
  */
 function getPath() {
-  const custRegExp = /^<!-- path\/([a-zA-Z0-9/-_.]*) -->$/g;
+  const custRegExp = /^<!-- path\/([a-zA-Z0-9/\-_.]*) -->$/g;
   const activeTextEditor = vscode.window.activeTextEditor;
   let matchPath = '';
   // 从首行开始匹配
