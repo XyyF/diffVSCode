@@ -2,7 +2,7 @@
 	"name": "elfin-vscode",
 	"displayName": "elfin-vscode",
 	"description": "",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"publisher": "rengarxiao",
 	"homepage": "https://github.com/XyyF/elfin-vscode/blob/main/README.md",
 	"repository": {
@@ -25,7 +25,8 @@
 		"onCommand:elfin.wcn.createPage",
 		"onCommand:elfin.wcn.createComponent",
 		"onCommand:elfin.wcn.compilePage",
-		"onCommand:elfin.wcn.comparePage"
+		"onCommand:elfin.wcn.comparePage",
+		"onCommand:elfin.wcn.switchMode"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
@@ -53,6 +54,10 @@
 			{
 				"command": "elfin.wcn.comparePage",
 				"title": "[teenager]对比UI文件"
+			},
+			{
+				"command": "elfin.wcn.switchMode",
+				"title": "[小程序]切换mode环境"
 			}
 		],
 		"menus": {
@@ -80,6 +85,10 @@
 				{
 					"command": "elfin.wcn.comparePage",
 					"when": "editorFocus && resourceExtname == .wxml && resourcePath =~ /xiaochengxu-teenager|AppletNew/"
+				},
+				{
+					"command": "elfin.wcn.switchMode",
+					"when": "editorFocus && resourceFilename == .js && resourcePath =~ /xiaochengxu-teenager|AppletNew/"
 				}
 			],
 			"editor/context": [
@@ -101,6 +110,11 @@
 				{
 					"when": "editorFocus && resourceFilename == app.js && resourcePath =~ /xiaochengxu-teenager|AppletNew/",
 					"command": "elfin.wcn.retrofitApp",
+					"group": "navigation@1"
+				},
+				{
+					"when": "editorFocus && resourcePath =~ /xiaochengxu-teenager|AppletNew/",
+					"command": "elfin.wcn.switchMode",
 					"group": "navigation@1"
 				}
 			],

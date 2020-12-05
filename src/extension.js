@@ -8,6 +8,7 @@ const registerCreatePage = require('./wcn/createPage');
 const registerCreateComponent = require('./wcn/createComponent');
 const registerCompilePage = require('./wcn/compilePage');
 const registerComparePage = require('./wcn/comparePage');
+const registerSwitchMode = require('./wcn/switchMode');
 
 /**
  * 插件被激活时触发，所有代码总入口
@@ -36,6 +37,8 @@ function activate(context) {
 		registerCompilePage(context);
 		// 对比UI远端文件
 		registerComparePage(context);
+		// 切换环境
+		registerSwitchMode(context);
 	}
 }
 exports.activate = activate;
