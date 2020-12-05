@@ -9,7 +9,7 @@ const registerOpenPath = require('./wcn/openPath');
 const registerCreatePage = require('./wcn/createPage');
 const registerCreateComponent = require('./wcn/createComponent');
 const registerCompilePage = require('./wcn/compilePage');
-const registerComparePage = require('./wcn/comparePage');
+// const registerComparePage = require('./wcn/comparePage');
 const registerSwitchMode = require('./wcn/switchMode');
 
 /**
@@ -46,7 +46,7 @@ function activate(context) {
 		// 添加Page编译条件
 		registerCompilePage(context);
 		// 对比UI远端文件
-		registerComparePage(context);
+		// registerComparePage(context);
 		// 切换环境
 		registerSwitchMode(context);
 	} else {

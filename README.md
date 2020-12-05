@@ -95,14 +95,9 @@ vsce package
  <img src="https://rengar-1253859411.cos.ap-chengdu.myqcloud.com/img/20201120_120411.gif" width = "1000" height = "500" alt="图片名称" style="margin: 0 auto;display: block;" />
 <br/>
 
-7. [minipro] 对比远端最新的UI文件内容
+7. [minipro] 切换小程序研发环境
 
-> 优势：当远端UI文件发生了变动，本地快速对比内容，进行修改，免去两个工程反复比较文件内容
-> 格式: \<!-- path/dist/xxx -->
-
-操作: 前提在文件顶部输出需要对比的UI文件远端路径，.wxml文件 -> 右键菜单 -> [teenager]对比UI文件
-<br/>
- <img src="https://rengar-1253859411.cos.ap-chengdu.myqcloud.com/img/20201120_120645.gif" width = "700" height = "500" alt="图片名称" style="margin: 0 auto;display: block;" />
-<br/>
-
-8. [minipro] 切换小程序研发环境
+TODO 
+- 对比UI去除
+- wekf路径可能不存在于node_modules
+- rootName 路径问题
