@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const vscode = require('vscode');
 const registerRetrofitPage = require('./wcn/retrofitPage');
 const registerRetrofitApp = require('./wcn/retrofitApp');
@@ -17,8 +19,16 @@ const registerSwitchMode = require('./wcn/switchMode');
 function activate(context) {
 	console.log('扩展elfin vscode已激活!');
 
-	// 特定目录才触发
-	if (/xiaochengxu-teenager|AppletNew/g.test(vscode.workspace.rootPath)) {
+	// 小程序项目目录才触发
+	const rootPath = vscode.workspace.rootPath;
+	const necessaryFiles = [
+		`${rootPath}${path.sep}project.config.json`,
+		`${rootPath}${path.sep}app.json`,
+		`${rootPath}${path.sep}app.js`,
+	];
+	if (necessaryFiles.every(file => fs.existsSync(file))) {
+		console.log('扩展elfin.minipro已激活!');
+    vscode.commands.executeCommand('setContext', 'elfin.minipro.show', true);
 		// 改造Page.js文件
 		registerRetrofitPage(context);
 		// 改造app.js文件
@@ -39,6 +49,8 @@ function activate(context) {
 		registerComparePage(context);
 		// 切换环境
 		registerSwitchMode(context);
+	} else {
+    vscode.commands.executeCommand('setContext', 'elfin.minipro.show', false);
 	}
 }
 exports.activate = activate;

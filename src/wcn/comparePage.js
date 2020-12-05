@@ -7,7 +7,7 @@ const tmp = require('tmp');
 // 新建小程序Page
 module.exports = function comparePage(context) {
   // 注册命令
-  const disposable = vscode.commands.registerTextEditorCommand('elfin.wcn.comparePage', async () => {
+  const disposable = vscode.commands.registerTextEditorCommand('elfin.minipro.comparePage', async () => {
     // 获取UI工程路径
     const settings = vscode.workspace.getConfiguration('elfin');
     const UIRootPath = settings.UIRootPath;

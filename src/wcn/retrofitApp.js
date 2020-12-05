@@ -5,7 +5,7 @@ const Ejs = require('../../utils/ejs');
 // 改造 teenager页面js文件
 module.exports = function retrofitApp(context) {
 	// 注册命令
-	const disposable = vscode.commands.registerTextEditorCommand('elfin.wcn.retrofitApp', () => {
+	const disposable = vscode.commands.registerTextEditorCommand('elfin.minipro.retrofitApp', () => {
 		if (vscode.window.activeTextEditor) {
 			vscode.window.activeTextEditor.edit(editBuilder => {
 				if (vscode.window.activeTextEditor) {

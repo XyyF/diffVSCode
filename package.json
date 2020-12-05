@@ -20,114 +20,118 @@
 		"onLanguage:javascript",
 		"onLanguage:wxml",
 		"onLanguage:json",
-		"onCommand:elfin.wcn.retrofitPage",
-		"onCommand:elfin.wcn.retrofitApp",
-		"onCommand:elfin.wcn.createPage",
-		"onCommand:elfin.wcn.createComponent",
-		"onCommand:elfin.wcn.compilePage",
-		"onCommand:elfin.wcn.comparePage",
-		"onCommand:elfin.wcn.switchMode"
+		"onCommand:elfin.minipro.retrofitPage",
+		"onCommand:elfin.minipro.retrofitApp",
+		"onCommand:elfin.minipro.createPage",
+		"onCommand:elfin.minipro.createComponent",
+		"onCommand:elfin.minipro.compilePage",
+		"onCommand:elfin.minipro.comparePage",
+		"onCommand:elfin.minipro.switchMode"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "elfin.wcn.retrofitPage",
-				"title": "[teenager]格式化Page文件"
+				"command": "elfin.minipro.show",
+				"title": "展示小程序插件选项"
 			},
 			{
-				"command": "elfin.wcn.retrofitApp",
-				"title": "[teenager]格式化App文件"
+				"command": "elfin.minipro.retrofitPage",
+				"title": "[minipro]格式化Page文件"
 			},
 			{
-				"command": "elfin.wcn.createPage",
-				"title": "[小程序]创建Page文件"
+				"command": "elfin.minipro.retrofitApp",
+				"title": "[minipro]格式化App文件"
 			},
 			{
-				"command": "elfin.wcn.createComponent",
-				"title": "[小程序]创建Component文件"
+				"command": "elfin.minipro.createPage",
+				"title": "[minipro]创建Page文件"
 			},
 			{
-				"command": "elfin.wcn.compilePage",
-				"title": "[小程序]编译Page文件"
+				"command": "elfin.minipro.createComponent",
+				"title": "[minipro]创建Component文件"
 			},
 			{
-				"command": "elfin.wcn.comparePage",
-				"title": "[teenager]对比UI文件"
+				"command": "elfin.minipro.compilePage",
+				"title": "[minipro]编译Page文件"
 			},
 			{
-				"command": "elfin.wcn.switchMode",
-				"title": "[小程序]切换mode环境"
+				"command": "elfin.minipro.comparePage",
+				"title": "[minipro]对比UI文件"
+			},
+			{
+				"command": "elfin.minipro.switchMode",
+				"title": "[minipro]切换mode环境"
 			}
 		],
 		"menus": {
 			"commandPalette": [
 				{
-					"command": "elfin.wcn.retrofitPage",
-					"when": "editorFocus && resourceExtname == .js && resourceFilename != app.js && resourcePath =~ /xiaochengxu-teenager|AppletNew/"
+					"command": "elfin.minipro.retrofitPage",
+					"when": "editorFocus && resourceExtname == .js && resourceFilename != app.js && elfin.minipro.show"
 				},
 				{
-					"command": "elfin.wcn.retrofitApp",
-					"when": "editorFocus && resourceFilename == app.js && resourcePath =~ /xiaochengxu-teenager|AppletNew/"
+					"command": "elfin.minipro.retrofitApp",
+					"when": "editorFocus && resourceFilename == app.js && elfin.minipro.show"
 				},
 				{
-					"command": "elfin.wcn.createPage",
-					"when": "explorerResourceIsFolder == true && resourcePath =~ /xiaochengxu-teenager|AppletNew/"
+					"command": "elfin.minipro.createPage",
+					"when": "explorerResourceIsFolder == true && elfin.minipro.show"
 				},
 				{
-					"command": "elfin.wcn.createComponent",
-					"when": "explorerResourceIsFolder == true && resourcePath =~ /xiaochengxu-teenager|AppletNew/"
+					"command": "elfin.minipro.createComponent",
+					"when": "explorerResourceIsFolder == true && elfin.minipro.show"
 				},
 				{
-					"command": "elfin.wcn.compilePage",
-					"when": "editorFocus && resourceExtname == .js && resourcePath =~ /xiaochengxu-teenager|AppletNew/"
+					"command": "elfin.minipro.compilePage",
+					"when": "editorFocus && resourceExtname == .js && elfin.minipro.show"
 				},
 				{
-					"command": "elfin.wcn.comparePage",
-					"when": "editorFocus && resourceExtname == .wxml && resourcePath =~ /xiaochengxu-teenager|AppletNew/"
+					"command": "elfin.minipro.comparePage",
+					"when": "editorFocus && resourceExtname == .wxml && elfin.minipro.show"
 				},
 				{
-					"command": "elfin.wcn.switchMode",
-					"when": "editorFocus && resourceFilename == .js && resourcePath =~ /xiaochengxu-teenager|AppletNew/"
+					"command": "elfin.minipro.switchMode",
+					"when": "editorFocus && elfin.minipro.show"
 				}
 			],
 			"editor/context": [
 				{
-					"when": "editorFocus && resourceExtname == .js && resourcePath =~ /xiaochengxu-teenager|AppletNew/",
-					"command": "elfin.wcn.compilePage",
+					"when": "editorFocus && resourceExtname == .js && elfin.minipro.show",
+					"command": "elfin.minipro.compilePage",
 					"group": "navigation@0"
 				},
 				{
-					"when": "editorFocus && resourceExtname == .wxml && resourcePath =~ /xiaochengxu-teenager|AppletNew/",
-					"command": "elfin.wcn.comparePage",
+					"when": "editorFocus && resourceExtname == .wxml && elfin.minipro.show",
+					"command": "elfin.minipro.comparePage",
 					"group": "navigation@0"
 				},
 				{
-					"when": "editorFocus && resourceExtname == .js && resourceFilename != app.js && resourcePath =~ /xiaochengxu-teenager|AppletNew/",
-					"command": "elfin.wcn.retrofitPage",
+					"when": "editorFocus && resourceExtname == .js && resourceFilename != app.js && elfin.minipro.show",
+					"command": "elfin.minipro.retrofitPage",
 					"group": "navigation@1"
 				},
 				{
-					"when": "editorFocus && resourceFilename == app.js && resourcePath =~ /xiaochengxu-teenager|AppletNew/",
-					"command": "elfin.wcn.retrofitApp",
+					"when": "editorFocus && resourceFilename == app.js && elfin.minipro.show",
+					"command": "elfin.minipro.retrofitApp",
 					"group": "navigation@1"
 				},
 				{
-					"when": "editorFocus && resourcePath =~ /xiaochengxu-teenager|AppletNew/",
-					"command": "elfin.wcn.switchMode",
+					"when": "editorFocus && elfin.minipro.show",
+					"command": "elfin.minipro.switchMode",
 					"group": "navigation@1"
 				}
 			],
 			"explorer/context": [
 				{
-					"command": "elfin.wcn.createPage",
+					"command": "elfin.minipro.createPage",
 					"group": "navigation",
-					"when": "explorerResourceIsFolder == true && resourcePath =~ /xiaochengxu-teenager|AppletNew/"
+					"when": "explorerResourceIsFolder == true && elfin.minipro.show"
 				},
 				{
-					"command": "elfin.wcn.createComponent",
+					"command": "elfin.minipro.createComponent",
 					"group": "navigation",
-					"when": "explorerResourceIsFolder == true && resourcePath =~ /xiaochengxu-teenager|AppletNew/"
+					"when": "explorerResourceIsFolder == true && elfin.minipro.show"
 				}
 			]
 		},

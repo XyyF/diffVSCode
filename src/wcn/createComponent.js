@@ -6,7 +6,7 @@ const Ejs = require('../../utils/ejs');
 // 新建小程序Component
 module.exports = function createComponent(context) {
     // 注册命令
-    const disposable = vscode.commands.registerCommand('elfin.wcn.createComponent', (url) => {
+    const disposable = vscode.commands.registerCommand('elfin.minipro.createComponent', (url) => {
         vscode.window
             .showInputBox({
                 placeHolder: '请输入组件名称，可以输入 component 或者 component/index',

@@ -6,7 +6,7 @@ const appidProxy = require('./__appid');
 // 改造 teenager页面js文件
 module.exports = function switchMode(context) {
   // 注册命令
-  const disposable = vscode.commands.registerTextEditorCommand('elfin.wcn.switchMode', async () => {
+  const disposable = vscode.commands.registerTextEditorCommand('elfin.minipro.switchMode', async () => {
     if (vscode.window.activeTextEditor) {
       // 环境mode
       let mode = '';

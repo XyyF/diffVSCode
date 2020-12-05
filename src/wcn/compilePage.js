@@ -7,7 +7,7 @@ const Key = 'elfin.vscode';
 // 新建小程序Page
 module.exports = function compilePage(context) {
   // 注册命令
-  const disposable = vscode.commands.registerTextEditorCommand('elfin.wcn.compilePage', async () => {
+  const disposable = vscode.commands.registerTextEditorCommand('elfin.minipro.compilePage', async () => {
     if (vscode.window.activeTextEditor) {
       // 修改 project.config.json 文件内容
       const appFilePath = `${vscode.workspace.rootPath + path.sep}project.config.json`;

@@ -6,7 +6,7 @@ const Ejs = require('../../utils/ejs');
 // 新建小程序Page
 module.exports = function createPage(context) {
     // 注册命令
-    const disposable = vscode.commands.registerCommand('elfin.wcn.createPage', (url) => {
+    const disposable = vscode.commands.registerCommand('elfin.minipro.createPage', (url) => {
         vscode.window
             .showInputBox({
                 placeHolder: '请输入页面名称，可以输入 page 或者 page/index',
