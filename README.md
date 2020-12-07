@@ -98,6 +98,4 @@ vsce package
 7. [minipro] 切换小程序研发环境
 
 TODO 
-- 对比UI去除
-- wekf路径可能不存在于node_modules
 - rootName 路径问题

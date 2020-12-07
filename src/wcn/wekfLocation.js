@@ -32,23 +32,27 @@ function getDestPathByWord(word, lineText) {
 function provideDefinition(document, position) {
     const word = document.getText(document.getWordRangeAtPosition(position));
     const line = document.lineAt(position);
+    const fileName = getDestPathByWord(word, line.text);
+    if (!fileName) return;
 
     if (new RegExp('wekf\\.', 'g').test(line.text)) {
-        let destPath = `${vscode.workspace.rootPath}/node_modules/@tencent/kakashi-wekf/src/`;
+        let destPath = `${vscode.workspace.rootPath}/node_modules/@tencent/kakashi-wekf/src/${fileName}`;
         if (fs.existsSync(destPath)) {
-            const file = getDestPathByWord(word, line.text);
-            if (file) {
-                destPath += file;
-                // new vscode.Position(0, 0) 表示跳转到某个文件的第一行第一列
-                return new vscode.Location(vscode.Uri.file(destPath), new vscode.Position(0, 0));
-            }
+            // new vscode.Position(0, 0) 表示跳转到某个文件的第一行第一列
+            return new vscode.Location(vscode.Uri.file(destPath), new vscode.Position(0, 0));
         }
+        destPath = `${vscode.workspace.rootPath}/wekf/${fileName}`;
+        if (fs.existsSync(destPath)) {
+            // new vscode.Position(0, 0) 表示跳转到某个文件的第一行第一列
+            return new vscode.Location(vscode.Uri.file(destPath), new vscode.Position(0, 0));
+        }
+        vscode.window.showErrorMessage('未匹配到wekf文件，请确认node_modules或者wekf存在后重试');
     }
 }
 
 module.exports = function (context) {
     // 注册如何实现跳转到定义，第一个参数表示仅对javascript文件生效
     context.subscriptions.push(vscode.languages.registerDefinitionProvider(['javascript'], {
-        provideDefinition
+        provideDefinition,
     }));
 };
