@@ -96,6 +96,3 @@ vsce package
 <br/>
 
 7. [minipro] 切换小程序研发环境
-
-TODO 
-- rootName 路径问题
