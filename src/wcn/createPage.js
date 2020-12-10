@@ -64,8 +64,21 @@ module.exports = function createPage(context) {
                         const contents = fs.readFileSync(appFilePath, 'utf-8');
                         const parseContents = JSON.parse(contents.toString());
                         // 转化文件内容
-                        const tempPath = `${url.fsPath.split(path.sep).join('/')}/${file.split(path.sep).join('/')}`;
-                        parseContents.pages.push(tempPath.split(`${vscode.workspace.name}/`).pop());
+                        const fullPath = `${url.fsPath.split(path.sep).join('/')}/${file.split(path.sep).join('/')}`;
+                        const tempPath = fullPath.split(`${vscode.workspace.name}/`).pop(); // 相对根目录路径
+                        const tempDir = tempPath.split('/').shift(); // 主root目录
+                        // 如果是子包的路径的话，需要在子包中添加相应的路径
+                        const subPackages = parseContents.subPackages || [];
+                        const subPackage = subPackages.find(subPackage => {
+                            return subPackage.root === tempDir;
+                        });
+                        if (subPackage) {
+                            // 子包路径
+                            subPackage.pages.push(tempPath.split(`${tempDir}/`).pop());
+                        } else {
+                            // 主包路径
+                            parseContents.pages.push(tempPath);
+                        }
                         // 写文件内容
                         fs.writeFileSync(appFilePath, JSON.stringify(parseContents, null, '\t'));
                     }
