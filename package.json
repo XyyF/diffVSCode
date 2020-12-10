@@ -25,7 +25,6 @@
 		"onCommand:elfin.minipro.createPage",
 		"onCommand:elfin.minipro.createComponent",
 		"onCommand:elfin.minipro.compilePage",
-		"onCommand:elfin.minipro.comparePage",
 		"onCommand:elfin.minipro.switchMode"
 	],
 	"main": "./src/extension.js",
@@ -37,27 +36,23 @@
 			},
 			{
 				"command": "elfin.minipro.retrofitPage",
-				"title": "[minipro]格式化Page文件"
+				"title": "[minipro]格式化Page"
 			},
 			{
 				"command": "elfin.minipro.retrofitApp",
-				"title": "[minipro]格式化App文件"
+				"title": "[minipro]格式化App"
 			},
 			{
 				"command": "elfin.minipro.createPage",
-				"title": "[minipro]创建Page文件"
+				"title": "[minipro]创建Page"
 			},
 			{
 				"command": "elfin.minipro.createComponent",
-				"title": "[minipro]创建Component文件"
+				"title": "[minipro]创建Component"
 			},
 			{
 				"command": "elfin.minipro.compilePage",
-				"title": "[minipro]编译Page文件"
-			},
-			{
-				"command": "elfin.minipro.comparePage",
-				"title": "[minipro]对比UI文件"
+				"title": "[minipro]编译Page"
 			},
 			{
 				"command": "elfin.minipro.switchMode",
@@ -87,10 +82,6 @@
 					"when": "editorFocus && resourceExtname == .js && elfin.minipro.show"
 				},
 				{
-					"command": "elfin.minipro.comparePage",
-					"when": "editorFocus && resourceExtname == .wxml && elfin.minipro.show"
-				},
-				{
 					"command": "elfin.minipro.switchMode",
 					"when": "editorFocus && elfin.minipro.show"
 				}
@@ -99,11 +90,6 @@
 				{
 					"when": "editorFocus && resourceExtname == .js && elfin.minipro.show",
 					"command": "elfin.minipro.compilePage",
-					"group": "navigation@0"
-				},
-				{
-					"when": "editorFocus && resourceExtname == .wxml && elfin.minipro.show",
-					"command": "elfin.minipro.comparePage",
 					"group": "navigation@0"
 				},
 				{
