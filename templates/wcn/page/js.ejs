@@ -1,13 +1,13 @@
 // query?refund_id=
 import wekf from "@tencent/kakashi-wekf";
 
-// const {regeneratorRuntime} = global
+// const {regeneratorRuntime} = global;
 class <%- PageName %> extends wekf.WePage {
   data = {}
   // 页面初始化
   onInit() {
     // 节流控制
-    // this.function.wait = 1000
+    // this.function.wait = 1000;
   }
   // 页面载入时
   onLoad() {}
@@ -27,6 +27,6 @@ class <%- PageName %> extends wekf.WePage {
   onPageScroll() {}
   // 分享时
   onShareAppMessage() {}
-}
+};
 
-wekf.createPage(<%- PageName %>)
+wekf.createPage(<%- PageName %>);
