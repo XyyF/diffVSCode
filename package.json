@@ -111,12 +111,12 @@
 			"explorer/context": [
 				{
 					"command": "elfin.minipro.createPage",
-					"group": "navigation",
+					"group": "navigation@0",
 					"when": "explorerResourceIsFolder == true && elfin.minipro.show"
 				},
 				{
 					"command": "elfin.minipro.createComponent",
-					"group": "navigation",
+					"group": "navigation@1",
 					"when": "explorerResourceIsFolder == true && elfin.minipro.show"
 				}
 			]
