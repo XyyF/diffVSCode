@@ -4,7 +4,7 @@ const path = require('path');
 
 const Key = 'elfin.vscode';
 
-// 新建小程序Page
+// 编译Page
 module.exports = function compilePage(context) {
   // 注册命令
   const disposable = vscode.commands.registerTextEditorCommand('elfin.minipro.compilePage', async () => {

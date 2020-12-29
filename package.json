@@ -2,7 +2,7 @@
 	"name": "elfin-vscode",
 	"displayName": "elfin-vscode",
 	"description": "",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"publisher": "rengarxiao",
 	"homepage": "https://github.com/XyyF/elfin-vscode/blob/main/README.md",
 	"repository": {
@@ -79,7 +79,7 @@
 				},
 				{
 					"command": "elfin.minipro.compilePage",
-					"when": "editorFocus && resourceExtname == .js && elfin.minipro.show"
+					"when": "editorFocus && !(resourceExtname != .js && resourceExtname != .wxml) && elfin.minipro.show"
 				},
 				{
 					"command": "elfin.minipro.switchMode",
@@ -88,7 +88,7 @@
 			],
 			"editor/context": [
 				{
-					"when": "editorFocus && resourceExtname == .js && elfin.minipro.show",
+					"when": "editorFocus && !(resourceExtname != .js && resourceExtname != .wxml) && elfin.minipro.show",
 					"command": "elfin.minipro.compilePage",
 					"group": "navigation@0"
 				},

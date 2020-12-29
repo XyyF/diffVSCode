@@ -19,7 +19,7 @@ module.exports = function retrofitApp(context) {
 						const text = ejs.renderWcnApp();
 						// 从开始到结束，全量替换
 						const end = new vscode.Position(vscode.window.activeTextEditor.document.lineCount + 1, 0);
-						editBuilder.replace(new vscode.Range(new vscode.Position(0, 0), end), text);
+						editBuilder.replace(new vscode.Range(new vscode.Position(0, 0), end), text + '\n');
 					}
 				}
 			});

@@ -4,7 +4,7 @@ const path = require('path');
 const childProcess = require('child_process');
 const tmp = require('tmp');
 
-// 新建小程序Page
+// 对比UI文件
 module.exports = function comparePage(context) {
   // 注册命令
   const disposable = vscode.commands.registerTextEditorCommand('elfin.minipro.comparePage', async () => {
