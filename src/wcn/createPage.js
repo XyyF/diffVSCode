@@ -52,8 +52,8 @@ module.exports = function createPage(context) {
                         file = `${dir}${path.sep}${file}`;
                     }
                     // 写页面
-                    fs.writeFileSync(`${url.fsPath}${path.sep}${file}.js`, js + '\n');
-                    fs.writeFileSync(`${url.fsPath}${path.sep}${file}.wxml`, wxml + '\n');
+                    fs.writeFileSync(`${url.fsPath}${path.sep}${file}.js`, `${js}\n`);
+                    fs.writeFileSync(`${url.fsPath}${path.sep}${file}.wxml`, `${wxml}\n`);
                     fs.writeFileSync(`${url.fsPath}${path.sep}${file}.wxss`, wxss);
                     fs.writeFileSync(`${url.fsPath}${path.sep}${file}.json`, json);
 

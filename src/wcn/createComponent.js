@@ -39,8 +39,8 @@ module.exports = function createComponent(context) {
                     const wxss = ejs.renderWcnComponentWxss();
                     const json = ejs.renderWcnComponentJson();
 
-                    fs.writeFileSync(`${url.fsPath}${path.sep}${file}.js`, js + '\n');
-                    fs.writeFileSync(`${url.fsPath}${path.sep}${file}.wxml`, wxml + '\n');
+                    fs.writeFileSync(`${url.fsPath}${path.sep}${file}.js`, `${js}\n`);
+                    fs.writeFileSync(`${url.fsPath}${path.sep}${file}.wxml`, `${wxml}\n`);
                     fs.writeFileSync(`${url.fsPath}${path.sep}${file}.wxss`, wxss);
                     fs.writeFileSync(`${url.fsPath}${path.sep}${file}.json`, json);
                 } else {
