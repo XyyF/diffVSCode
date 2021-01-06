@@ -4,13 +4,14 @@
 	"description": "",
 	"version": "0.2.3",
 	"publisher": "rengarxiao",
+	"license": "MIT",
 	"homepage": "https://github.com/XyyF/elfin-vscode/blob/main/README.md",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/XyyF/elfin-vscode"
 	},
 	"engines": {
-		"vscode": "^1.51.0"
+			"vscode": "^1.38.0"
 	},
 	"icon": "images/elfinVscode.png",
 	"categories": [

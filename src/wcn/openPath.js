@@ -50,13 +50,7 @@ function provideDefinition() {
 
 module.exports = function (context) {
     // 注册如何实现跳转到定义，第一个参数表示仅对javascript文件生效
-    context.subscriptions.push(vscode.languages.registerDefinitionProvider(['javascript'], {
-        provideDefinition,
-    }));
-    context.subscriptions.push(vscode.languages.registerDefinitionProvider(['wxml'], {
-        provideDefinition,
-    }));
-    context.subscriptions.push(vscode.languages.registerDefinitionProvider(['json'], {
+    context.subscriptions.push(vscode.languages.registerDefinitionProvider(['javascript', 'wxml', 'json'], {
         provideDefinition,
     }));
 };
