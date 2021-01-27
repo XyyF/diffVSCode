@@ -1,16 +1,19 @@
 const fs = require('fs');
 const path = require('path');
 const vscode = require('vscode');
-const registerRetrofitPage = require('./wcn/retrofitPage');
-const registerRetrofitApp = require('./wcn/retrofitApp');
-const registerWekfCompletion = require('./wcn/wekfCompletion');
-const registerWekfLocation = require('./wcn/wekfLocation');
-const registerOpenPath = require('./wcn/openPath');
-const registerCreatePage = require('./wcn/createPage');
-const registerCreateComponent = require('./wcn/createComponent');
-const registerCompilePage = require('./wcn/compilePage');
+// wekf系列
+const registerRetrofitPage = require('./wekf/retrofitPage');
+const registerRetrofitApp = require('./wekf/retrofitApp');
+const registerWekfCompletion = require('./wekf/wekfCompletion');
+const registerWekfLocation = require('./wekf/wekfLocation');
+const registerCompilePage = require('./wekf/compilePage');
 // const registerComparePage = require('./wcn/comparePage');
-const registerSwitchMode = require('./wcn/switchMode');
+
+// minipro系列
+const registerOpenPath = require('./minipro/openPath');
+const registerCreatePage = require('./minipro/createPage');
+const registerCreateComponent = require('./minipro/createComponent');
+const registerSwitchMode = require('./minipro/switchMode');
 
 /**
  * 插件被激活时触发，所有代码总入口
