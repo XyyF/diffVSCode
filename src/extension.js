@@ -7,7 +7,7 @@ const registerRetrofitApp = require('./wekf/retrofitApp');
 const registerWekfCompletion = require('./wekf/wekfCompletion');
 const registerWekfLocation = require('./wekf/wekfLocation');
 const registerCompilePage = require('./wekf/compilePage');
-// const registerComparePage = require('./wcn/comparePage');
+// const registerComparePage = require('./wekf/comparePage');
 
 // minipro系列
 const registerOpenPath = require('./minipro/openPath');
