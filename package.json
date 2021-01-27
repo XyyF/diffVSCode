@@ -21,8 +21,8 @@
 		"onLanguage:javascript",
 		"onLanguage:wxml",
 		"onLanguage:json",
-		"onCommand:elfin.minipro.retrofitPage",
-		"onCommand:elfin.minipro.retrofitApp",
+		"onCommand:elfin.wekf.retrofitPage",
+		"onCommand:elfin.wekf.retrofitApp",
 		"onCommand:elfin.minipro.createPage",
 		"onCommand:elfin.minipro.createComponent",
 		"onCommand:elfin.minipro.compilePage",
@@ -32,16 +32,20 @@
 	"contributes": {
 		"commands": [
 			{
+				"command": "elfin.wekf.show",
+				"title": "展示wekf插件选项"
+			},
+			{
 				"command": "elfin.minipro.show",
-				"title": "展示小程序插件选项"
+				"title": "展示minipro插件选项"
 			},
 			{
-				"command": "elfin.minipro.retrofitPage",
-				"title": "[minipro]格式化Page"
+				"command": "elfin.wekf.retrofitPage",
+				"title": "[wekf]格式化Page"
 			},
 			{
-				"command": "elfin.minipro.retrofitApp",
-				"title": "[minipro]格式化App"
+				"command": "elfin.wekf.retrofitApp",
+				"title": "[wekf]格式化App"
 			},
 			{
 				"command": "elfin.minipro.createPage",
@@ -63,12 +67,12 @@
 		"menus": {
 			"commandPalette": [
 				{
-					"command": "elfin.minipro.retrofitPage",
-					"when": "editorFocus && resourceExtname == .js && resourceFilename != app.js && elfin.minipro.show"
+					"command": "elfin.wekf.retrofitPage",
+					"when": "editorFocus && resourceExtname == .js && resourceFilename != app.js && elfin.wekf.show"
 				},
 				{
-					"command": "elfin.minipro.retrofitApp",
-					"when": "editorFocus && resourceFilename == app.js && elfin.minipro.show"
+					"command": "elfin.wekf.retrofitApp",
+					"when": "editorFocus && resourceFilename == app.js && elfin.wekf.show"
 				},
 				{
 					"command": "elfin.minipro.createPage",
@@ -94,13 +98,13 @@
 					"group": "navigation@0"
 				},
 				{
-					"when": "editorFocus && resourceExtname == .js && resourceFilename != app.js && elfin.minipro.show",
-					"command": "elfin.minipro.retrofitPage",
+					"when": "editorFocus && resourceExtname == .js && resourceFilename != app.js && elfin.wekf.show",
+					"command": "elfin.wekf.retrofitPage",
 					"group": "navigation@1"
 				},
 				{
-					"when": "editorFocus && resourceFilename == app.js && elfin.minipro.show",
-					"command": "elfin.minipro.retrofitApp",
+					"when": "editorFocus && resourceFilename == app.js && elfin.wekf.show",
+					"command": "elfin.wekf.retrofitApp",
 					"group": "navigation@1"
 				},
 				{

@@ -6,7 +6,6 @@ const registerRetrofitPage = require('./wekf/retrofitPage');
 const registerRetrofitApp = require('./wekf/retrofitApp');
 const registerWekfCompletion = require('./wekf/wekfCompletion');
 const registerWekfLocation = require('./wekf/wekfLocation');
-const registerCompilePage = require('./wekf/compilePage');
 // const registerComparePage = require('./wekf/comparePage');
 
 // minipro系列
@@ -15,6 +14,7 @@ const registerCreatePage = require('./minipro/createPage');
 const registerCreateComponent = require('./minipro/createComponent');
 const registerSwitchMode = require('./minipro/switchMode');
 const registerWxApiHover = require('./minipro/wxApiHover');
+const registerCompilePage = require('./minipro/compilePage');
 
 /**
  * 插件被激活时触发，所有代码总入口
@@ -31,8 +31,9 @@ function activate(context) {
 		`${rootPath}${path.sep}app.js`,
 	];
 	if (necessaryFiles.every(file => fs.existsSync(file))) {
-		console.log('扩展elfin.minipro已激活!');
+		console.log('扩展elfin.minipro|wekf已激活!');
     vscode.commands.executeCommand('setContext', 'elfin.minipro.show', true);
+    vscode.commands.executeCommand('setContext', 'elfin.wekf.show', true);
 		// 改造Page.js文件
 		registerRetrofitPage(context);
 		// 改造app.js文件
@@ -57,6 +58,7 @@ function activate(context) {
 		registerWxApiHover(context);
 	} else {
     vscode.commands.executeCommand('setContext', 'elfin.minipro.show', false);
+    vscode.commands.executeCommand('setContext', 'elfin.wekf.show', false);
 	}
 }
 exports.activate = activate;

@@ -96,3 +96,5 @@ vsce package
 <br/>
 
 7. [minipro] 切换小程序研发环境
+
+8. [minipro] 微信小程序API心得hover提示
