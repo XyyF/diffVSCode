@@ -14,6 +14,7 @@ const registerOpenPath = require('./minipro/openPath');
 const registerCreatePage = require('./minipro/createPage');
 const registerCreateComponent = require('./minipro/createComponent');
 const registerSwitchMode = require('./minipro/switchMode');
+const registerWxApiHover = require('./minipro/wxApiHover');
 
 /**
  * 插件被激活时触发，所有代码总入口
@@ -52,6 +53,8 @@ function activate(context) {
 		// registerComparePage(context);
 		// 切换环境
 		registerSwitchMode(context);
+		// wxApi提示
+		registerWxApiHover(context);
 	} else {
     vscode.commands.executeCommand('setContext', 'elfin.minipro.show', false);
 	}

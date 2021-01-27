@@ -1,6 +1,8 @@
 /**
  * Created by rengar on 2020/6/17.
  */
+const fs = require('fs');
+const path = require('path');
 const ShellAPI = require('./shellAPI');
 
 module.exports = class Shell extends ShellAPI {
@@ -26,5 +28,19 @@ module.exports = class Shell extends ShellAPI {
 
     writeFlieFromScript(relativePath, template) {
         return this._writeFile(this._getCurrentPath(relativePath), template);
+    }
+
+    readDeepDir(dir) {
+        const dirList = fs.readdirSync(dir);
+        const ret = [];
+        dirList.forEach((children) => {
+            const stat = fs.statSync(path.join(dir, children));
+            if (stat.isDirectory()) {
+                ret.push(...this.readDeepDir(path.join(dir, children)));
+            } else {
+                ret.push(path.join(dir, children));
+            }
+        });
+        return ret;
     }
 };
