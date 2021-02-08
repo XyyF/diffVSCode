@@ -21,11 +21,13 @@
       "\t}",
       "}"
     ],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/page.html",
     "description": "Page页面对应的JSON文件配置项"
   },
   "minipro-json-pages": {
     "prefix": "pages",
     "body": ["\"pages\": [", "\t\"pages/index/index\"", "],", "${1}"],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#pages",
     "description": "App对应的JSON文件pages配置项"
   },
   "minipro-json-window": {
@@ -46,6 +48,7 @@
       "},",
       "${1}"
     ],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#window",
     "description": "App对应的JSON文件window配置项"
   },
   "minipro-json-tabbar": {
@@ -69,10 +72,11 @@
       "},",
       "${8}"
     ],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#tabbar",
     "description": "App对应的JSON文件tabbar配置项"
   },
-  "minipro-json-network": {
-    "prefix": "networktimeout",
+  "minipro-json-networkTimeout": {
+    "prefix": "networkTimeout",
     "body": [
       "\"networkTimeout\": {",
       "\t\"request\": ${1:60000},",
@@ -82,51 +86,61 @@
       "},",
       "${5}"
     ],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#networkTimeout",
     "description": "App对应的JSON文件networktimeout配置项,超时设置"
   },
   "minipro-json-debug": {
     "prefix": "debug",
     "body": ["\"debug\": true,"],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#debug",
     "description": "App对应的JSON文件debug配置项,是否是调试模式"
   },
   "minipro-json-functionalPages": {
     "prefix": "functionalPages",
     "body": ["\"functionalPages\": { \"independent\": false },"],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#functionalPages",
     "description": "是否启用插件功能页"
   },
   "minipro-json-subpackages": {
     "prefix": "subpackages",
     "body": ["\"subpackages\": [],"],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#subpackages",
     "description": "App对应的JSON文件subPackages配置项,分包结构配置"
   },
   "minipro-json-workers": {
     "prefix": "workers",
     "body": ["\"workers\": \"\","],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#workers",
     "description": "Worker代码放置的目录"
   },
   "minipro-json-requiredBackgroundModes": {
     "prefix": "requiredBackgroundModes",
     "body": ["\"requiredBackgroundModes\": [\"audio\"],"],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#requiredBackgroundModes",
     "description": "需要在后台使用的能力，如“音乐播放”"
   },
   "minipro-json-plugins": {
     "prefix": "plugins",
     "body": ["\"plugins\": {},"],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#plugins",
     "description": "使用到的插件"
   },
   "minipro-json-preloadRule": {
     "prefix": "preloadRule",
     "body": ["\"preloadRule\": {},"],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#preloadRule",
     "description": "分包预下载规则"
   },
   "minipro-json-resizable": {
     "prefix": "resizable",
     "body": ["\"resizable\": false,"],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#resizable",
     "description": "iPad 小程序是否支持屏幕旋转，默认关闭"
   },
   "minipro-json-usingComponents": {
     "prefix": "usingComponents",
     "body": ["\"usingComponents\": {},"],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#usingComponents",
     "description": "在此处声明的自定义组件视为全局自定义组件，在小程序内的页面或自定义组件中可以直接使用而无需再声明。"
   },
   "minipro-json-permission": {
@@ -138,6 +152,55 @@
       "\t}",
       "},"
     ],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission",
     "description": "小程序接口权限相关设置。"
+  },
+  "minipro-json-sitemapLocation": {
+    "prefix": "sitemapLocation",
+    "body": ["\"sitemapLocation\": \"\""],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#sitemapLocation",
+    "description": "指明 sitemap.json 的位置"
+  },
+  "minipro-json-style": {
+    "prefix": "style",
+    "body": ["\"style\": \"\""],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#style",
+    "description": "指明使用升级后的weui样式"
+  },
+  "minipro-json-useExtendedLib": {
+    "prefix": "useExtendedLib",
+    "body": ["\"useExtendedLib\": {}"],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#useExtendedLib",
+    "description": "指明需要引用的扩展库"
+  },
+  "minipro-json-entranceDeclare": {
+    "prefix": "entranceDeclare",
+    "body": ["\"entranceDeclare\": {}"],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#entranceDeclare",
+    "description": "微信消息用小程序打开"
+  },
+  "minipro-json-darkmode": {
+    "prefix": "darkmode",
+    "body": ["\"darkmode\": false"],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#darkmode",
+    "description": "小程序支持 DarkMode"
+  },
+  "minipro-json-themeLocation": {
+    "prefix": "themeLocation",
+    "body": ["\"themeLocation\": \"\""],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#themeLocation",
+    "description": "指明 theme.json 的位置，darkmode为true必填"
+  },
+  "minipro-json-lazyCodeLoading": {
+    "prefix": "lazyCodeLoading",
+    "body": ["\"lazyCodeLoading\": \"\""],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#lazyCodeLoading",
+    "description": "配置自定义组件代码按需注入"
+  },
+  "minipro-json-singlePage": {
+    "prefix": "singlePage",
+    "body": ["\"singlePage\": {}"],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#singlePage",
+    "description": "单页模式相关配置"
   }
 }

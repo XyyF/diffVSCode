@@ -5,6 +5,10 @@ const Shell = require('../../utils/Shell');
 const documents = {};
 const shell = new Shell();
 
+// 遍历所有的json
+// const miniproJs = JSON.parse(shell.loadFileFromElfinRoot('src/snippets/miniproJs.json'));
+const miniproJson = JSON.parse(shell.loadFileFromElfinRoot('src/snippets/miniproJson.json'));
+const miniproWxml = JSON.parse(shell.loadFileFromElfinRoot('src/snippets/miniproWxml.json'));
 // 遍历所有的markdown
 const markdowns = shell.readDeepDir(path.join(__dirname, '../../documents/wx'));
 markdowns.forEach((file) => {
@@ -13,16 +17,33 @@ markdowns.forEach((file) => {
 });
 
 function provideHover(document, position) {
-  const apiName = document.getText(document.getWordRangeAtPosition(position));
+  let apiName = document.getText(document.getWordRangeAtPosition(position));
+  if (!apiName) return;
+
+  apiName = apiName.replace(/"/g, '');
   if (documents[apiName]) {
     return new vscode.Hover(new vscode.MarkdownString(documents[apiName]));
   }
+  const wxmltag = `minipro-wxml-${apiName}`;
+  if (miniproWxml[wxmltag]) {
+    return new vscode.Hover(
+      new vscode.MarkdownString(`${miniproWxml[wxmltag].description} \r\n` + '\r\n' + `[官方文档](${miniproWxml[wxmltag].url})`)
+    );
+  }
+  const jsontag = `minipro-json-${apiName}`;
+  if (miniproJson[jsontag]) {
+    return new vscode.Hover(
+      new vscode.MarkdownString(`${miniproJson[jsontag].description} \r\n` + '\r\n' + `[官方文档](${miniproJson[jsontag].url})`)
+    );
+  }
   return null;
-};
+}
 
 module.exports = function (context) {
   // 注册实现定义提示，第一个参数表示仅对javascript文件生效
-  context.subscriptions.push(vscode.languages.registerHoverProvider(['javascript'], {
-    provideHover,
-  }));
+  context.subscriptions.push(
+    vscode.languages.registerHoverProvider(['javascript', 'wxml', 'json'], {
+      provideHover,
+    })
+  );
 };
