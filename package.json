@@ -1,173 +1,195 @@
 {
-	"name": "elfin-vscode",
-	"displayName": "elfin-vscode",
-	"description": "",
-	"version": "0.2.3",
-	"publisher": "rengarxiao",
-	"license": "MIT",
-	"homepage": "https://github.com/XyyF/elfin-vscode/blob/main/README.md",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/XyyF/elfin-vscode"
-	},
-	"engines": {
-		"vscode": "^1.38.0"
-	},
-	"icon": "images/elfinVscode.png",
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"onLanguage:javascript",
-		"onLanguage:wxml",
-		"onLanguage:json",
-		"onCommand:elfin.wekf.retrofitPage",
-		"onCommand:elfin.wekf.retrofitApp",
-		"onCommand:elfin.minipro.createPage",
-		"onCommand:elfin.minipro.createComponent",
-		"onCommand:elfin.minipro.compilePage",
-		"onCommand:elfin.minipro.switchMode"
-	],
-	"main": "./src/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "elfin.wekf.show",
-				"title": "展示wekf插件选项"
-			},
-			{
-				"command": "elfin.minipro.show",
-				"title": "展示minipro插件选项"
-			},
-			{
-				"command": "elfin.wekf.retrofitPage",
-				"title": "[wekf]格式化Page"
-			},
-			{
-				"command": "elfin.wekf.retrofitApp",
-				"title": "[wekf]格式化App"
-			},
-			{
-				"command": "elfin.minipro.createPage",
-				"title": "[minipro]创建Page"
-			},
-			{
-				"command": "elfin.minipro.createComponent",
-				"title": "[minipro]创建Component"
-			},
-			{
-				"command": "elfin.minipro.compilePage",
-				"title": "[minipro]编译Page"
-			},
-			{
-				"command": "elfin.minipro.switchMode",
-				"title": "[minipro]切换mode环境"
-			}
-		],
-		"snippets": [],
-		"menus": {
-			"commandPalette": [
-				{
-					"command": "elfin.wekf.retrofitPage",
-					"when": "editorFocus && resourceExtname == .js && resourceFilename != app.js && elfin.wekf.show"
-				},
-				{
-					"command": "elfin.wekf.retrofitApp",
-					"when": "editorFocus && resourceFilename == app.js && elfin.wekf.show"
-				},
-				{
-					"command": "elfin.minipro.createPage",
-					"when": "explorerResourceIsFolder == true && elfin.minipro.show"
-				},
-				{
-					"command": "elfin.minipro.createComponent",
-					"when": "explorerResourceIsFolder == true && elfin.minipro.show"
-				},
-				{
-					"command": "elfin.minipro.compilePage",
-					"when": "editorFocus && !(resourceExtname != .js && resourceExtname != .wxml) && elfin.minipro.show"
-				},
-				{
-					"command": "elfin.minipro.switchMode",
-					"when": "editorFocus && elfin.minipro.show"
-				}
-			],
-			"editor/context": [
-				{
-					"when": "editorFocus && !(resourceExtname != .js && resourceExtname != .wxml) && elfin.minipro.show",
-					"command": "elfin.minipro.compilePage",
-					"group": "navigation@0"
-				},
-				{
-					"when": "editorFocus && resourceExtname == .js && resourceFilename != app.js && elfin.wekf.show",
-					"command": "elfin.wekf.retrofitPage",
-					"group": "navigation@1"
-				},
-				{
-					"when": "editorFocus && resourceFilename == app.js && elfin.wekf.show",
-					"command": "elfin.wekf.retrofitApp",
-					"group": "navigation@1"
-				},
-				{
-					"when": "editorFocus && elfin.minipro.show",
-					"command": "elfin.minipro.switchMode",
-					"group": "navigation@1"
-				}
-			],
-			"explorer/context": [
-				{
-					"command": "elfin.minipro.createPage",
-					"group": "navigation@0",
-					"when": "explorerResourceIsFolder == true && elfin.minipro.show"
-				},
-				{
-					"command": "elfin.minipro.createComponent",
-					"group": "navigation@1",
-					"when": "explorerResourceIsFolder == true && elfin.minipro.show"
-				}
-			]
-		},
-		"configuration": {
-			"type": "object",
-			"title": "Elfin Vscode",
-			"properties": {
-				"elfin.UIRootPath": {
-					"type": "string",
-					"default": "E:/TEG/weapp-sndt",
-					"scope": "window",
-					"description": "UI工程路径"
-				}
-			}
-		}
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "npm run lint",
-			"commit-msg": "elfincmd hooks commit-msg"
-		}
-	},
-	"scripts": {
-		"elfin.init": "elfincmd external clone && elfincmd external install",
-		"lint": "eslint ./src ./utils --ext .js,.jsx,.ts,.tsx,.vue",
-		"pretest": "npm run lint",
-		"test": "node ./test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/glob": "^7.1.3",
-		"@types/mocha": "^8.0.0",
-		"@types/node": "^12.11.7",
-		"@types/vscode": "^1.38.0",
-		"babel-eslint": "^10.1.0",
-		"eslint": "^7.9.0",
-		"eslint-plugin-import": "^2.22.1",
-		"glob": "^7.1.6",
-		"husky": "^4.3.0",
-		"mocha": "^8.1.3",
-		"typescript": "^4.0.2",
-		"vscode-test": "^1.4.0"
-	},
-	"dependencies": {
-		"ejs": "^3.1.5",
-		"tmp": "^0.2.1"
-	}
+  "name": "elfin-vscode",
+  "displayName": "elfin-vscode",
+  "description": "",
+  "version": "0.2.3",
+  "publisher": "rengarxiao",
+  "license": "MIT",
+  "homepage": "https://github.com/XyyF/elfin-vscode/blob/main/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/XyyF/elfin-vscode"
+  },
+  "engines": {
+    "vscode": "^1.38.0"
+  },
+  "icon": "images/elfinVscode.png",
+  "categories": [
+    "Snippets",
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:wxml",
+    "onLanguage:json",
+    "onCommand:elfin.wekf.retrofitPage",
+    "onCommand:elfin.wekf.retrofitApp",
+    "onCommand:elfin.minipro.createPage",
+    "onCommand:elfin.minipro.createComponent",
+    "onCommand:elfin.minipro.compilePage",
+    "onCommand:elfin.minipro.switchMode"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "wxml",
+        "extensions": [
+          ".wxml"
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "command": "elfin.wekf.show",
+        "title": "展示wekf插件选项"
+      },
+      {
+        "command": "elfin.minipro.show",
+        "title": "展示minipro插件选项"
+      },
+      {
+        "command": "elfin.wekf.retrofitPage",
+        "title": "[wekf]格式化Page"
+      },
+      {
+        "command": "elfin.wekf.retrofitApp",
+        "title": "[wekf]格式化App"
+      },
+      {
+        "command": "elfin.minipro.createPage",
+        "title": "[minipro]创建Page"
+      },
+      {
+        "command": "elfin.minipro.createComponent",
+        "title": "[minipro]创建Component"
+      },
+      {
+        "command": "elfin.minipro.compilePage",
+        "title": "[minipro]编译Page"
+      },
+      {
+        "command": "elfin.minipro.switchMode",
+        "title": "[minipro]切换mode环境"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./src/snippets/miniproJs.json"
+      },
+      {
+        "language": "wxml",
+        "path": "./src/snippets/miniproWxml.json"
+      },
+      {
+        "language": "json",
+        "path": "./src/snippets/miniproJson.json"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "elfin.wekf.retrofitPage",
+          "when": "editorFocus && resourceExtname == .js && resourceFilename != app.js && elfin.wekf.show"
+        },
+        {
+          "command": "elfin.wekf.retrofitApp",
+          "when": "editorFocus && resourceFilename == app.js && elfin.wekf.show"
+        },
+        {
+          "command": "elfin.minipro.createPage",
+          "when": "explorerResourceIsFolder == true && elfin.minipro.show"
+        },
+        {
+          "command": "elfin.minipro.createComponent",
+          "when": "explorerResourceIsFolder == true && elfin.minipro.show"
+        },
+        {
+          "command": "elfin.minipro.compilePage",
+          "when": "editorFocus && !(resourceExtname != .js && resourceExtname != .wxml) && elfin.minipro.show"
+        },
+        {
+          "command": "elfin.minipro.switchMode",
+          "when": "editorFocus && elfin.minipro.show"
+        }
+      ],
+      "editor/context": [
+        {
+          "when": "editorFocus && !(resourceExtname != .js && resourceExtname != .wxml) && elfin.minipro.show",
+          "command": "elfin.minipro.compilePage",
+          "group": "navigation@0"
+        },
+        {
+          "when": "editorFocus && resourceExtname == .js && resourceFilename != app.js && elfin.wekf.show",
+          "command": "elfin.wekf.retrofitPage",
+          "group": "navigation@1"
+        },
+        {
+          "when": "editorFocus && resourceFilename == app.js && elfin.wekf.show",
+          "command": "elfin.wekf.retrofitApp",
+          "group": "navigation@1"
+        },
+        {
+          "when": "editorFocus && elfin.minipro.show",
+          "command": "elfin.minipro.switchMode",
+          "group": "navigation@1"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "elfin.minipro.createPage",
+          "group": "navigation@0",
+          "when": "explorerResourceIsFolder == true && elfin.minipro.show"
+        },
+        {
+          "command": "elfin.minipro.createComponent",
+          "group": "navigation@1",
+          "when": "explorerResourceIsFolder == true && elfin.minipro.show"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Elfin Vscode",
+      "properties": {
+        "elfin.UIRootPath": {
+          "type": "string",
+          "default": "E:/TEG/weapp-sndt",
+          "scope": "window",
+          "description": "UI工程路径"
+        }
+      }
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "commit-msg": "elfincmd hooks commit-msg"
+    }
+  },
+  "scripts": {
+    "elfin.init": "elfincmd external clone && elfincmd external install",
+    "lint": "eslint ./src ./utils --ext .js,.jsx,.ts,.tsx,.vue",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.0",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.38.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.9.0",
+    "eslint-plugin-import": "^2.22.1",
+    "glob": "^7.1.6",
+    "husky": "^4.3.0",
+    "mocha": "^8.1.3",
+    "typescript": "^4.0.2",
+    "vscode-test": "^1.4.0"
+  },
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "tmp": "^0.2.1"
+  }
 }

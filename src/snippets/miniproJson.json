@@ -1,0 +1,143 @@
+{
+  "//": "感谢https://github.com/ChandZhang/wechat-snippet-vscode/edit/master/snippets/wxjson.json支持",
+  "minipro-json-page": {
+    "prefix": "page",
+    "body": [
+      "{",
+      "\t\"navigationBarBackgroundColor\": \"#000000\",",
+      "\t\"navigationBarTextStyle\": \"white\",",
+      "\t\"navigationBarTitleText\": \"\",",
+      "\t\"backgroundColor\": \"#ffffff\",",
+      "\t\"backgroundTextStyle\": \"dark|light\",",
+      "\t\"enablePullDownRefresh\": false,",
+      "\t\"disableScroll\": false,",
+      "\t\"onReachBottomDistance\": false,",
+      "\t\"pageOrientation\": \"portrait|auto|landscape\",",
+      "\t\"usingComponents\": {},",
+      "\t\"initialRenderingCache\": \"\",",
+      "\t\"style\": \"default\",",
+      "\t\"singlePage\": {",
+      "\t\t\"navigationBarFit\": \"float|squeezed\"",
+      "\t}",
+      "}"
+    ],
+    "description": "Page页面对应的JSON文件配置项"
+  },
+  "minipro-json-pages": {
+    "prefix": "pages",
+    "body": ["\"pages\": [", "\t\"pages/index/index\"", "],", "${1}"],
+    "description": "App对应的JSON文件pages配置项"
+  },
+  "minipro-json-window": {
+    "prefix": "window",
+    "body": [
+      "\"window\": {",
+      "\t\"navigationBarBackgroundColor\": \"#000000\",",
+      "\t\"navigationBarTextStyle\": \"white\",",
+      "\t\"navigationBarTitleText\": \"\",",
+      "\t\"navigationStyle\": \"default|custom\",",
+      "\t\"backgroundColor\": \"#ffffff\",",
+      "\t\"backgroundTextStyle\": \"dark|light\",",
+      "\t\"backgroundColorTop\": \"#ffffff\",",
+      "\t\"backgroundColorBottom\": \"#ffffff\",",
+      "\t\"enablePullDownRefresh\": true,",
+      "\t\"onReachBottomDistance\": 50",
+      "\t\"pageOrientation\": \"portrait|auto|landscape\",",
+      "},",
+      "${1}"
+    ],
+    "description": "App对应的JSON文件window配置项"
+  },
+  "minipro-json-tabbar": {
+    "prefix": "tabbar",
+    "body": [
+      "\"tabBar\": {",
+      "\t\"color\": \"${1}\",",
+      "\t\"selectedColor\": \"${2}\",",
+      "\t\"backgroundColor\": \"${3}\",",
+      "\t\"position\": \"bottom\",",
+      "\t\"borderStyle\": \"black\",",
+      "\t\"custom\": false,",
+      "\t\"list\": [",
+      "\t\t{",
+      "\t\t\t\"pagePath\": \"${4}\",",
+      "\t\t\t\"text\": \"${5}\",",
+      "\t\t\t\"iconPath\": \"${6}\",",
+      "\t\t\t\"selectedIconPath\": \"${7}\"",
+      "\t\t}",
+      "\t]",
+      "},",
+      "${8}"
+    ],
+    "description": "App对应的JSON文件tabbar配置项"
+  },
+  "minipro-json-network": {
+    "prefix": "networktimeout",
+    "body": [
+      "\"networkTimeout\": {",
+      "\t\"request\": ${1:60000},",
+      "\t\"connectSocket\": ${2:60000},",
+      "\t\"uploadFile\": ${3:60000},",
+      "\t\"downloadFile\": ${4:60000}",
+      "},",
+      "${5}"
+    ],
+    "description": "App对应的JSON文件networktimeout配置项,超时设置"
+  },
+  "minipro-json-debug": {
+    "prefix": "debug",
+    "body": ["\"debug\": true,"],
+    "description": "App对应的JSON文件debug配置项,是否是调试模式"
+  },
+  "minipro-json-functionalPages": {
+    "prefix": "functionalPages",
+    "body": ["\"functionalPages\": { \"independent\": false },"],
+    "description": "是否启用插件功能页"
+  },
+  "minipro-json-subpackages": {
+    "prefix": "subpackages",
+    "body": ["\"subpackages\": [],"],
+    "description": "App对应的JSON文件subPackages配置项,分包结构配置"
+  },
+  "minipro-json-workers": {
+    "prefix": "workers",
+    "body": ["\"workers\": \"\","],
+    "description": "Worker代码放置的目录"
+  },
+  "minipro-json-requiredBackgroundModes": {
+    "prefix": "requiredBackgroundModes",
+    "body": ["\"requiredBackgroundModes\": [\"audio\"],"],
+    "description": "需要在后台使用的能力，如“音乐播放”"
+  },
+  "minipro-json-plugins": {
+    "prefix": "plugins",
+    "body": ["\"plugins\": {},"],
+    "description": "使用到的插件"
+  },
+  "minipro-json-preloadRule": {
+    "prefix": "preloadRule",
+    "body": ["\"preloadRule\": {},"],
+    "description": "分包预下载规则"
+  },
+  "minipro-json-resizable": {
+    "prefix": "resizable",
+    "body": ["\"resizable\": false,"],
+    "description": "iPad 小程序是否支持屏幕旋转，默认关闭"
+  },
+  "minipro-json-usingComponents": {
+    "prefix": "usingComponents",
+    "body": ["\"usingComponents\": {},"],
+    "description": "在此处声明的自定义组件视为全局自定义组件，在小程序内的页面或自定义组件中可以直接使用而无需再声明。"
+  },
+  "minipro-json-permission": {
+    "prefix": "permission",
+    "body": [
+      "\"permission\": {",
+      "\t\"scope.userLocation\": {",
+      "\t\t\"desc\": \"你的位置信息将用于小程序位置接口的效果展示\"",
+      "\t}",
+      "},"
+    ],
+    "description": "小程序接口权限相关设置。"
+  }
+}
