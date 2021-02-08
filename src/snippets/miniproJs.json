@@ -1,110 +1,19 @@
 {
   "//": "感谢https://github.com/ChandZhang/wechat-snippet-vscode/edit/master/snippets/wxjs.json支持",
-  "wxapp": {
-    "prefix": "wx-app",
-    "body": [
-      "//app.js",
-      "App({",
-      "\t//onLaunch,onShow: options(path,query,scene,shareTicket,referrerInfo(appId,extraData))",
-      "\tonLaunch: function(options){",
-      "\t\t${1}",
-      "\t},",
-      "\tonShow: function(options){",
-      "\r\n\t},",
-      "\tonHide: function(){",
-      "\r\n\t},",
-      "\tonError: function(msg){",
-      "\r\n\t},",
-      "\t//options(path,query,isEntryPage)",
-      "\tonPageNotFound: function(options){",
-      "\r\n\t},",
-      "\tglobalData: {",
-      "\t\t${2}",
-      "\t}",
-      "});"
-    ],
-    "description": "App对象及其生命周期函数和回调函数"
+  "minipro-js-getCurrentPages": {
+    "prefix": "wx.getCurrentPages",
+    "body": ["const ${1:curPages} = getCurrentPages();", "${2}"],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/route.html#%E9%A1%B5%E9%9D%A2%E6%A0%88",
+    "description": "获取当前页面栈，不要在 App.onLaunch 的时候调用 getCurrentPages()，可通过 getCurrentPages 获取当前的页面栈，决定需要返回几层。"
   },
-  "wxpage": {
-    "prefix": "wx-page",
-    "body": [
-      "//Page Object",
-      "Page({",
-      "\tdata: {",
-      "\t\t${1}",
-      "\t},",
-      "\t//options(Object)",
-      "\tonLoad: function(options){",
-      "\t\t${2}",
-      "\t},",
-      "\tonReady: function(){",
-      "\t\t${3}",
-      "\t},",
-      "\tonShow: function(){",
-      "\t\t${4}",
-      "\t},",
-      "\tonHide: function(){",
-      "\r\n\t},",
-      "\tonUnload: function(){",
-      "\r\n\t},",
-      "\tonPullDownRefresh: function(){",
-      "\r\n\t},",
-      "\tonReachBottom: function(){",
-      "\r\n\t},",
-      "\tonShareAppMessage: function(){",
-      "\r\n\t},",
-      "\tonPageScroll: function(){",
-      "\r\n\t},",
-      "\t//item(index,pagePath,text)",
-      "\tonTabItemTap:function(item){",
-      "\r\n\t}",
-      "});"
-    ],
-    "description": "Page对象及其生命周期函数和回调函数"
+  "minipro-js-getApp": {
+    "prefix": "wx.getApp",
+    "body": ["const ${1:appInst} = getApp();", "${2}"],
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/api/getApp.html",
+    "description": "获取到小程序全局唯一的 App 实例。\r\n不要在定义于 App() 内的函数中，或调用 App 前调用 getApp() ，使用 this 就可以拿到 app 实例。"
   },
-  "wxComponent": {
-    "prefix": "wx-Component",
-    "body": [
-      "//Component Object",
-      "Component({",
-      "\tproperties: {",
-      "\t\t${1:myProperty}:{",
-      "\t\t\ttype:${2:String},",
-      "\t\t\tvalue:${3:''},",
-      "\t\t\tobserver: function(){${4}}",
-      "\t\t},",
-      "\r\n\t},",
-      "\tdata: {",
-      "\r\n\t},",
-      "\tmethods: {",
-      "\t\t${5}",
-      "\t},",
-      "\tcreated: function(){",
-      "\r\n\t},",
-      "\tattached: function(){",
-      "\r\n\t},",
-      "\tready: function(){",
-      "\r\n\t},",
-      "\tmoved: function(){",
-      "\r\n\t},",
-      "\tdetached: function(){",
-      "\r\n\t},",
-      "});"
-    ],
-    "description": "Component对象及其生命周期函数和回调函数"
-  },
-  "getCurrentPages": {
-    "prefix": "getCurrentPages",
-    "body": ["${1:var curPages = } getCurrentPages();", "${2}"],
-    "description": "获取当前页面栈"
-  },
-  "getApp": {
-    "prefix": "getApp",
-    "body": ["${1:var appInst = } getApp();", "${2}"],
-    "description": "获取小程序实例"
-  },
-  "wx.request": {
-    "prefix": "wx-request",
+  "minipro-js-request": {
+    "prefix": "wx.request",
     "body": [
       "${1:var reqTask = }wx.request({",
       "\turl: '${2}',",

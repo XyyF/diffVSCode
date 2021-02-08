@@ -67,7 +67,7 @@
     "body": [
       "<button class=\"${1}\" size=\"${2:default}\" type=\"${1:default}\" plain=\"${2:false}\" disabled=\"${3:false}\" loading=\"${4:false}\" ",
       "\thover-class=\"${5:button-hover}\" hover-stop-propagation=\"${6:false}\" ",
-      "\t${7: form-type=\"submit|reset\"} ${8:open-type=\"contact|share|getUserInfo|openSetting|feedback\"} >",
+      "\t${7: form-type=\"submit|reset\"} open-type=\"${8|contact,share,getUserInfo,openSetting,feedback*|}\" >",
       "\t${9}",
       "</button>"
     ],
@@ -93,7 +93,7 @@
   "minipro-wxml-input": {
     "prefix": "<input",
     "body": [
-      "<input class=\"${1}\" value=\"${2}\" type=\"${3:text|number|idcard|digit|time|date}\" placeholder=\"${5}\" placeholder-class=\"${7:placeholder-color}\" ",
+      "<input class=\"${1}\" value=\"${2}\" type=\"${3|text,number,idcard,digit,time,date*|}\" placeholder=\"${5}\" placeholder-class=\"${7:placeholder-color}\" ",
       "\tdisabled=\"${8:false}\" maxlength=\"${9:140}\" bindinput=\"${11:bindinput}\" bindfocus=\"${12:bindfocus}\" bindblur=\"${13:bindblur}\">",
       "\t${15}",
       "</input>"
@@ -110,7 +110,7 @@
   "minipro-wxml-picker": {
     "prefix": "<picker",
     "body": [
-      "<picker class=\"${1}\" mode=\"${2:selector|multiSelector|time|date|region}\" range=\"${3:[]}\" ${4:range-key=\"\"} value=\"${5}\" ",
+      "<picker class=\"${1}\" mode=\"${2|selector,multiSelector,time,date,region*|}\" range=\"${3:[]}\" ${4:range-key=\"\"} value=\"${5}\" ",
       "\tdisabled=\"${6:false}\" bindchange=\"${7:bindchange}\">",
       "\t${9}",
       "</picker>"
@@ -132,7 +132,7 @@
   },
   "minipro-wxml-switch": {
     "prefix": "<switch",
-    "body": ["<switch class=\"${1}\" checked=\"${2:false}\" type=\"${3:switch|checkbox}\" bindchange=\"${4}\">", "\t${5}", "</switch>"],
+    "body": ["<switch class=\"${1}\" checked=\"${2:false}\" type=\"${3|switch,checkbox*|}\" bindchange=\"${4}\">", "\t${5}", "</switch>"],
     "url": "https://developers.weixin.qq.com/miniprogram/dev/component/picker.html",
     "description": "开关选择器"
   },
@@ -151,7 +151,7 @@
   "minipro-wxml-navigator": {
     "prefix": "<navigator",
     "body": [
-      "<navigator class=\"${1}\" target=\"${2:self}\" url=\"${3}\" hover-class=\"${4:}\" open-type=\"${5:navigate|redirect|reLaunch|navigateBack}\">",
+      "<navigator class=\"${1}\" target=\"${2:self}\" url=\"${3}\" hover-class=\"${4:}\" open-type=\"${5|navigate,redirect,reLaunch,navigateBack*|}\">",
       "\t${6}",
       "</navigator>"
     ],
@@ -161,7 +161,7 @@
   "minipro-wxml-image": {
     "prefix": "<image",
     "body": [
-      "<image class=\"${1}\" src=\"${2}\" mode=\"${3:aspectFit|aspectFill|widthFix}\" binderror=\"${5:binderror}\">",
+      "<image class=\"${1}\" src=\"${2}\" mode=\"${3|aspectFit,aspectFill,widthFix*|}\" binderror=\"${5:binderror}\">",
       "\t${7}",
       "</image>"
     ],
@@ -171,7 +171,7 @@
   "minipro-wxml-open-data": {
     "prefix": "<open-data",
     "body": [
-      "<open-data class=\"${1}\" type=\"${2:userNickName|userAvatarUrl|userGender}\" default-text=\"\" default-avatar=\"\" binderror=\"binderror\"></open-data>"
+      "<open-data class=\"${1}\" type=\"${2|userNickName,userAvatarUrl,userGender*|}\" default-text=\"\" default-avatar=\"\" binderror=\"binderror\"></open-data>"
     ],
     "url": "https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html",
     "description": "用于展示微信开放的数据。小程序插件中不能使用。"
