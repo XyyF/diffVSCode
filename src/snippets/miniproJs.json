@@ -31,14 +31,8 @@
     ],
     "description": "发起网络请求"
   },
-  "reqTask.abort": {
-    "prefix": "reqTask-abort",
-    "body": ["reqTask.abort();"],
-    "description": "中断请求任务。"
-  },
-
-  "wx.uploadFile": {
-    "prefix": "wx-uploadFile",
+  "minipro-js-uploadFile": {
+    "prefix": "wx.uploadFile",
     "body": [
       "${1:var upTask = }wx.uploadFile({",
       "\turl: '${2}',",
@@ -54,18 +48,8 @@
     ],
     "description": "将本地资源上传到开发者服务器，客户端发起一个 HTTPS POST 请求，其中 content-type 为 multipart/form-data。"
   },
-  "upTask.onProgressUpdate": {
-    "prefix": "upTask-onProgressUpdate",
-    "body": ["upTask.onProgressUpdate((result)=>{", "\t\t${1}", "\t});"],
-    "description": "监听上传进度变化事件。"
-  },
-  "upTask.abort": {
-    "prefix": "upTask-abort",
-    "body": ["upTask.abort();"],
-    "description": "中断上传任务。"
-  },
-  "wx.downloadFile": {
-    "prefix": "wx-downloadFile",
+  "minipro-js-downloadFile": {
+    "prefix": "wx.downloadFile",
     "body": [
       "${1:var downTask = }wx.downloadFile({",
       "\turl: '${2}',",
@@ -78,133 +62,8 @@
     ],
     "description": "下载文件资源到本地，客户端直接发起一个HTTP GET请求，返回文件的本地临时路径。"
   },
-  "downTask.onProgressUpdate": {
-    "prefix": "downTask-onProgressUpdate",
-    "body": ["downTask.onProgressUpdate((result)=>{", "\t\t${1}", "\t});"],
-    "description": "监听下载进度变化事件。"
-  },
-  "downTask.abort": {
-    "prefix": "downTask-abort",
-    "body": ["downTask.abort();"],
-    "description": "中断下载任务。"
-  },
-  "wx.connectSocket": {
-    "prefix": "wx-connectSocket",
-    "body": [
-      "${1:var sockTask = }wx.connectSocket({",
-      "\turl: '${2}',",
-      "\theader: {${3:'content-type':'application/json'}},",
-      "\tmethod: '${4:GET}',",
-      "\tprotocols: [${5}],",
-      "\tsuccess: ()=>{",
-      "\t\t${6}",
-      "\t},",
-      "\tfail: ()=>{},",
-      "\tcomplete: ()=>{}",
-      "});"
-    ],
-    "description": "创建一个WebSocket连接。"
-  },
-  "wx.onSocketOpen": {
-    "prefix": "wx-onSocketOpen",
-    "body": ["wx.onSocketOpen(${1:result} => {", "\t${2}", "});"],
-    "description": "监听WebSocket连接打开事件。"
-  },
-  "wx.onSocketError": {
-    "prefix": "wx-onSocketError",
-    "body": ["wx.onSocketError(${1:result} => {", "\t${2}", "});"],
-    "description": "监听WebSocket错误。"
-  },
-  "wx.sendSocketMessage": {
-    "prefix": "wx-sendSocketMessage",
-    "body": [
-      "wx.sendSocketMessage({",
-      "\tdata: ${1},",
-      "\tsuccess: (result)=>{",
-      "\t\t${2}",
-      "\t},",
-      "\tfail: ()=>{},",
-      "\tcomplete: ()=>{}",
-      "});"
-    ],
-    "description": "通过WebSocket连接发送数据，需要先wx.connectSocket，并在wx.onSocketOpen回调之后才能发送。"
-  },
-  "wx.onSocketMessage": {
-    "prefix": "wx-onSocketMessage",
-    "body": ["wx.onSocketMessage((${1:result})=>{${2}});"],
-    "description": "监听WebSocket接受到服务器的消息事件。"
-  },
-  "wx.closeSocket": {
-    "prefix": "wx-closeSocket",
-    "body": [
-      "wx.closeSocket({",
-      "\tcode: ${1:1000},",
-      "\treason: '${2}',",
-      "\tsuccess: (result)=>{",
-      "\t\t${3}",
-      "\t},",
-      "\tfail: ()=>{},",
-      "\tcomplete: ()=>{}",
-      "});"
-    ],
-    "description": "关闭WebSocket连接。"
-  },
-  "wx.onSocketClose": {
-    "prefix": "wx-onSocketClose",
-    "body": ["wx.onSocketClose((${1:result})=>{", "\t${2}", "});"],
-    "description": "监听WebSocket关闭。"
-  },
-  "sockTask.send": {
-    "prefix": "sockTask-send",
-    "body": [
-      "sockTask.send({",
-      "\tdata: ${1},",
-      "\tsuccess: (result)=>{",
-      "\t\t${2}",
-      "\t},",
-      "\tfail: ()=>{},",
-      "\tcomplete: ()=>{}",
-      "});"
-    ],
-    "description": "通过WebSocket连接发送数据。"
-  },
-  "sockTask.close": {
-    "prefix": "sockTask-close",
-    "body": [
-      "sockTask.close({",
-      "\tcode: ${1},",
-      "\treason: ${2},",
-      "\tsuccess: (result)=>{",
-      "\t\t${3}",
-      "\t},",
-      "\tfail: ()=>{},",
-      "\tcomplete: ()=>{}",
-      "});"
-    ],
-    "description": "关闭WebSocket连接。"
-  },
-  "sockTask.onOpen": {
-    "prefix": "sockTask-onOpen",
-    "body": ["sockTask.onOpen(${1:result} => {", "\t${2}", "});"],
-    "description": "监听WebSocket连接打开事件。"
-  },
-  "sockTask.onClose": {
-    "prefix": "sockTask-onClose",
-    "body": ["sockTask.onClose(${1:result} => {", "\t${2}", "});"],
-    "description": "监听 WebSocket 连接关闭事件。"
-  },
-  "sockTask.onError": {
-    "prefix": "sockTask-onError",
-    "body": ["sockTask.onError(${1:result} => {", "\t${2}", "});"],
-    "description": "监听 WebSocket 错误。"
-  },
-  "sockTask.onMessage": {
-    "prefix": "sockTask-onMessage",
-    "body": ["sockTask.onMessage(${1:result} => {", "\t${2}", "});"],
-    "description": "监听WebSocket接受到服务器的消息事件。"
-  },
-  "wx.chooseImage": {
-    "prefix": "wx-chooseImage",
+  "minipro-js-chooseImage": {
+    "prefix": "wx.chooseImage",
     "body": [
       "wx.chooseImage({",
       "\tcount: ${1:9},",
@@ -219,8 +78,8 @@
     ],
     "description": "从本地相册选择图片或使用相机拍照。"
   },
-  "wx.previewImage": {
-    "prefix": "wx-previewImage",
+  "minipro-js-previewImage": {
+    "prefix": "wx.previewImage",
     "body": [
       "wx.previewImage({",
       "\tcurrent: '${1}',",
@@ -234,22 +93,8 @@
     ],
     "description": "预览图片。"
   },
-  "wx.getImageInfo": {
-    "prefix": "wx-getImageInfo",
-    "body": [
-      "wx.getImageInfo({",
-      "\tsrc: ${1},",
-      "\tsuccess: (result)=>{",
-      "\t\t${2}",
-      "\t},",
-      "\tfail: ()=>{},",
-      "\tcomplete: ()=>{}",
-      "});"
-    ],
-    "description": "获取图片信息，倘若为网络图片，需先配置download域名才能生效。"
-  },
-  "wx.saveImageToPhotosAlbum": {
-    "prefix": "wx-saveImageToPhotosAlbum",
+  "minipro-js-saveImageToPhotosAlbum": {
+    "prefix": "wx.saveImageToPhotosAlbum",
     "body": [
       "wx.saveImageToPhotosAlbum({",
       "\tfilePath: ${1},",
@@ -262,23 +107,23 @@
     ],
     "description": "保存图片到系统相册。需要用户授权 scope.writePhotosAlbum"
   },
-  "wx.startRecord": {
-    "prefix": "wx-startRecord",
+  "minipro-js-startRecord": {
+    "prefix": "wx.startRecord",
     "body": ["wx.startRecord({", "\tsuccess: (result)=>{", "\t\t${1}", "\t},", "\tfail: ()=>{},", "\tcomplete: ()=>{}", "});"],
     "description": "开始录音。需要用户授权 scope.record。1.6.0 起不再维护"
   },
-  "wx.stopRecord": {
-    "prefix": "wx-stopRecord",
+  "minipro-js-stopRecord": {
+    "prefix": "wx.stopRecord",
     "body": ["wx.stopRecord();"],
     "description": "停止录音。1.6.0 起不再维护"
   },
-  "wx.getRecorderManager": {
-    "prefix": "wx-getRecorderManager",
+  "minipro-js-getRecorderManager": {
+    "prefix": "wx.getRecorderManager",
     "body": ["${1:var recordManager = }wx.getRecorderManager();"],
     "description": "获取全局唯一的录音管理器recorderManager。"
   },
   "recordManager.start": {
-    "prefix": "recordManager-start",
+    "prefix": "recordManager.start",
     "body": [
       "recordManager.start({",
       "\tduration: ${1},",
@@ -290,47 +135,47 @@
     "description": "开始录音"
   },
   "recordManager.pause": {
-    "prefix": "recordManager-pause",
+    "prefix": "recordManager.pause",
     "body": ["recordManager.pause();"],
     "description": "暂停录音"
   },
   "recordManager.resume": {
-    "prefix": "recordManager-resume",
+    "prefix": "recordManager.resume",
     "body": ["recordManager.resume();"],
     "description": "恢复录音"
   },
   "recordManager.stop": {
-    "prefix": "recordManager-stop",
+    "prefix": "recordManager.stop",
     "body": ["recordManager.stop();"],
     "description": "停止录音"
   },
   "recordManager.onStart": {
-    "prefix": "recordManager-onStart",
+    "prefix": "recordManager.onStart",
     "body": ["recordManager.onStart((${1})=>{", "\t${2}", "});"],
     "description": "录音开始事件"
   },
   "recordManager.onPause": {
-    "prefix": "recordManager-onPause",
+    "prefix": "recordManager.onPause",
     "body": ["recordManager.onPause((${1})=>{", "\t${2}", "});"],
     "description": "录音暂停事件"
   },
   "recordManager.onStop": {
-    "prefix": "recordManager-onStop",
+    "prefix": "recordManager.onStop",
     "body": ["recordManager.onStop((${1:result})=>{", "\t${2}", "});"],
     "description": "录音停止事件，会回调文件地址"
   },
   "recordManager.onFrameRecorded": {
-    "prefix": "recordManager-onFrameRecorded",
+    "prefix": "recordManager.onFrameRecorded",
     "body": ["recordManager.onFrameRecorded((${1:result})=>{", "\t${2}", "});"],
     "description": "已录制完指定帧大小的文件，会回调录音分片结果数据"
   },
   "recordManager.onError": {
-    "prefix": "recordManager-onError",
+    "prefix": "recordManager.onError",
     "body": ["recordManager.onError((${1:errMsg})=>{", "\t${2}", "});"],
     "description": "录音错误事件, 会回调错误信息"
   },
-  "wx.playVoice": {
-    "prefix": "wx-playVoice",
+  "minipro-js-playVoice": {
+    "prefix": "wx.playVoice",
     "body": [
       "wx.playVoice({",
       "\tfilePath: '${1}',",
@@ -344,18 +189,18 @@
     ],
     "description": "开始播放语音，同时只允许一个语音文件正在播放，如果前一个语音文件还没播放完，将中断前一个语音播放。1.6.0 起不再维护"
   },
-  "wx.pauseVoice": {
-    "prefix": "wx-pauseVoice",
+  "minipro-js-pauseVoice": {
+    "prefix": "wx.pauseVoice",
     "body": ["wx.pauseVoice();"],
     "description": "暂停正在播放的语音。1.6.0 起不再维护"
   },
-  "wx.stopVoice": {
-    "prefix": "wx-stopVoice",
+  "minipro-js-stopVoice": {
+    "prefix": "wx.stopVoice",
     "body": ["wx.stopVoice();"],
     "description": "结束播放语音。1.6.0 起不再维护"
   },
-  "wx.getBackgroundAudioPlayerState": {
-    "prefix": "wx-getBackgroundAudioPlayerState",
+  "minipro-js-getBackgroundAudioPlayerState": {
+    "prefix": "wx.getBackgroundAudioPlayerState",
     "body": [
       "wx.getBackgroundAudioPlayerState({",
       "\tsuccess: (result)=>{",
@@ -367,8 +212,8 @@
     ],
     "description": "获取后台音乐播放状态。1.2.0 起不再维护"
   },
-  "wx.playBackgroundAudio": {
-    "prefix": "wx-playBackgroundAudio",
+  "minipro-js-playBackgroundAudio": {
+    "prefix": "wx.playBackgroundAudio",
     "body": [
       "wx.playBackgroundAudio({",
       "\tdataUrl: '${1}',",
@@ -383,13 +228,13 @@
     ],
     "description": "使用后台播放器播放音乐，对于微信客户端来说，只能同时有一个后台音乐在播放。1.2.0 起不再维护"
   },
-  "wx.pauseBackgroundAudio": {
-    "prefix": "wx-pauseBackgroundAudio",
+  "minipro-js-pauseBackgroundAudio": {
+    "prefix": "wx.pauseBackgroundAudio",
     "body": ["wx.playBackgroundAudio();"],
     "description": "暂停播放音乐。1.2.0 起不再维护"
   },
-  "wx.seekBackgroundAudio": {
-    "prefix": "wx-seekBackgroundAudio",
+  "minipro-js-seekBackgroundAudio": {
+    "prefix": "wx.seekBackgroundAudio",
     "body": [
       "wx.seekBackgroundAudio({",
       "\tposition: '${1}',",
@@ -402,18 +247,18 @@
     ],
     "description": "控制音乐播放进度(秒)。1.2.0 起不再维护"
   },
-  "wx.stopBackgroundAudio": {
-    "prefix": "wx-stopBackgroundAudio",
+  "minipro-js-stopBackgroundAudio": {
+    "prefix": "wx.stopBackgroundAudio",
     "body": ["wx.stopBackgroundAudio();"],
     "description": "停止播放音乐。1.2.0 起不再维护"
   },
-  "wx.onBackgroundAudioPlay": {
-    "prefix": "wx-onBackgroundAudioPlay",
+  "minipro-js-onBackgroundAudioPlay": {
+    "prefix": "wx.onBackgroundAudioPlay",
     "body": ["wx.onBackgroundAudioPlay((${1:result})=>{${2}});"],
     "description": "监听音乐播放。1.2.0 起不再维护"
   },
-  "wx.onBackgroundAudioPause": {
-    "prefix": "wx-onBackgroundAudioPause",
+  "minipro-js-onBackgroundAudioPause": {
+    "prefix": "wx.onBackgroundAudioPause",
     "body": ["wx.onBackgroundAudioPause((${1:result})=>{${2}});"],
     "description": "监听音乐暂停。1.2.0 起不再维护"
   },
@@ -422,8 +267,8 @@
     "body": ["wx.onBackgroundAudioStop((${1:result})=>{${2}});"],
     "description": "监听音乐停止。1.2.0 起不再维护"
   },
-  "wx.getBackgroundAudioManager": {
-    "prefix": "wx-getBackgroundAudioManager",
+  "minipro-js-getBackgroundAudioManager": {
+    "prefix": "wx.getBackgroundAudioManager",
     "body": [
       "// properties(Read only)(duration,currentTime,paused,buffered)",
       "// properties(src(m4a, aac, mp3, wav),startTime,title,epname,singer,coverImgUrl,webUrl,protocol)",
@@ -432,107 +277,82 @@
     "description": "获取全局唯一的背景音频管理器 backgroundAudioManager。"
   },
   "backAudioManager.src": {
-    "prefix": "backAudioManager-src",
+    "prefix": "backAudioManager.src",
     "body": ["backAudioManager.src = ${1};"],
     "description": "音频的数据源，默认为空字符串，当设置了新的 src 时，会自动开始播放 ，目前支持的格式有 m4a, aac, mp3, wav。"
   },
   "backAudioManager.play": {
-    "prefix": "backAudioManager-play",
+    "prefix": "backAudioManager.play",
     "body": ["backAudioManager.play();"],
     "description": "播放"
   },
   "backAudioManager.pause": {
-    "prefix": "backAudioManager-pause",
+    "prefix": "backAudioManager.pause",
     "body": ["backAudioManager.pause();"],
     "description": "暂停"
   },
   "backAudioManager.stop": {
-    "prefix": "backAudioManager-stop",
+    "prefix": "backAudioManager.stop",
     "body": ["backAudioManager.stop();"],
     "description": "停止"
   },
   "backAudioManager.seek": {
-    "prefix": "backAudioManager-seek",
+    "prefix": "backAudioManager.seek",
     "body": ["backAudioManager.seek(${1});"],
     "description": "跳转到指定位置，单位 s。精确到小数点后 3 位，即支持 ms 级别精确度。"
   },
   "backAudioManager.onCanplay": {
-    "prefix": "backAudioManager-onCanplay",
+    "prefix": "backAudioManager.onCanplay",
     "body": ["backAudioManager.onCanplay(${1:()=>{", "\t\t${2}", "\t}});"],
     "description": "背景音频进入可以播放状态，但不保证后面可以流畅播放"
   },
   "backAudioManager.onPlay": {
-    "prefix": "backAudioManager-onPlay",
+    "prefix": "backAudioManager.onPlay",
     "body": ["backAudioManager.onPlay(()=>{", "\t${1}", "});"],
     "description": "背景音频播放事件"
   },
   "backAudioManager.onPause": {
-    "prefix": "backAudioManager-onPause",
+    "prefix": "backAudioManager.onPause",
     "body": ["backAudioManager.onPause(()=>{", "\t${1}", "});"],
     "description": "背景音频暂停事件"
   },
   "backAudioManager.onStop": {
-    "prefix": "backAudioManager-onStop",
+    "prefix": "backAudioManager.onStop",
     "body": ["backAudioManager.onStop(()=>{", "\t${1}", "});"],
     "description": "背景音频停止事件"
   },
   "backAudioManager.onEnded": {
-    "prefix": "backAudioManager-onEnded",
+    "prefix": "backAudioManager.onEnded",
     "body": ["backAudioManager.onEnded(()=>{", "\t${1}", "});"],
     "description": "背景音频自然播放结束事件"
   },
   "backAudioManager.onTimeUpdate": {
-    "prefix": "backAudioManager-onTimeUpdate",
+    "prefix": "backAudioManager.onTimeUpdate",
     "body": ["backAudioManager.onTimeUpdate((${1})=>{", "\t${2}", "});"],
     "description": "背景音频播放进度更新事件"
   },
   "backAudioManager.onPrev": {
-    "prefix": "backAudioManager-onPrev",
+    "prefix": "backAudioManager.onPrev",
     "body": ["backAudioManager.onPrev((${1})=>{", "\t${2}", "});"],
     "description": "用户在系统音乐播放面板点击上一曲事件（iOS only）"
   },
   "backAudioManager.onNext": {
-    "prefix": "backAudioManager-onNext",
+    "prefix": "backAudioManager.onNext",
     "body": ["backAudioManager.onNext((${1})=>{", "\t${2}", "});"],
     "description": "用户在系统音乐播放面板点击下一曲事件（iOS only）"
   },
   "backAudioManager.onError": {
-    "prefix": "backAudioManager-onError",
+    "prefix": "backAudioManager.onError",
     "body": ["backAudioManager.onError((${1:errMsg})=>{", "\t${2}", "});"],
     "description": "背景音频播放错误事件"
   },
   "backAudioManager.onWaiting": {
-    "prefix": "backAudioManager-onWaiting",
+    "prefix": "backAudioManager.onWaiting",
     "body": ["backAudioManager.onWaiting((${1})=>{", "\t${2}", "});"],
     "description": "音频加载中事件，当音频因为数据不足，需要停下来加载时会触发"
   },
-  "wx.createAudioContext": {
-    "prefix": "wx-createAudioContext",
-    "body": ["${1:var audioContext = }wx.createAudioContext(${2}, this);"],
-    "description": "创建并返回audio上下文audioContext对象。在自定义组件下，第二个参数传入组件实例this，以操作组件内<audio/>组件。1.6.0 起不再维护"
-  },
-  "audioContext.setSrc": {
-    "prefix": "audioContext-setSrc",
-    "body": ["audioContext.setSrc('${1}');"],
-    "description": "设置音频的地址。1.6.0 起不再维护"
-  },
-  "audioContext.play": {
-    "prefix": "audioContext-play",
-    "body": ["audioContext.play();"],
-    "description": "播放。1.6.0 起不再维护"
-  },
-  "audioContext.pause": {
-    "prefix": "audioContext-pause",
-    "body": ["audioContext.pause();"],
-    "description": "暂停。1.6.0 起不再维护"
-  },
-  "audioContext.seek": {
-    "prefix": "audioContext-seek",
-    "body": ["audioContext.seek(${1});"],
-    "description": "跳转到指定位置，单位 s。1.6.0 起不再维护"
-  },
-  "wx.createInnerAudioContext": {
-    "prefix": "wx-createInnerAudioContext",
+  "minipro-js-createInnerAudioContext": {
+    "prefix": "wx.createInnerAudioContext",
     "body": [
       "// properties(Read only)(duration,currentTime,paused,buffered,volume)",
       "// properties(src,startTime,autoplay,loop,obeyMuteSwitch)",
@@ -541,134 +361,133 @@
     "description": "创建并返回内部 audio 上下文 innerAudioContext 对象。本接口是 wx.createAudioContext 升级版。1.6.0 开始支持"
   },
   "innerAudioContext.play": {
-    "prefix": "innerAudioContext-play",
+    "prefix": "innerAudioContext.play",
     "body": ["innerAudioContext.play();"],
     "description": "播放"
   },
   "innerAudioContext.pause": {
-    "prefix": "innerAudioContext-pause",
+    "prefix": "innerAudioContext.pause",
     "body": ["innerAudioContext.pause();"],
     "description": "暂停"
   },
   "innerAudioContext.stop": {
-    "prefix": "innerAudioContext-stop",
+    "prefix": "innerAudioContext.stop",
     "body": ["innerAudioContext.stop();"],
     "description": "停止"
   },
   "innerAudioContext.seek": {
-    "prefix": "innerAudioContext-seek",
+    "prefix": "innerAudioContext.seek",
     "body": ["innerAudioContext.seek(${1});"],
     "description": "跳转到指定位置，单位 s。精确到小数点后 3 位，即支持 ms 级别精确度"
   },
   "innerAudioContext.destroy": {
-    "prefix": "innerAudioContext-destroy",
+    "prefix": "innerAudioContext.destroy",
     "body": ["innerAudioContext.destroy();"],
     "description": "销毁当前实例"
   },
   "innerAudioContext.onCanplay": {
-    "prefix": "innerAudioContext-onCanplay",
+    "prefix": "innerAudioContext.onCanplay",
     "body": ["innerAudioContext.onCanplay(()=>{${1}});"],
     "description": "音频进入可以播放状态，但不保证后面可以流畅播放"
   },
   "innerAudioContext.onPlay": {
-    "prefix": "innerAudioContext-onPlay",
+    "prefix": "innerAudioContext.onPlay",
     "body": ["innerAudioContext.onPlay((${1})=>{", "\t${2}", "});"],
     "description": "音频播放事件"
   },
   "innerAudioContext.onPause": {
-    "prefix": "innerAudioContext-onPause",
+    "prefix": "innerAudioContext.onPause",
     "body": ["innerAudioContext.onPause((${1})=>{", "\t${2}", "});"],
     "description": "音频暂停播放事件"
   },
   "innerAudioContext.onStop": {
-    "prefix": "innerAudioContext-onStop",
+    "prefix": "innerAudioContext.onStop",
     "body": ["innerAudioContext.onStop((${1})=>{", "\t${2}", "});"],
     "description": "音频停止播放事件"
   },
   "innerAudioContext.onEnded": {
-    "prefix": "innerAudioContext-onEnded",
+    "prefix": "innerAudioContext.onEnded",
     "body": ["innerAudioContext.onEnded((${1})=>{", "\t${2}", "});"],
     "description": "音频自然播放结束事件"
   },
   "innerAudioContext.onTimeUpdate": {
-    "prefix": "innerAudioContext-onTimeUpdate",
+    "prefix": "innerAudioContext.onTimeUpdate",
     "body": ["innerAudioContext.onTimeUpdate((${1})=>{", "\t${2}", "});"],
     "description": "音频播放进度更新事件"
   },
   "innerAudioContext.onError": {
-    "prefix": "innerAudioContext-onError",
+    "prefix": "innerAudioContext.onError",
     "body": ["innerAudioContext.onError((${1:errMsg})=>{", "\t${2}", "});"],
     "description": "音频播放错误事件"
   },
   "innerAudioContext.onWaiting": {
-    "prefix": "innerAudioContext-onWaiting",
+    "prefix": "innerAudioContext.onWaiting",
     "body": ["innerAudioContext.onWaiting((${1})=>{", "\t${2}", "});"],
     "description": "音频加载中事件，当音频因为数据不足，需要停下来加载时会触发"
   },
   "innerAudioContext.onSeeking": {
-    "prefix": "innerAudioContext-onSeeking",
+    "prefix": "innerAudioContext.onSeeking",
     "body": ["innerAudioContext.onSeeking((${1})=>{", "\t${2}", "});"],
     "description": "音频进行seek操作事件"
   },
   "innerAudioContext.onSeeked": {
-    "prefix": "innerAudioContext-onSeeked",
+    "prefix": "innerAudioContext.onSeeked",
     "body": ["innerAudioContext.onSeeked((${1})=>{", "\t${2}", "});"],
     "description": "音频完成seek操作事件"
   },
 
   "innerAudioContext.offCanplay": {
-    "prefix": "innerAudioContext-offCanplay",
+    "prefix": "innerAudioContext.offCanplay",
     "body": ["innerAudioContext.offCanplay((${1})=>{", "\t${2}", "});"],
     "description": "取消监听onCanplay事件"
   },
   "innerAudioContext.offPlay": {
-    "prefix": "innerAudioContext-offPlay",
+    "prefix": "innerAudioContext.offPlay",
     "body": ["innerAudioContext.offPlay((${1})=>{", "\t${2}", "});"],
     "description": "取消监听onPlay事件"
   },
   "innerAudioContext.offStop": {
-    "prefix": "innerAudioContext-offStop",
+    "prefix": "innerAudioContext.offStop",
     "body": ["innerAudioContext.offStop((${1})=>{", "\t${2}", "});"],
     "description": "取消监听onStop事件"
   },
   "innerAudioContext.offEnded": {
-    "prefix": "innerAudioContext-offEnded",
+    "prefix": "innerAudioContext.offEnded",
     "body": ["innerAudioContext.offEnded((${1})=>{", "\t${2}", "});"],
     "description": "取消监听onEnded事件"
   },
   "innerAudioContext.offTimeUpdate": {
-    "prefix": "innerAudioContext-offTimeUpdate",
+    "prefix": "innerAudioContext.offTimeUpdate",
     "body": ["innerAudioContext.offTimeUpdate((${1})=>{", "\t${2}", "});"],
     "description": "取消监听onTimeUpdate事件"
   },
   "innerAudioContext.offError": {
-    "prefix": "innerAudioContext-offError",
+    "prefix": "innerAudioContext.offError",
     "body": ["innerAudioContext.offError((${1})=>{", "\t${2}", "});"],
     "description": "取消监听onError事件"
   },
   "innerAudioContext.offWaiting": {
-    "prefix": "innerAudioContext-offWaiting",
+    "prefix": "innerAudioContext.offWaiting",
     "body": ["innerAudioContext.offWaiting((${1})=>{", "\t${2}", "});"],
     "description": "取消监听onWaiting事件"
   },
   "innerAudioContext.offSeeking": {
-    "prefix": "innerAudioContext-offSeeking",
+    "prefix": "innerAudioContext.offSeeking",
     "body": ["innerAudioContext.offSeeking((${1})=>{", "\t${2}", "});"],
     "description": "取消监听onSeeking事件"
   },
   "innerAudioContext.offSeeked": {
-    "prefix": "innerAudioContext-offSeeked",
+    "prefix": "innerAudioContext.offSeeked",
     "body": ["innerAudioContext.offSeeked((${1})=>{", "\t${2}", "});"],
     "description": "取消监听onSeeked事件"
   },
-  "wx.getAvailableAudioSources": {
-    "prefix": "wx-getAvailableAudioSources",
+  "minipro-js-getAvailableAudioSources": {
+    "prefix": "wx.getAvailableAudioSources",
     "body": ["wx.getAvailableAudioSources({", "\tsuccess: (result)=>{", "\t\t${1}", "\t},", "\tfail: ()=>{},", "\tcomplete: ()=>{}", "});"],
     "description": "获取当前支持的音频输入源"
   },
-
-  "wx.chooseVideo": {
-    "prefix": "wx-chooseVideo",
+  "minipro-js-chooseVideo": {
+    "prefix": "wx.chooseVideo",
     "body": [
       "wx.chooseVideo({",
       "\tsourceType:['album', 'camera'],",
