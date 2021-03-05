@@ -20,6 +20,8 @@ vsce package
 
 ## 功能列表
 
+TODO 区分minipro和Wekf，更加通用
+
 1. [minipro] 文件适配wekf改造，适用于快速初始化Page.js文件
 
 > 优势：专注于Page.js文件中，避免到处Copy文件内容，再删除逻辑的繁琐过程
