@@ -169,7 +169,7 @@
     }
   },
   "scripts": {
-    "elfin.init": "elfincmd external clone && elfincmd external install",
+    "elfin.init": "elfincmd external clone --multi && elfincmd external install --multi",
     "lint": "eslint ./src ./utils --ext .js,.jsx,.ts,.tsx,.vue",
     "pretest": "npm run lint",
     "test": "node ./test/runTest.js"
