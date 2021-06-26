@@ -98,3 +98,8 @@ vsce package
 7. [minipro] 切换小程序研发环境
 
 8. [minipro] 微信小程序API心得hover提示
+
+### TODO
+- [x] 补全Snippets
+- [] 完善wxml语法高亮
+- [] Hover展示Snippets内容
