@@ -14,7 +14,10 @@ npm run elfin.init
 ```js
 npm i vsce -g
 
-vsce package
+vsce package // 打包
+
+vsce publish // 发布
+// https://juejin.cn/post/6844903909564088333
 ```
 左侧功能按钮 -> 扩展 -> 右上角选择Install from VSIX安装
 
