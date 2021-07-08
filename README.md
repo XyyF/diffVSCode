@@ -18,6 +18,7 @@ vsce package // 打包
 
 vsce publish // 发布
 // https://juejin.cn/post/6844903909564088333
+// 手动发布：https://marketplace.visualstudio.com/manage/publishers/rengarxiao
 ```
 左侧功能按钮 -> 扩展 -> 右上角选择Install from VSIX安装
 
