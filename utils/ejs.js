@@ -9,35 +9,61 @@ module.exports = class Ejs extends EjsAPI {
 	/**
 	 * 渲染小程序页面
 	 */
-	renderWcnPageJs() {
+	renderMiniProPageJs() {
+		return this._renderByTempalte('src/templates/minipro/page/js.ejs', {
+			PageName: firstUpperCase(this.fileName),
+		});
+	}
+	renderMiniProPageWxml() {
+		return this._renderByTempalte('src/templates/minipro/page/wxml.ejs');
+	}
+	renderMiniProPageWxss() {
+		return this._renderByTempalte('src/templates/minipro/page/wxss.ejs');
+	}
+	renderMiniProPageJson() {
+		return this._renderByTempalte('src/templates/minipro/page/json.ejs');
+	}
+	renderWekfPageJs() {
 		return this._renderByTempalte('src/templates/wekf/page/js.ejs', {
 			PageName: firstUpperCase(this.fileName),
 		});
 	}
-	renderWcnPageWxml() {
+	renderWekfPageWxml() {
 		return this._renderByTempalte('src/templates/wekf/page/wxml.ejs');
 	}
-	renderWcnPageWxss() {
+	renderWekfPageWxss() {
 		return this._renderByTempalte('src/templates/wekf/page/wxss.ejs');
 	}
-	renderWcnPageJson() {
+	renderWekfPageJson() {
 		return this._renderByTempalte('src/templates/wekf/page/json.ejs');
 	}
 
 	/**
 	 * 渲染小程序组件
 	 */
-	renderWcnComponentJs() {
-		return this._renderByTempalte('src/templates/wekf/compnent/js.ejs');
+	renderMiniProComponentJs() {
+		return this._renderByTempalte('src/templates/minipro/component/js.ejs');
 	}
-	renderWcnComponentWxml() {
-		return this._renderByTempalte('src/templates/wekf/compnent/wxml.ejs');
+	renderMiniProComponentWxml() {
+		return this._renderByTempalte('src/templates/minipro/component/wxml.ejs');
 	}
-	renderWcnComponentWxss() {
-		return this._renderByTempalte('src/templates/wekf/compnent/wxss.ejs');
+	renderMiniProComponentWxss() {
+		return this._renderByTempalte('src/templates/minipro/component/wxss.ejs');
 	}
-	renderWcnComponentJson() {
-		return this._renderByTempalte('src/templates/wekf/compnent/json.ejs');
+	renderMiniProComponentJson() {
+		return this._renderByTempalte('src/templates/minipro/component/json.ejs');
+	}
+	renderWekfComponentJs() {
+		return this._renderByTempalte('src/templates/wekf/component/js.ejs');
+	}
+	renderWekfComponentWxml() {
+		return this._renderByTempalte('src/templates/wekf/component/wxml.ejs');
+	}
+	renderWekfComponentWxss() {
+		return this._renderByTempalte('src/templates/wekf/component/wxss.ejs');
+	}
+	renderWekfComponentJson() {
+		return this._renderByTempalte('src/templates/wekf/component/json.ejs');
 	}
 
 	renderWcnApp() {

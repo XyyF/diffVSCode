@@ -122,3 +122,5 @@ vsce publish // 发布
 - [x] 补全Snippets
 - [] 完善wxml语法高亮
 - [x] Hover展示Snippets内容
+- [] 切换小程序版本支持自定义appid
+- [x] 仅在wekf下启用相关功能
