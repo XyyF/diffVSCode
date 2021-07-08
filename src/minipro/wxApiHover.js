@@ -22,14 +22,14 @@ function provideHoverJs(document, position) {
   return null;
 }
 function provideHoverWxml(document, position) {
-  const custRegExp = /<[A-Za-z0-9-]+/;
+  const custRegExp = /<(\/)?[A-Za-z0-9-]+/;
   const range = document.getWordRangeAtPosition(position, custRegExp);
   if (!range) return;
-  let apiName = document.getText(range).match(custRegExp)[0];;
+  let apiName = document.getText(range).match(custRegExp)[0];
   if (!apiName) return;
 
-  // 将<符号去除
-  apiName = apiName.replace(/</g, '');
+  // 将< </符号去除
+  apiName = apiName.replace(/<(\/)?/g, '');
 
   const wxmltag = `minipro-wxml-${apiName}`;
   if (miniproWxml[wxmltag]) {
