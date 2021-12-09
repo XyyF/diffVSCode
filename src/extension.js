@@ -16,6 +16,9 @@ const registerSwitchMode = require('./minipro/switchMode');
 const registerWxApiHover = require('./minipro/wxApiHover');
 const registerCompilePage = require('./minipro/compilePage');
 
+// pixui系列
+const registerPixuiSwitchMode = require('./pixui/switch_mode');
+
 /**
  * 插件被激活时触发，所有代码总入口
  * @param context 插件上下文
@@ -25,12 +28,12 @@ function activate(context) {
 
 	// 小程序项目目录才触发
 	const rootPath = vscode.workspace.rootPath;
-	const necessaryFiles = [
+	const miniproNecessaryFiles = [
 		`${rootPath}${path.sep}project.config.json`,
 		`${rootPath}${path.sep}app.json`,
 		`${rootPath}${path.sep}app.js`,
 	];
-	if (necessaryFiles.every(file => fs.existsSync(file))) {
+	if (miniproNecessaryFiles.every(file => fs.existsSync(file))) {
 		console.log('扩展elfin.minipro|wekf已激活!');
     vscode.commands.executeCommand('setContext', 'elfin.minipro.show', true);
     vscode.commands.executeCommand('setContext', 'elfin.wekf.show', true);
@@ -59,6 +62,15 @@ function activate(context) {
 	} else {
     vscode.commands.executeCommand('setContext', 'elfin.minipro.show', false);
     vscode.commands.executeCommand('setContext', 'elfin.wekf.show', false);
+	}
+	const pixuiNecessaryFiles = [
+		`${rootPath}${path.sep}pixide-system-config/apps.json`,
+	];
+	if (pixuiNecessaryFiles.every(file => fs.existsSync(file))) {
+		console.log('扩展elfin.pixui已激活!');
+    // vscode.commands.executeCommand('setContext', 'elfin.pixui.show', true);
+		// 切换build游戏
+		registerPixuiSwitchMode(context);
 	}
 }
 exports.activate = activate;

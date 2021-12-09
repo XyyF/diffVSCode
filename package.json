@@ -2,7 +2,7 @@
   "name": "elfin-vscode",
   "displayName": "elfin vscode",
   "description": "",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "publisher": "rengarxiao",
   "license": "MIT",
   "homepage": "https://github.com/XyyF/elfin-vscode/blob/main/README.md",
@@ -22,12 +22,15 @@
     "onLanguage:javascript",
     "onLanguage:wxml",
     "onLanguage:json",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact",
     "onCommand:elfin.wekf.retrofitPage",
     "onCommand:elfin.wekf.retrofitApp",
     "onCommand:elfin.minipro.createPage",
     "onCommand:elfin.minipro.createComponent",
     "onCommand:elfin.minipro.compilePage",
-    "onCommand:elfin.minipro.switchMode"
+    "onCommand:elfin.minipro.switchMode",
+    "onCommand:elfin.pixui.switchGameClick"
   ],
   "main": "./src/extension.js",
   "contributes": {
@@ -71,6 +74,10 @@
       {
         "command": "elfin.minipro.switchMode",
         "title": "[minipro]切换mode环境"
+      },
+      {
+        "command": "elfin.pixui.switchGameClick",
+        "title": "[pixui]切换build游戏"
       }
     ],
     "snippets": [
