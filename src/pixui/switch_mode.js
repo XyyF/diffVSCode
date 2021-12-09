@@ -4,7 +4,7 @@ const path = require('path');
 
 const statusBarItem = {
   instance: null,
-  command: 'elfin.pixui.switchModeClick',
+  command: 'elfin.pixui.switchGameClick',
   alignment: vscode.StatusBarAlignment.Left,
   priority: 10000,
   text: 'build:暂无',
