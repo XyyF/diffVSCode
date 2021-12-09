@@ -1,29 +1,18 @@
 const vscode = require('vscode');
-const path = require('path');
 
 const Shell = require('../../utils/Shell');
-const documents = {};
 const shell = new Shell();
 
 // 遍历所有的json
 const miniproJs = JSON.parse(shell.loadFileFromElfinRoot('src/snippets/miniproJs.json'));
 const miniproJson = JSON.parse(shell.loadFileFromElfinRoot('src/snippets/miniproJson.json'));
 const miniproWxml = JSON.parse(shell.loadFileFromElfinRoot('src/snippets/miniproWxml.json'));
-// 遍历所有的markdown
-const markdowns = shell.readDeepDir(path.join(__dirname, '../../documents/wx'));
-markdowns.forEach((file) => {
-  const filename = path.basename(file).replace('.md', '');
-  documents[filename] = shell.loadFlieFromScript(file);
-});
 
 function provideHoverJs(document, position) {
   let apiName = document.getText(document.getWordRangeAtPosition(position));
   if (!apiName) return;
 
   apiName = apiName.replace(/"/g, '');
-  if (documents[apiName]) {
-    return new vscode.Hover(new vscode.MarkdownString(documents[apiName]));
-  }
   const jstag = `minipro-js-${apiName}`;
   if (miniproJs[jstag]) {
     return new vscode.Hover(
@@ -33,13 +22,15 @@ function provideHoverJs(document, position) {
   return null;
 }
 function provideHoverWxml(document, position) {
-  let apiName = document.getText(document.getWordRangeAtPosition(position));
+  const custRegExp = /<(\/)?[A-Za-z0-9-]+/;
+  const range = document.getWordRangeAtPosition(position, custRegExp);
+  if (!range) return;
+  let apiName = document.getText(range).match(custRegExp)[0];
   if (!apiName) return;
 
-  apiName = apiName.replace(/"/g, '');
-  if (documents[apiName]) {
-    return new vscode.Hover(new vscode.MarkdownString(documents[apiName]));
-  }
+  // 将< </符号去除
+  apiName = apiName.replace(/<(\/)?/g, '');
+
   const wxmltag = `minipro-wxml-${apiName}`;
   if (miniproWxml[wxmltag]) {
     return new vscode.Hover(
@@ -49,13 +40,13 @@ function provideHoverWxml(document, position) {
   return null;
 }
 function provideHoverJson(document, position) {
-  let apiName = document.getText(document.getWordRangeAtPosition(position));
+  const custRegExp = /"[A-Za-z0-9-]+"/;
+  const range = document.getWordRangeAtPosition(position, custRegExp);
+  if (!range) return;
+  let apiName = document.getText(range);
   if (!apiName) return;
 
   apiName = apiName.replace(/"/g, '');
-  if (documents[apiName]) {
-    return new vscode.Hover(new vscode.MarkdownString(documents[apiName]));
-  }
   const jsontag = `minipro-json-${apiName}`;
   if (miniproJson[jsontag]) {
     return new vscode.Hover(

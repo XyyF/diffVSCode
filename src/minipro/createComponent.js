@@ -4,7 +4,7 @@ const path = require('path');
 const Ejs = require('../../utils/ejs');
 
 // 新建小程序Component
-module.exports = function createComponent(context) {
+module.exports = function createComponent(context, isWekf) {
     // 注册命令
     const disposable = vscode.commands.registerCommand('elfin.minipro.createComponent', (url) => {
         vscode.window
@@ -34,10 +34,18 @@ module.exports = function createComponent(context) {
 
                     // 渲染模板数据
                     const ejs = new Ejs();
-                    const js = ejs.renderWcnComponentJs();
-                    const wxml = ejs.renderWcnComponentWxml();
-                    const wxss = ejs.renderWcnComponentWxss();
-                    const json = ejs.renderWcnComponentJson();
+                    let js, wxml, wxss, json;
+                    if (isWekf) {
+                        js = ejs.renderWekfComponentJs();
+                        wxml = ejs.renderWekfComponentWxml();
+                        wxss = ejs.renderWekfComponentWxss();
+                        json = ejs.renderWekfComponentJson();
+                    } else {
+                        js = ejs.renderMiniProComponentJs();
+                        wxml = ejs.renderMiniProComponentWxml();
+                        wxss = ejs.renderMiniProComponentWxss();
+                        json = ejs.renderMiniProComponentJson();
+                    }
 
                     fs.writeFileSync(`${url.fsPath}${path.sep}${file}.js`, `${js}\n`);
                     fs.writeFileSync(`${url.fsPath}${path.sep}${file}.wxml`, `${wxml}\n`);

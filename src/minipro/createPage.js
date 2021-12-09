@@ -4,7 +4,7 @@ const path = require('path');
 const Ejs = require('../../utils/ejs');
 
 // 新建小程序Page
-module.exports = function createPage(context) {
+module.exports = function createPage(context, isWekf) {
     // 注册命令
     const disposable = vscode.commands.registerCommand('elfin.minipro.createPage', (url) => {
         vscode.window
@@ -36,10 +36,18 @@ module.exports = function createPage(context) {
                     const ejs = new Ejs({ fileName });
 
                     // 渲染页面
-                    const js = ejs.renderWcnPageJs();
-                    const wxml = ejs.renderWcnPageWxml();
-                    const wxss = ejs.renderWcnPageWxss();
-                    const json = ejs.renderWcnPageJson();
+                    let js, wxml, wxss, json;
+                    if (isWekf) {
+                        js = ejs.renderWekfPageJs();
+                        wxml = ejs.renderWekfPageWxml();
+                        wxss = ejs.renderWekfPageWxss();
+                        json = ejs.renderWekfPageJson();
+                    } else {
+                        js = ejs.renderMiniProPageJs();
+                        wxml = ejs.renderMiniProPageWxml();
+                        wxss = ejs.renderMiniProPageWxss();
+                        json = ejs.renderMiniProPageJson();
+                    }
 
                     // 如果使用者输入了目录的话
                     if (dir) {

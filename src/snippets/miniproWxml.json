@@ -177,7 +177,7 @@
     "description": "用于展示微信开放的数据。小程序插件中不能使用。"
   },
   "minipro-wxml-block": {
-    "prefix": "block",
+    "prefix": "<block",
     "body": ["<block wx:if=\"{{${1:items}}}\">", "\t${2}", "</block>"],
     "url": "https://developers.weixin.qq.com/miniprogram/dev/component/block.html",
     "description": "block标签，不是组件，只是包装元素，不会在页面中做任何渲染，只接受控制属性"
